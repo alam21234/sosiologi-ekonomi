@@ -82,6 +82,14 @@
             border-bottom: 3px solid #3b82f6;
             color: #3b82f6;
         }
+
+        .ekonomi-content {
+            display: none;
+        }
+        
+        .ekonomi-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -271,47 +279,253 @@
             <p class="text-center text-xl mb-12">Kelas XI Semester Genap</p>
             
             <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl p-8 text-gray-800 shadow-lg max-w-4xl mx-auto">
-                <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Materi Pembelajaran</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 1: Konsep Dasar Ekonomi</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Kelangkaan Sumber Daya</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Biaya Peluang</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Sistem Ekonomi</li>
+                <!-- Tab Navigation untuk Materi Ekonomi -->
+                <div class="flex overflow-x-auto mb-8 border-b">
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab active" data-target="badan-usaha">Badan Usaha</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab" data-target="pendapatan-nasional">Pendapatan Nasional</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab" data-target="ketenagakerjaan">Ketenagakerjaan</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab" data-target="inflasi">Inflasi</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab" data-target="fiskal-moneter">Kebijakan Fiskal & Moneter</button>
+                </div>
+
+                <!-- Konten Materi Ekonomi -->
+                <div id="badan-usaha" class="ekonomi-content active">
+                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Badan Usaha</h3>
+                    <div class="bg-green-50 p-6 rounded-lg mb-6">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Badan Usaha</h4>
+                        <p class="mb-4">Badan usaha adalah organisasi yang didirikan untuk menjalankan kegiatan usaha atau bisnis dengan tujuan menghasilkan keuntungan.</p>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Jenis-jenis Badan Usaha</h4>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Badan Usaha Milik Negara (BUMN)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Badan Usaha Milik Swasta (BUMS)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Koperasi</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Badan Usaha Milik Daerah (BUMD)</span></li>
                         </ul>
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bentuk-bentuk Badan Usaha</h4>
+                        <ol class="list-decimal pl-5 space-y-2 mb-4">
+                            <li>Perusahaan Perseroan (Persero)</li>
+                            <li>Perusahaan Umum (Perum)</li>
+                            <li>Perseroan Terbatas (PT)</li>
+                            <li>Firma (Fa)</li>
+                            <li>Persekutuan Komanditer (CV)</li>
+                            <li>Perusahaan Perorangan</li>
+                        </ol>
+                        
+                        <div class="bg-green-100 p-4 rounded-lg mt-6">
+                            <h5 class="font-bold mb-2">Contoh Soal:</h5>
+                            <p class="mb-2">Sebutkan perbedaan antara BUMN dan BUMS!</p>
+                            <details>
+                                <summary class="cursor-pointer text-green-700 font-medium">Lihat Jawaban</summary>
+                                <p class="mt-2">BUMN adalah badan usaha yang seluruh atau sebagian besar modalnya dimiliki oleh negara, sedangkan BUMS adalah badan usaha yang seluruh modalnya dimiliki oleh swasta.</p>
+                            </details>
+                        </div>
                     </div>
-                    
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 2: Permintaan dan Penawaran</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Hukum Permintaan</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Hukum Penawaran</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Elastisitas</li>
+                </div>
+
+                <div id="pendapatan-nasional" class="ekonomi-content">
+                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Pendapatan Nasional</h3>
+                    <div class="bg-green-50 p-6 rounded-lg mb-6">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Pendapatan Nasional</h4>
+                        <p class="mb-4">Pendapatan nasional adalah jumlah seluruh pendapatan yang diterima oleh seluruh rumah tangga keluarga (RTK) di suatu negara dari penyerahan faktor-faktor produksi dalam satu periode, biasanya selama satu tahun.</p>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Konsep Pendapatan Nasional</h4>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Produk Domestik Bruto (GDP)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Produk Nasional Bruto (GNP)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Produk Nasional Neto (NNP)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pendapatan Nasional Neto (NNI)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pendapatan Perseorangan (PI)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pendapatan Disposabel (DI)</span></li>
                         </ul>
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Metode Perhitungan Pendapatan Nasional</h4>
+                        <ol class="list-decimal pl-5 space-y-2 mb-4">
+                            <li>Metode Produksi</li>
+                            <li>Metode Pendapatan</li>
+                            <li>Metode Pengeluaran</li>
+                        </ol>
+                        
+                        <div class="bg-green-100 p-4 rounded-lg mt-6">
+                            <h5 class="font-bold mb-2">Contoh Soal:</h5>
+                            <p class="mb-2">Hitunglah pendapatan nasional dengan data berikut: Konsumsi Rp500T, Investasi Rp200T, Pengeluaran Pemerintah Rp300T, Ekspor Rp250T, Impor Rp150T.</p>
+                            <details>
+                                <summary class="cursor-pointer text-green-700 font-medium">Lihat Jawaban</summary>
+                                <p class="mt-2">Y = C + I + G + (X - M)<br>
+                                Y = 500 + 200 + 300 + (250 - 150)<br>
+                                Y = 1.000 + 100<br>
+                                Y = Rp1.100 Triliun</p>
+                            </details>
+                        </div>
                     </div>
-                    
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 3: Pasar dan Harga</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Struktur Pasar</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Pembentukan Harga</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Pasar Input dan Output</li>
+                </div>
+
+                <div id="ketenagakerjaan" class="ekonomi-content">
+                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Ketenagakerjaan</h3>
+                    <div class="bg-green-50 p-6 rounded-lg mb-6">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Ketenagakerjaan</h4>
+                        <p class="mb-4">Ketenagakerjaan adalah segala hal yang berhubungan dengan tenaga kerja pada waktu sebelum, selama, dan sesudah masa kerja.</p>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Jenis-jenis Angkatan Kerja</h4>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Angkatan Kerja: Penduduk yang sudah memasuki usia kerja</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Bukan Angkatan Kerja: Penduduk yang belum atau tidak memasuki usia kerja</span></li>
                         </ul>
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Masalah Ketenagakerjaan di Indonesia</h4>
+                        <ol class="list-decimal pl-5 space-y-2 mb-4">
+                            <li>Pengangguran</li>
+                            <li>Setengah Pengangguran</li>
+                            <li>Kualitas Tenaga Kerja yang Rendah</li>
+                            <li>Persebaran Tenaga Kerja yang Tidak Merata</li>
+                        </ol>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Jenis-jenis Pengangguran</h4>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pengangguran Terbuka</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pengangguran Terselubung</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pengangguran Friksional</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pengangguran Struktural</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pengangguran Musiman</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pengangguran Siklis</span></li>
+                        </ul>
+                        
+                        <div class="bg-green-100 p-4 rounded-lg mt-6">
+                            <h5 class="font-bold mb-2">Contoh Soal:</h5>
+                            <p class="mb-2">Jelaskan perbedaan antara pengangguran friksional dan pengangguran struktural!</p>
+                            <details>
+                                <summary class="cursor-pointer text-green-700 font-medium">Lihat Jawaban</summary>
+                                <p class="mt-2">Pengangguran friksional adalah pengangguran yang terjadi karena adanya kesulitan temporer dalam mempertemukan pencari kerja dengan lowongan kerja, sedangkan pengangguran struktural adalah pengangguran yang terjadi karena perubahan struktur ekonomi.</p>
+                            </details>
+                        </div>
                     </div>
-                    
-                    <div class="bg-green-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 4: Uang dan Bank</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Sejarah dan Fungsi Uang</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Bank Sentral dan Bank Umum</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Kebijakan Moneter</li>
+                </div>
+
+                <div id="inflasi" class="ekonomi-content">
+                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Inflasi</h3>
+                    <div class="bg-green-50 p-6 rounded-lg mb-6">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Inflasi</h4>
+                        <p class="mb-4">Inflasi adalah suatu proses meningkatnya harga-harga secara umum dan terus-menerus dalam suatu perekonomian.</p>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Jenis-jenis Inflasi</h4>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Berdasarkan Tingkat Keparahan:
+                                <ul class="ml-5 mt-2 space-y-1">
+                                    <li>Inflasi Ringan (di bawah 10% per tahun)</li>
+                                    <li>Inflasi Sedang (10-30% per tahun)</li>
+                                    <li>Inflasi Berat (30-100% per tahun)</li>
+                                    <li>Hiperinflasi (di atas 100% per tahun)</li>
+                                </ul>
+                            </span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Berdasarkan Sebab:
+                                <ul class="ml-5 mt-2 space-y-1">
+                                    <li>Demand Pull Inflation</li>
+                                    <li>Cost Push Inflation</li>
+                                </ul>
+                            </span></li>
                         </ul>
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Penyebab Inflasi</h4>
+                        <ol class="list-decimal pl-5 space-y-2 mb-4">
+                            <li>Meningkatnya Permintaan (Demand Pull Inflation)</li>
+                            <li>Meningkatnya Biaya Produksi (Cost Push Inflation)</li>
+                            <li>Pencetakan Uang Baru yang Berlebihan</li>
+                        </ol>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Dampak Inflasi</h4>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Dampak Positif:
+                                <ul class="ml-5 mt-2 space-y-1">
+                                    <li>Mendorong investasi</li>
+                                    <li>Meningkatkan minat berwirausaha</li>
+                                </ul>
+                            </span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Dampak Negatif:
+                                <ul class="ml-5 mt-2 space-y-1">
+                                    <li>Menurunkan daya beli masyarakat</li>
+                                    <li>Meningkatkan suku bunga</li>
+                                    <li>Memperlambat pertumbuhan ekonomi</li>
+                                </ul>
+                            </span></li>
+                        </ul>
+                        
+                        <div class="bg-green-100 p-4 rounded-lg mt-6">
+                            <h5 class="font-bold mb-2">Contoh Soal:</h5>
+                            <p class="mb-2">Pada tahun 2023, indeks harga konsumen sebesar 150, sedangkan pada tahun 2022 sebesar 120. Hitunglah tingkat inflasi tahun 2023!</p>
+                            <details>
+                                <summary class="cursor-pointer text-green-700 font-medium">Lihat Jawaban</summary>
+                                <p class="mt-2">Tingkat Inflasi = [(IHK tahun ini - IHK tahun lalu) / IHK tahun lalu] × 100%<br>
+                                = [(150 - 120) / 120] × 100%<br>
+                                = (30 / 120) × 100%<br>
+                                = 0,25 × 100%<br>
+                                = 25%</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fiskal-moneter" class="ekonomi-content">
+                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Kebijakan Fiskal dan Moneter</h3>
+                    <div class="bg-green-50 p-6 rounded-lg mb-6">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Kebijakan Fiskal</h4>
+                        <p class="mb-4">Kebijakan fiskal adalah kebijakan ekonomi yang dilakukan oleh pemerintah dengan mengatur penerimaan dan pengeluaran negara untuk memengaruhi perekonomian.</p>
+                        
+                        <h5 class="font-bold mb-2">Jenis Kebijakan Fiskal:</h5>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Kebijakan Fiskal Ekspansif: Meningkatkan pengeluaran pemerintah dan/atau menurunkan pajak</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Kebijakan Fiskal Kontraktif: Menurunkan pengeluaran pemerintah dan/atau menaikkan pajak</span></li>
+                        </ul>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Kebijakan Moneter</h4>
+                        <p class="mb-4">Kebijakan moneter adalah kebijakan ekonomi yang dilakukan oleh bank sentral dengan mengatur jumlah uang beredar dan suku bunga untuk memengaruhi perekonomian.</p>
+                        
+                        <h5 class="font-bold mb-2">Instrumen Kebijakan Moneter:</h5>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Operasi Pasar Terbuka (Open Market Operation)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Politik Diskonto (Discount Policy)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Giro Wajib Minimum (Reserve Requirement)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Pengarahan Moral (Moral Suasion)</span></li>
+                        </ul>
+                        
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Perbedaan Kebijakan Fiskal dan Moneter</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-green-200">
+                                <thead>
+                                    <tr class="bg-green-100">
+                                        <th class="py-2 px-4 border-b">Aspek</th>
+                                        <th class="py-2 px-4 border-b">Kebijakan Fiskal</th>
+                                        <th class="py-2 px-4 border-b">Kebijakan Moneter</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="py-2 px-4 border-b">Pelaku</td>
+                                        <td class="py-2 px-4 border-b">Pemerintah</td>
+                                        <td class="py-2 px-4 border-b">Bank Sentral</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 border-b">Instrumen</td>
+                                        <td class="py-2 px-4 border-b">Pajak dan Anggaran</td>
+                                        <td class="py-2 px-4 border-b">Suku Bunga dan Jumlah Uang Beredar</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 border-b">Waktu Respons</td>
+                                        <td class="py-2 px-4 border-b">Lambat</td>
+                                        <td class="py-2 px-4 border-b">Cepat</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="bg-green-100 p-4 rounded-lg mt-6">
+                            <h5 class="font-bold mb-2">Contoh Soal:</h5>
+                            <p class="mb-2">Jelaskan perbedaan antara kebijakan fiskal dan kebijakan moneter!</p>
+                            <details>
+                                <summary class="cursor-pointer text-green-700 font-medium">Lihat Jawaban</summary>
+                                <p class="mt-2">Kebijakan fiskal adalah kebijakan ekonomi yang dilakukan pemerintah dengan mengatur penerimaan dan pengeluaran negara, sedangkan kebijakan moneter adalah kebijakan ekonomi yang dilakukan bank sentral dengan mengatur jumlah uang beredar dan suku bunga.</p>
+                            </details>
+                        </div>
                     </div>
                 </div>
                 
@@ -479,6 +693,28 @@
                     
                     // Show target content
                     tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === target) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Ekonomi content tabs functionality
+            const ekonomiTabs = document.querySelectorAll('.ekonomi-tab');
+            const ekonomiContents = document.querySelectorAll('.ekonomi-content');
+            
+            ekonomiTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-target');
+                    
+                    // Update active tab
+                    ekonomiTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show target content
+                    ekonomiContents.forEach(content => {
                         content.classList.remove('active');
                         if (content.id === target) {
                             content.classList.add('active');
