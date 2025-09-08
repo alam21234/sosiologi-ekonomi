@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sosiologi & Ekonomi - SMA Negeri 1 Cluring</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+
+        .quicksand {
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .sosiologi-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1620654458539-b4c186f32a32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .ekonomi-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        
+        .subject-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .nav-tab {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="https://i.ibb.co/xKfZBy7w/SMAN1-Cluring-emblem.png" alt="Logo SMA Negeri 1 Cluring" class="h-12 mr-3">
+                    <div>
+                        <h1 class="quicksand font-bold text-xl text-blue-800">SMA NEGERI 1 CLURING</h1>
+                        <p class="text-xs text-gray-600">Sosiologi Kelas X & Ekonomi Kelas XI</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-blue-800 font-medium hover:text-blue-600">Beranda</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Materi</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Tugas</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Nilai</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Guru</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Kontak</a>
+                </nav>
+                
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero pt-24 pb-20 text-center text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="quicksand font-bold text-4xl md:text-5xl mb-4">Sosiologi & Ekonomi</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Mata Pelajaran Ilmu Sosial untuk Kelas X dan XI SMA Negeri 1 Cluring</p>
+            <a href="#materi" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg inline-block transition duration-300">Mulai Belajar</a>
+        </div>
+    </section>
+
+    <!-- Mata Pelajaran Section -->
+    <section id="materi" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="quicksand text-3xl font-bold text-center text-gray-800 section-title mx-auto">Mata Pelajaran</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Pilih mata pelajaran yang ingin Anda pelajari</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="subject-card bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h3 class="quicksand font-bold text-2xl text-gray-800">Sosiologi<br><span class="text-blue-600 text-lg">Kelas X</span></h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Mempelajari tentang hubungan sosial, struktur masyarakat, dan perubahan sosial dalam kehidupan bermasyarakat.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Interaksi Sosial</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Nilai dan Norma Sosial</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Struktur Sosial</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Perubahan Sosial</li>
+                    </ul>
+                    <a href="#sosiologi" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg inline-block transition duration-300">Pelajari Sekarang</a>
+                </div>
+                
+                <div class="subject-card bg-gradient-to-br from-green-50 to-teal-100 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <h3 class="quicksand font-bold text-2xl text-gray-800">Ekonomi<br><span class="text-green-600 text-lg">Kelas XI</span></h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">Mempelajari tentang prinsip ekonomi, sistem ekonomi, dan penerapan ekonomi dalam kehidupan sehari-hari.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Konsep Dasar Ekonomi</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Sistem Ekonomi</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Permintaan & Penawaran</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Pasar & Harga</li>
+                    </ul>
+                    <a href="#ekonomi" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg inline-block transition duration-300">Pelajari Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <section class="py-8 bg-gray-100 sticky top-16 z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center space-x-12">
+                <div class="nav-tab text-lg font-medium text-gray-600 py-2 px-4 active" data-tab="sosiologi">Sosiologi Kelas X</div>
+                <div class="nav-tab text-lg font-medium text-gray-600 py-2 px-4" data-tab="ekonomi">Ekonomi Kelas XI</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sosiologi Content -->
+    <section id="sosiologi" class="tab-content py-16 sosiologi-hero text-white active">
+        <div class="container mx-auto px-4">
+            <h2 class="quicksand text-3xl font-bold text-center mb-2">Sosiologi</h2>
+            <p class="text-center text-xl mb-12">Kelas X Semester Genap</p>
+            
+            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl p-8 text-gray-800 shadow-lg max-w-4xl mx-auto">
+                <h3 class="quicksand text-2xl font-bold mb-6 text-blue-800">Materi Pembelajaran</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 1: Interaksi Sosial</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Pengertian Interaksi Sosial</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Syarat Terjadinya Interaksi</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Bentuk-bentuk Interaksi</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 2: Nilai dan Norma Sosial</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Pengertian Nilai Sosial</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Jenis-jenis Norma</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Fungsi Norma dalam Masyarakat</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 3: Struktur Sosial</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Unsur-unsur Struktur Sosial</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Diferensiasi Sosial</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Stratifikasi Sosial</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 4: Perubahan Sosial</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Teori Perubahan Sosial</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Bentuk Perubahan Sosial</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Dampak Perubahan Sosial</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
+                    </div>
+                </div>
+                
+                <!-- Absensi Sosiologi -->
+                <div class="bg-blue-100 border-l-4 border-blue-500 p-6 rounded-lg mb-8">
+                    <h3 class="quicksand text-xl font-bold mb-4 text-blue-800 flex items-center">
+                        <i class="fas fa-clipboard-check mr-2"></i> Absensi Online Sosiologi
+                    </h3>
+                    <p class="mb-4">Silakan klik tombol di bawah untuk mengisi absensi mata pelajaran Sosiologi. Absensi hanya dapat diisi sekali per pertemuan.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSczrcOJqafKnViwOXw3GBGMYvWgWwZGFutuDNGskH_iGhSUVQ/viewform" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg inline-block transition duration-300">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Isi Absensi Sosiologi
+                    </a>
+                </div>
+                
+                <h3 class="quicksand text-2xl font-bold mb-6 text-blue-800">Tugas Terbaru</h3>
+                <div class="bg-yellow-50 p-6 rounded-lg mb-8">
+                    <h4 class="quicksand font-bold text-lg text-yellow-800 mb-2">Tugas Kelompok: Studi Kasus Interaksi Sosial</h4>
+                    <p class="mb-4">Buatlah analisis tentang interaksi sosial yang terjadi di lingkungan sekitar Anda. Tugas dikumpulkan paling lambat 15 Mei 2025.</p>
+                    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg inline-block">Lihat Detail</a>
+                </div>
+                
+                <h3 class="quicksand text-2xl font-bold mb-6 text-blue-800">Sumber Belajar</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-book text-blue-600 text-2xl mr-3"></i>
+                        <span>Buku Paket Sosiologi</span>
+                    </a>
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-video text-blue-600 text-2xl mr-3"></i>
+                        <span>Video Pembelajaran</span>
+                    </a>
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-file-pdf text-blue-600 text-2xl mr-3"></i>
+                        <span>Modul Digital</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ekonomi Content -->
+    <section id="ekonomi" class="tab-content py-16 ekonomi-hero text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="quicksand text-3xl font-bold text-center mb-2">Ekonomi</h2>
+            <p class="text-center text-xl mb-12">Kelas XI Semester Genap</p>
+            
+            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl p-8 text-gray-800 shadow-lg max-w-4xl mx-auto">
+                <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Materi Pembelajaran</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 1: Konsep Dasar Ekonomi</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Kelangkaan Sumber Daya</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Biaya Peluang</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Sistem Ekonomi</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                    </div>
+                    
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 2: Permintaan dan Penawaran</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Hukum Permintaan</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Hukum Penawaran</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Elastisitas</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                    </div>
+                    
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 3: Pasar dan Harga</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Struktur Pasar</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Pembentukan Harga</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Pasar Input dan Output</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                    </div>
+                    
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Bab 4: Uang dan Bank</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Sejarah dan Fungsi Uang</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Bank Sentral dan Bank Umum</li>
+                            <li class="flex items-center"><i class="fas fa-book-open text-green-600 mr-2"></i> Kebijakan Moneter</li>
+                        </ul>
+                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi →</a>
+                    </div>
+                </div>
+                
+                <!-- Absensi Ekonomi -->
+                <div class="bg-green-100 border-l-4 border-green-500 p-6 rounded-lg mb-8">
+                    <h3 class="quicksand text-xl font-bold mb-4 text-green-800 flex items-center">
+                        <i class="fas fa-clipboard-check mr-2"></i> Absensi Online Ekonomi
+                    </h3>
+                    <p class="mb-4">Silakan klik tombol di bawah untuk mengisi absensi mata pelajaran Ekonomi. Absensi hanya dapat diisi sekali per pertemuan.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg inline-block transition duration-300">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Isi Absensi Ekonomi
+                    </a>
+                </div>
+                
+                <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Tugas Terbaru</h3>
+                <div class="bg-yellow-50 p-6 rounded-lg mb-8">
+                    <h4 class="quicksand font-bold text-lg text-yellow-800 mb-2">Tugas Individu: Analisis Permintaan dan Penawaran</h4>
+                    <p class="mb-4">Buatlah analisis tentang permintaan dan penawaran suatu produk di pasar tradisional atau modern. Tugas dikumpulkan paling lambat 20 Mei 2025.</p>
+                    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg inline-block">Lihat Detail</a>
+                </div>
+                
+                <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Sumber Belajar</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-book text-green-600 text-2xl mr-3"></i>
+                        <span>Buku Paket Ekonomi</span>
+                    </a>
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-video text-green-600 text-2xl mr-3"></i>
+                        <span>Simulasi Ekonomi</span>
+                    </a>
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-file-excel text-green-600 text-2xl mr-3"></i>
+                        <span>Data Ekonomi</span>
+                    </a>
+                </div>
+                
+                <!-- LINK PENTING EKONOMI YANG DITAMBAHKAN -->
+                <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Link Penting Ekonomi</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ID" target="_blank" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-globe-americas text-green-600 text-2xl mr-3"></i>
+                        <span>World Bank Data</span>
+                    </a>
+                    <a href="https://data.aseanstats.org/" target="_blank" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-chart-bar text-green-600 text-2xl mr-3"></i>
+                        <span>Asean Stats</span>
+                    </a>
+                    <a href="https://www.bps.go.id/id" target="_blank" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-database text-green-600 text-2xl mr-3"></i>
+                        <span>BPS Indonesia</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Guru Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="quicksand text-3xl font-bold text-center text-gray-800 section-title mx-auto">Guru Pengajar</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Tim pengajar profesional yang siap membimbing Anda</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-blue-50 p-6 rounded-xl flex items-start">
+                    <div class="w-24 h-24 bg-blue-200 rounded-full flex items-center justify-center mr-6">
+                        <i class="fas fa-user-graduate text-blue-600 text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="quicksand font-bold text-xl text-blue-800">Dra. Siti Rahayu, M.Pd.</h3>
+                        <p class="text-blue-600 mb-2">Guru Sosiologi</p>
+                        <p class="text-gray-600">Pengalaman mengajar 15 tahun. Spesialisasi dalam bidang sosiologi pendidikan dan perubahan sosial.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-xl flex items-start">
+                    <div class="w-24 h-24 bg-green-200 rounded-full flex items-center justify-center mr-6">
+                        <i class="fas fa-user-tie text-green-600 text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="quicksand font-bold text-xl text-green-800">Budi Santoso, S.E., M.M.</h3>
+                        <p class="text-green-600 mb-2">Guru Ekonomi</p>
+                        <p class="text-gray-600">Pengalaman mengajar 12 tahun. Spesialisasi dalam bidang ekonomi mikro dan makro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-10 rounded-t-3xl shadow-lg mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Kolom 1: Menu -->
+                <div class="col-span-1">
+                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 relative after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-blue-500 after:rounded">Menu</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Beranda</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Materi</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Tugas</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Nilai</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 2: Link Penting -->
+                <div class="col-span-1">
+                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 relative after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-blue-500 after:rounded">Link Penting</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://sma.kemendikdasmen.go.id/" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Kemendikbud SMA</a></li>
+                        <li><a href="https://dindik.jatimprov.go.id/" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Dinas Pendidikan Jatim</a></li>
+                        <li><a href="https://banyuwangicab.dindikjatim.id/" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Disdik Banyuwangi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Lab Virtual -->
+                <div class="col-span-1">
+                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 relative after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-blue-500 after:rounded"><i class="fas fa-flask mr-2 text-yellow-400"></i> Lab Virtual</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://virtualbiologylab.org/" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Biologi</a></li>
+                        <li><a href="https://www.myphysicslab.com/" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Fisika</a></li>
+                        <li><a href="https://quran.nu.or.id/" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Al-Quran Digital</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 4: Sosial & Kontak -->
+                <div class="col-span-1">
+                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 relative after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-blue-500 after:rounded">Ikuti Kami</h4>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <a href="https://www.facebook.com/sman1cluring" target="_blank" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center rounded-full transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sman1_cluring/" target="_blank" class="w-10 h-10 bg-gray-700 hover:bg-pink-600 text-white flex items-center justify-center rounded-full transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtu.be/5ZgkVKZuFiM" target="_blank" class="w-10 h-10 bg-gray-700 hover:bg-red-600 text-white flex items-center justify-center rounded-full transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 relative after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-blue-500 after:rounded">Hubungi Kami</h4>
+                    <p class="flex items-center space-x-2 mb-2"><i class="fas fa-phone mr-2 text-blue-400"></i><span>082319712420</span></p>
+                    <p class="flex items-start space-x-2"><i class="fas fa-map-marker-alt mt-1 text-blue-400"></i><span>Jl. Huzaini, Benculuk, Cluring, Banyuwangi, Jawa Timur</span></p>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="text-center pt-8 border-t border-gray-700 mt-8">
+                <p class="text-sm text-gray-400">© 2025 SMA Negeri 1 Cluring. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show target content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === target) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
