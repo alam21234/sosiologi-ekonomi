@@ -38,6 +38,12 @@
             background-position: center;
         }
 
+        .gallery-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
         .section-title {
             position: relative;
             display: inline-block;
@@ -109,6 +115,76 @@
         .github-btn i {
             margin-right: 0.5rem;
         }
+
+        /* Gaya untuk Modal Galeri */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            margin-top: 10%;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -128,7 +204,7 @@
                     <a href="#" class="text-blue-800 font-medium hover:text-blue-600">Beranda</a>
                     <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Materi</a>
                     <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Tugas</a>
-                    <!-- Menu Nilai dihilangkan sesuai permintaan -->
+                    <a href="#galeri" class="text-gray-600 font-medium hover:text-blue-600">Galeri</a> <!-- Menu Galeri Baru -->
                     <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Guru</a>
                     <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Kontak</a>
                 </nav>
@@ -223,7 +299,7 @@
                             <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Metode Analisis Masyarakat</li>
                         </ul>
                         <a href="bab-1-Fungsi-Sosiologi-dalam-Menganalisis-Masyarakat.html" target="_blank" class="github-btn mt-4">
-                            <i class="fab fa-github"></i> Baca Materi 
+                            <i class="fab fa-github"></i> Baca Materi
                         </a>
                     </div>
 
@@ -236,7 +312,7 @@
                             <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Dinamika Hubungan Sosial</li>
                         </ul>
                         <a href="bab-2-Individu-Kelompok-dan-Hubungan-Sosial.html" target="_blank" class="github-btn mt-4">
-                            <i class="fab fa-github"></i> Baca Materi 
+                            <i class="fab fa-github"></i> Baca Materi
                         </a>
                     </div>
 
@@ -330,7 +406,7 @@
                         </ul>
 
                         <a href="badan-usaha.html" target="_blank" class="github-btn">
-                            <i class="fab fa-github"></i> Baca Materi Lengkap 
+                            <i class="fab fa-github"></i> Baca Materi Lengkap
                         </a>
                     </div>
                 </div>
@@ -350,7 +426,7 @@
                         </ul>
 
                         <a href="pendapatan-nasional.html" target="_blank" class="github-btn">
-                            <i class="fab fa-github"></i> Baca Materi Lengkap 
+                            <i class="fab fa-github"></i> Baca Materi Lengkap
                         </a>
                     </div>
                 </div>
@@ -368,7 +444,7 @@
                         </ul>
 
                         <a href="ketenagakerjaan.html" target="_blank" class="github-btn">
-                            <i class="fab fa-github"></i> Baca Materi Lengkap 
+                            <i class="fab fa-github"></i> Baca Materi Lengkap
                         </a>
                     </div>
                 </div>
@@ -392,7 +468,7 @@
                         </ul>
 
                         <a href="inflasi.html" target="_blank" class="github-btn">
-                            <i class="fab fa-github"></i> Baca Materi Lengkap 
+                            <i class="fab fa-github"></i> Baca Materi Lengkap
                         </a>
                     </div>
                 </div>
@@ -407,7 +483,7 @@
                         <p class="mb-4">Kebijakan moneter adalah kebijakan ekonomi yang dilakukan oleh bank sentral dengan mengatur jumlah uang beredar dan suku bunga untuk memengaruhi perekonomian.</p>
 
                         <a href="Fiskal-Moneter.html" target="_blank" class="github-btn">
-                            <i class="fab fa-github"></i> Baca Materi Lengkap 
+                            <i class="fab fa-github"></i> Baca Materi Lengkap
                         </a>
                     </div>
                 </div>
@@ -444,6 +520,32 @@
                         <i class="fas fa-file-excel text-green-600 text-2xl mr-3"></i>
                         <span>Data Ekonomi</span>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Content -->
+    <section id="galeri" class="tab-content py-16 gallery-hero text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="quicksand text-3xl font-bold text-center mb-2">Galeri Kegiatan Pembelajaran</h2>
+            <p class="text-center text-xl mb-12">Dokumentasi kegiatan belajar mengajar di kelas</p>
+
+            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl p-8 text-gray-800 shadow-lg max-w-6xl mx-auto">
+                <div class="gallery-grid">
+                    <!-- Gambar 1 -->
+                    <div class="gallery-item" onclick="openModal('https://i.ibb.co.com/7NXrPM6v/XI-5-PROSES-PEMBELAJAJARAN-1.jpg')">
+                        <img src="https://i.ibb.co.com/7NXrPM6v/XI-5-PROSES-PEMBELAJAJARAN-1.jpg" alt="Proses Pembelajaran 1">
+                    </div>
+                    <!-- Gambar 2 (duplikat untuk contoh) -->
+                    <div class="gallery-item" onclick="openModal('https://i.ibb.co.com/7NXrPM6v/XI-5-PROSES-PEMBELAJAJARAN-1.jpg')">
+                        <img src="https://i.ibb.co.com/7NXrPM6v/XI-5-PROSES-PEMBELAJAJARAN-1.jpg" alt="Proses Pembelajaran 2">
+                    </div>
+                    <!-- Gambar 3 -->
+                    <div class="gallery-item" onclick="openModal('https://i.ibb.co.com/pBnqW7TB/PEMBIASAN-PAGI.jpg')">
+                        <img src="https://i.ibb.co.com/pBnqW7TB/PEMBIASAN-PAGI.jpg" alt="Pembiasaan Pagi">
+                    </div>
+                    <!-- Tambahkan lebih banyak gambar di sini sesuai kebutuhan -->
                 </div>
             </div>
         </div>
@@ -492,7 +594,7 @@
                         <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Beranda</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Materi</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Tugas</a></li>
-                        <!-- Menu Nilai dihilangkan sesuai permintaan -->
+                        <li><a href="#galeri" class="hover:text-white transition duration-300 hover:translate-x-1 block">Galeri</a></li> <!-- Menu Galeri di Footer -->
                     </ul>
                 </div>
 
@@ -543,6 +645,12 @@
         </div>
     </footer>
 
+    <!-- Modal untuk menampilkan gambar penuh -->
+    <div id="galleryModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <script>
         // Tab navigation functionality for Sosiologi/Ekonomi
         document.addEventListener('DOMContentLoaded', function() {
@@ -589,6 +697,26 @@
                 });
             });
         });
+
+        // Fungsi untuk Modal Galeri
+        function openModal(imageSrc) {
+            const modal = document.getElementById('galleryModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('galleryModal').style.display = "none";
+        }
+
+        // Tutup modal jika pengguna mengklik di luar gambar
+        window.onclick = function(event) {
+            const modal = document.getElementById('galleryModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
