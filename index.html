@@ -11,92 +11,45 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .quicksand {
-            font-family: 'Quicksand', sans-serif;
-        }
-        .hero {
-            background: linear-gradient(to right, #1e3a8a, #3b82f6);
-        }
-        .sosiologi-hero {
-            background: linear-gradient(to right, #1e40af, #3b82f6);
-        }
-        .ekonomi-hero {
-            background: linear-gradient(to right, #065f46, #10b981);
-        }
-        .gallery-hero {
-            background: linear-gradient(to right, #7e22ce, #a855f7);
-        }
-        .nav-tab.active {
-            color: #3b82f6;
-            border-bottom: 3px solid #3b82f6;
-        }
-        .ekonomi-tab.active {
-            color: #10b981;
-            border-bottom: 3px solid #10b981;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .github-btn {
-            background-color: #24292e;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-        .github-btn:hover {
-            background-color: #2ea44f;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 16px;
-        }
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
+        /* Gaya untuk pesan error gambar */
+        .gallery-error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             height: 200px;
+            background-color: #f3f4f6;
+            color: #6b7280;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
         }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
+        
+        .gallery-error i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
+
+        /* Gaya untuk modal galeri */
         .modal {
             display: none;
             position: fixed;
             z-index: 100;
-            padding-top: 50px;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
+            overflow: auto;
             background-color: rgba(0,0,0,0.9);
         }
+
         .modal-content {
             margin: auto;
             display: block;
-            width: 80%;
-            max-width: 700px;
-            animation-name: zoom;
-            animation-duration: 0.6s;
+            max-width: 90%;
+            max-height: 90%;
         }
-        @keyframes zoom {
-            from {transform:scale(0)} 
-            to {transform:scale(1)}
-        }
+
         .close {
             position: absolute;
             top: 15px;
@@ -104,35 +57,28 @@
             color: #f1f1f1;
             font-size: 40px;
             font-weight: bold;
-            transition: 0.3s;
             cursor: pointer;
-        }
-        .close:hover {
-            color: #bbb;
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-md fixed w-full z-10">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <div class="h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center mr-3">
-                        <i class="fas fa-school text-white text-xl"></i>
-                    </div>
+                    <img src="https://i.ibb.co/xKfZBy7w/SMAN1Cluring-emblem.png" alt="Logo SMA Negeri 1 Cluring" class="h-12 mr-3">
                     <div>
                         <h1 class="quicksand font-bold text-xl text-blue-800">SMA NEGERI 1 CLURING</h1>
                         <p class="text-xs text-gray-600">Sosiologi Kelas X & Ekonomi Kelas XI</p>
                     </div>
                 </div>
 
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-blue-800 font-medium hover:text-blue-600">Beranda</a>
-                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Materi</a>
-                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Tugas</a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#beranda" class="text-blue-800 font-medium hover:text-blue-600">Beranda</a>
+                    <a href="#materi" class="text-gray-600 font-medium hover:text-blue-600">Materi</a>
                     <a href="#galeri" class="text-gray-600 font-medium hover:text-blue-600">Galeri</a>
-                    <a href="#" class="text-gray-600 font-medium hover:text-blue-600">Kontak</a>
+                    <a href="#kontak" class="text-gray-600 font-medium hover:text-blue-600">Kontak</a>
                 </nav>
 
                 <button class="md:hidden text-gray-600">
@@ -143,52 +89,39 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero pt-24 pb-20 text-center text-white">
+    <section id="beranda" class="pt-24 pb-20 text-center text-white bg-gradient-to-r from-blue-600 to-green-600">
         <div class="container mx-auto px-4">
             <h1 class="quicksand font-bold text-4xl md:text-5xl mb-4">Sosiologi & Ekonomi</h1>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Mata Pelajaran Ilmu Sosial untuk Kelas X dan XI SMA Negeri 1 Cluring</p>
-            <a href="#materi" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg inline-block transition duration-300">Mulai Belajar</a>
+            <a href="#materi" class="bg-white hover:bg-gray-100 text-blue-800 font-medium py-3 px-6 rounded-lg inline-block transition duration-300 shadow-lg">Mulai Belajar</a>
         </div>
     </section>
 
     <!-- Mata Pelajaran Section -->
     <section id="materi" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="quicksand text-3xl font-bold text-center text-gray-800 mb-4">Mata Pelajaran</h2>
-            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">Pilih mata pelajaran yang ingin Anda pelajari</p>
+            <h2 class="quicksand text-3xl font-bold text-center text-gray-800 mb-12">Pilih Mata Pelajaran</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="subject-card bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-xl shadow-md">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
                     <div class="flex items-center mb-6">
                         <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
                             <i class="fas fa-users text-white text-2xl"></i>
                         </div>
                         <h3 class="quicksand font-bold text-2xl text-gray-800">Sosiologi<br><span class="text-blue-600 text-lg">Kelas X</span></h3>
                     </div>
-                    <p class="text-gray-600 mb-6">Mempelajari tentang hubungan sosial, struktur masyarakat, dan perubahan sosial dalam kehidupan bermasyarakat.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Interaksi Sosial</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Nilai dan Norma Sosial</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Struktur Sosial</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Perubahan Sosial</li>
-                    </ul>
+                    <p class="text-gray-600 mb-6">Mempelajari tentang hubungan sosial, struktur masyarakat, dan perubahan sosial.</p>
                     <a href="#sosiologi" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg inline-block transition duration-300">Pelajari Sekarang</a>
                 </div>
 
-                <div class="subject-card bg-gradient-to-br from-green-50 to-teal-100 p-8 rounded-xl shadow-md">
+                <div class="bg-gradient-to-br from-green-50 to-teal-100 p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
                     <div class="flex items-center mb-6">
                         <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mr-4">
                             <i class="fas fa-chart-line text-white text-2xl"></i>
                         </div>
                         <h3 class="quicksand font-bold text-2xl text-gray-800">Ekonomi<br><span class="text-green-600 text-lg">Kelas XI</span></h3>
                     </div>
-                    <p class="text-gray-600 mb-6">Mempelajari tentang prinsip ekonomi, sistem ekonomi, dan penerapan ekonomi dalam kehidupan sehari-hari.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Badan Usaha</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Pendapatan Nasional</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Ketenagakerjaan</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-2"></i> Inflasi</li>
-                    </ul>
+                    <p class="text-gray-600 mb-6">Mempelajari tentang prinsip ekonomi, sistem ekonomi, dan penerapannya.</p>
                     <a href="#ekonomi" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg inline-block transition duration-300">Pelajari Sekarang</a>
                 </div>
             </div>
@@ -196,9 +129,9 @@
     </section>
 
     <!-- Navigation Tabs -->
-    <section class="py-8 bg-gray-100 sticky top-16 z-10">
+    <section class="py-4 bg-gray-100 sticky top-16 z-10">
         <div class="container mx-auto px-4">
-            <div class="flex justify-center space-x-12">
+            <div class="flex justify-center space-x-8">
                 <div class="nav-tab text-lg font-medium text-gray-600 py-2 px-4 active" data-tab="sosiologi">Sosiologi Kelas X</div>
                 <div class="nav-tab text-lg font-medium text-gray-600 py-2 px-4" data-tab="ekonomi">Ekonomi Kelas XI</div>
             </div>
@@ -206,210 +139,215 @@
     </section>
 
     <!-- Sosiologi Content -->
-    <section id="sosiologi" class="tab-content py-16 sosiologi-hero text-white active">
+    <section id="sosiologi" class="tab-content py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="quicksand text-3xl font-bold text-center mb-2">Sosiologi</h2>
-            <p class="text-center text-xl mb-12">Kelas X Semester Ganjil</p>
+            <h2 class="quicksand text-3xl font-bold text-center mb-8 text-blue-800">Materi Sosiologi Kelas X</h2>
 
-            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl p-8 text-gray-800 shadow-lg max-w-4xl mx-auto">
-                <h3 class="quicksand text-2xl font-bold mb-6 text-blue-800">Materi Pembelajaran</h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    <div class="bg-blue-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 1: Fungsi Sosiologi</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Pengertian Sosiologi</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Fungsi Sosiologi</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Metode Analisis Masyarakat</li>
-                        </ul>
-                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
-                    </div>
-
-                    <div class="bg-blue-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 2: Individu dan Kelompok</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Konsep Individu dan Kelompok</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Jenis-jenis Kelompok Sosial</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Dinamika Hubungan Sosial</li>
-                        </ul>
-                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
-                    </div>
-
-                    <div class="bg-blue-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 3: Struktur Sosial</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Unsur-unsur Struktur Sosial</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Diferensiasi Sosial</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Stratifikasi Sosial</li>
-                        </ul>
-                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
-                    </div>
-
-                    <div class="bg-blue-50 p-6 rounded-lg">
-                        <h4 class="quicksand font-bold text-lg text-blue-800 mb-3">Bab 4: Perubahan Sosial</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Teori Perubahan Sosial</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Bentuk Perubahan Sosial</li>
-                            <li class="flex items-center"><i class="fas fa-book-open text-blue-600 mr-2"></i> Dampak Perubahan Sosial</li>
-                        </ul>
-                        <a href="#" class="inline-block mt-4 text-blue-600 font-medium">Baca Materi →</a>
-                    </div>
-                </div>
-
-                <!-- Absensi Sosiologi -->
-                <div class="bg-blue-100 border-l-4 border-blue-500 p-6 rounded-lg mb-8">
-                    <h3 class="quicksand text-xl font-bold mb-4 text-blue-800 flex items-center">
-                        <i class="fas fa-clipboard-check mr-2"></i> Absensi Online Sosiologi
-                    </h3>
-                    <p class="mb-4">Silakan klik tombol di bawah untuk mengisi absensi mata pelajaran Sosiologi.</p>
-                    <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg inline-block transition duration-300">
-                        <i class="fas fa-sign-in-alt mr-2"></i> Isi Absensi
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Bab 1 -->
+                <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="quicksand font-bold text-xl text-blue-800 mb-4">Bab 1: Fungsi Sosiologi dalam Menganalisis Masyarakat</h3>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Pengertian Sosiologi</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Fungsi Sosiologi</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Metode Analisis Masyarakat</li>
+                    </ul>
+                    <a href="bab-1-Fungsi-Sosiologi-dalam-Menganalisis-Masyarakat.html" target="_blank" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-300">
+                        <i class="fab fa-github mr-2"></i> Baca Materi
                     </a>
                 </div>
 
-                <h3 class="quicksand text-2xl font-bold mb-6 text-blue-800">Tugas Terbaru</h3>
-                <div class="bg-yellow-50 p-6 rounded-lg mb-8">
-                    <h4 class="quicksand font-bold text-lg text-yellow-800 mb-2">Tugas Kelompok: Studi Kasus Interaksi Sosial</h4>
-                    <p class="mb-4">Buatlah analisis tentang interaksi sosial yang terjadi di lingkungan sekitar Anda.</p>
-                    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg inline-block">Lihat Detail</a>
+                <!-- Bab 2 -->
+                <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="quicksand font-bold text-xl text-blue-800 mb-4">Bab 2: Individu, Kelompok dan Hubungan Sosial</h3>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Konsep Individu dan Kelompok</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Jenis-jenis Kelompok Sosial</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-600 mr-2"></i> Dinamika Hubungan Sosial</li>
+                    </ul>
+                    <a href="bab-2-Individu-Kelompok-dan-Hubungan-Sosial.html" target="_blank" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-300">
+                        <i class="fab fa-github mr-2"></i> Baca Materi
+                    </a>
+                </div>
+
+                <!-- Absensi Sosiologi -->
+                <div class="bg-blue-100 p-6 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="quicksand text-xl font-bold mb-3 text-blue-800 flex items-center">
+                        <i class="fas fa-clipboard-check mr-2"></i> Absensi Online Sosiologi
+                    </h3>
+                    <p class="mb-4">Silakan klik tombol di bawah untuk mengisi absensi.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSczrcOJqafKnViwOXw3GBGMYvWgWwZGFutuDNGskH_iGhSUVQ/viewform" target="_blank" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Isi Absensi
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Ekonomi Content -->
-    <section id="ekonomi" class="tab-content py-16 ekonomi-hero text-white">
+    <section id="ekonomi" class="tab-content py-16 bg-white hidden">
         <div class="container mx-auto px-4">
-            <h2 class="quicksand text-3xl font-bold text-center mb-2">Ekonomi</h2>
-            <p class="text-center text-xl mb-12">Kelas XI Semester Ganjil</p>
+            <h2 class="quicksand text-3xl font-bold text-center mb-8 text-green-800">Materi Ekonomi Kelas XI</h2>
 
-            <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl p-8 text-gray-800 shadow-lg max-w-4xl mx-auto">
+            <div class="max-w-4xl mx-auto space-y-8">
                 <!-- Tab Navigation untuk Materi Ekonomi -->
-                <div class="flex overflow-x-auto mb-8 border-b">
-                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab active" data-target="badan-usaha">Badan Usaha</button>
-                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab" data-target="pendapatan-nasional">Pendapatan Nasional</button>
-                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab" data-target="ketenagakerjaan">Ketenagakerjaan</button>
-                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab" data-target="inflasi">Inflasi</button>
+                <div class="flex overflow-x-auto mb-6 border-b border-gray-200">
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab whitespace-nowrap active" data-target="badan-usaha">Badan Usaha</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab whitespace-nowrap" data-target="pendapatan-nasional">Pendapatan Nasional</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab whitespace-nowrap" data-target="ketenagakerjaan">Ketenagakerjaan</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab whitespace-nowrap" data-target="inflasi">Inflasi</button>
+                    <button class="px-4 py-2 font-medium text-gray-600 ekonomi-tab whitespace-nowrap" data-target="fiskal-moneter">Fiskal & Moneter</button>
                 </div>
 
                 <!-- Konten Materi Ekonomi -->
                 <div id="badan-usaha" class="ekonomi-content active">
-                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Badan Usaha</h3>
-                    <div class="bg-green-50 p-6 rounded-lg mb-6">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Badan Usaha</h4>
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h3 class="quicksand font-bold text-xl text-green-800 mb-4">Badan Usaha</h3>
                         <p class="mb-4">Badan usaha adalah organisasi yang didirikan untuk menjalankan kegiatan usaha atau bisnis dengan tujuan menghasilkan keuntungan.</p>
-
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Jenis-jenis Badan Usaha</h4>
                         <ul class="space-y-2 mb-4">
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Badan Usaha Milik Negara (BUMN)</span></li>
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Badan Usaha Milik Swasta (BUMS)</span></li>
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Koperasi</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Badan Usaha Milik Negara (BUMN)</li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Badan Usaha Milik Swasta (BUMS)</li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Koperasi</li>
                         </ul>
-
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi Lengkap →</a>
+                        <a href="badan-usaha.html" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition duration-300">
+                            <i class="fab fa-github mr-2"></i> Baca Materi Lengkap
+                        </a>
                     </div>
                 </div>
 
-                <div id="pendapatan-nasional" class="ekonomi-content">
-                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Pendapatan Nasional</h3>
-                    <div class="bg-green-50 p-6 rounded-lg mb-6">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Pendapatan Nasional</h4>
-                        <p class="mb-4">Pendapatan nasional adalah jumlah seluruh pendapatan yang diterima oleh seluruh rumah tangga keluarga di suatu negara.</p>
-
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Konsep Pendapatan Nasional</h4>
+                <div id="pendapatan-nasional" class="ekonomi-content hidden">
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h3 class="quicksand font-bold text-xl text-green-800 mb-4">Pendapatan Nasional</h3>
+                        <p class="mb-4">Pendapatan nasional adalah jumlah seluruh pendapatan yang diterima oleh seluruh rumah tangga keluarga (RTK) di suatu negara dari penyerahan faktor-faktor produksi dalam satu periode.</p>
                         <ul class="space-y-2 mb-4">
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Produk Domestik Bruto (GDP)</span></li>
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Produk Nasional Bruto (GNP)</span></li>
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Produk Nasional Neto (NNP)</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Produk Domestik Bruto (GDP)</li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Produk Nasional Bruto (GNP)</li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Produk Nasional Neto (NNP)</li>
                         </ul>
-
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi Lengkap →</a>
+                        <a href="pendapatan-nasional.html" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition duration-300">
+                            <i class="fab fa-github mr-2"></i> Baca Materi Lengkap
+                        </a>
                     </div>
                 </div>
 
-                <div id="ketenagakerjaan" class="ekonomi-content">
-                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Ketenagakerjaan</h3>
-                    <div class="bg-green-50 p-6 rounded-lg mb-6">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Ketenagakerjaan</h4>
+                <div id="ketenagakerjaan" class="ekonomi-content hidden">
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h3 class="quicksand font-bold text-xl text-green-800 mb-4">Ketenagakerjaan</h3>
                         <p class="mb-4">Ketenagakerjaan adalah segala hal yang berhubungan dengan tenaga kerja pada waktu sebelum, selama, và sesudah masa kerja.</p>
-
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Jenis-jenis Angkatan Kerja</h4>
                         <ul class="space-y-2 mb-4">
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Angkatan Kerja</span></li>
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Bukan Angkatan Kerja</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Angkatan Kerja</li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Bukan Angkatan Kerja</li>
                         </ul>
-
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi Lengkap →</a>
+                        <a href="ketenagakerjaan.html" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition duration-300">
+                            <i class="fab fa-github mr-2"></i> Baca Materi Lengkap
+                        </a>
                     </div>
                 </div>
 
-                <div id="inflasi" class="ekonomi-content">
-                    <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Inflasi</h3>
-                    <div class="bg-green-50 p-6 rounded-lg mb-6">
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Pengertian Inflasi</h4>
+                <div id="inflasi" class="ekonomi-content hidden">
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h3 class="quicksand font-bold text-xl text-green-800 mb-4">Inflasi</h3>
                         <p class="mb-4">Inflasi adalah suatu proses meningkatnya harga-harga secara umum dan terus-menerus dalam suatu perekonomian.</p>
-
-                        <h4 class="quicksand font-bold text-lg text-green-800 mb-3">Jenis-jenis Inflasi</h4>
                         <ul class="space-y-2 mb-4">
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Inflasi Ringan</span></li>
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Inflasi Sedang</span></li>
-                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> <span>Inflasi Berat</span></li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Inflasi Ringan (di bawah 10% per tahun)</li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Inflasi Sedang (10-30% per tahun)</li>
+                            <li class="flex items-start"><i class="fas fa-arrow-right text-green-600 mt-1 mr-2"></i> Hiperinflasi (di atas 100% per tahun)</li>
                         </ul>
+                        <a href="inflasi.html" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition duration-300">
+                            <i class="fab fa-github mr-2"></i> Baca Materi Lengkap
+                        </a>
+                    </div>
+                </div>
 
-                        <a href="#" class="inline-block mt-4 text-green-600 font-medium">Baca Materi Lengkap →</a>
+                <div id="fiskal-moneter" class="ekonomi-content hidden">
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <h3 class="quicksand font-bold text-xl text-green-800 mb-4">Kebijakan Fiskal dan Moneter</h3>
+                        <p class="mb-4">Kebijakan fiskal adalah kebijakan ekonomi yang dilakukan oleh pemerintah dengan mengatur penerimaan dan pengeluaran negara.</p>
+                        <p class="mb-4">Kebijakan moneter adalah kebijakan ekonomi yang dilakukan oleh bank sentral dengan mengatur jumlah uang beredar dan suku bunga.</p>
+                        <a href="Fiskal-Moneter.html" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition duration-300">
+                            <i class="fab fa-github mr-2"></i> Baca Materi Lengkap
+                        </a>
                     </div>
                 </div>
 
                 <!-- Absensi Ekonomi -->
-                <div class="bg-green-100 border-l-4 border-green-500 p-6 rounded-lg mb-8">
-                    <h3 class="quicksand text-xl font-bold mb-4 text-green-800 flex items-center">
+                <div class="bg-green-100 p-6 rounded-lg border-l-4 border-green-500">
+                    <h3 class="quicksand text-xl font-bold mb-3 text-green-800 flex items-center">
                         <i class="fas fa-clipboard-check mr-2"></i> Absensi Online Ekonomi
                     </h3>
-                    <p class="mb-4">Silakan klik tombol di bawah untuk mengisi absensi mata pelajaran Ekonomi.</p>
-                    <a href="#" class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg inline-block transition duration-300">
+                    <p class="mb-4">Silakan klik tombol di bawah untuk mengisi absensi.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
                         <i class="fas fa-sign-in-alt mr-2"></i> Isi Absensi
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <h3 class="quicksand text-2xl font-bold mb-6 text-green-800">Tugas Terbaru</h3>
-                <div class="bg-yellow-50 p-6 rounded-lg mb-8">
-                    <h4 class="quicksand font-bold text-lg text-yellow-800 mb-2">Tugas Individu: Analisis Permintaan dan Penawaran</h4>
-                    <p class="mb-4">Buatlah analisis tentang permintaan và penawaran suatu produk di pasar.</p>
-                    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg inline-block">Lihat Detail</a>
+    <!-- Galeri Content -->
+    <section id="galeri" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="quicksand text-3xl font-bold text-center mb-8 text-gray-800">Galeri Kegiatan</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Gambar 1 -->
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://i.ibb.co/7NXrPM6v/XI-5-PROSES-PEMBELAJAJARAN-1.jpg')">
+                    <img src="https://i.ibb.co/7NXrPM6v/XI-5-PROSES-PEMBELAJAJARAN-1.jpg" alt="Proses Pembelajaran 1" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.onerror=null;this.parentNode.innerHTML='<div class=\'gallery-error\'><i class=\'fas fa-exclamation-triangle\'></i><p>Gambar tidak dapat dimuat</p></div>';">
+                </div>
+                <!-- Gambar 2 -->
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://i.ibb.co/N68GSzDP/X-5-PROSES-PEMBELAJAJARAN-1.jpg')">
+                    <img src="https://i.ibb.co/N68GSzDP/X-5-PROSES-PEMBELAJAJARAN-1.jpg" alt="Proses Pembelajaran 2" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.onerror=null;this.parentNode.innerHTML='<div class=\'gallery-error\'><i class=\'fas fa-exclamation-triangle\'></i><p>Gambar tidak dapat dimuat</p></div>';">
+                </div>
+                <!-- Gambar 3 -->
+                <div class="gallery-item cursor-pointer" onclick="openModal('https://i.ibb.co/pBnqW7TB/PEMBIASAN-PAGI.jpg')">
+                    <img src="https://i.ibb.co/pBnqW7TB/PEMBIASAN-PAGI.jpg" alt="Pembiasaan Pagi" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.onerror=null;this.parentNode.innerHTML='<div class=\'gallery-error\'><i class=\'fas fa-exclamation-triangle\'></i><p>Gambar tidak dapat dimuat</p></div>';">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-10 rounded-t-3xl shadow-lg mt-auto">
+    <footer id="kontak" class="bg-gray-900 text-gray-300 py-10 mt-auto">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Kolom 1: Menu -->
-                <div class="col-span-1">
-                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 border-b border-gray-700">Menu</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Beranda</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Materi</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300 hover:translate-x-1 block">Tugas</a></li>
-                        <li><a href="#galeri" class="hover:text-white transition duration-300 hover:translate-x-1 block">Galeri</a></li>
+                <div>
+                    <h4 class="quicksand font-bold text-lg text-white mb-4">Menu</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#beranda" class="hover:text-white transition duration-300">Beranda</a></li>
+                        <li><a href="#materi" class="hover:text-white transition duration-300">Materi</a></li>
+                        <li><a href="#galeri" class="hover:text-white transition duration-300">Galeri</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition duration-300">Kontak</a></li>
                     </ul>
                 </div>
 
                 <!-- Kolom 2: Link Penting -->
-                <div class="col-span-1">
-                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 border-b border-gray-700">Link Penting</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Kemendikbud SMA</a></li>
-                        <li><a href="#" target="_blank" class="hover:text-white transition duration-300 hover:translate-x-1 block">Dinas Pendidikan Jatim</a></li>
+                <div>
+                    <h4 class="quicksand font-bold text-lg text-white mb-4">Link Penting</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://sma.kemendikdasmen.go.id/" target="_blank" class="hover:text-white transition duration-300">Kemendikbud SMA</a></li>
+                        <li><a href="https://dindik.jatimprov.go.id/" target="_blank" class="hover:text-white transition duration-300">Dinas Pendidikan Jatim</a></li>
                     </ul>
                 </div>
 
-                <!-- Kolom 3: Sosial & Kontak -->
-                <div class="col-span-1">
-                    <h4 class="quicksand font-bold text-xl text-white mb-4 pb-2 border-b border-gray-700">Hubungi Kami</h4>
-                    <p class="flex items-center space-x-2 mb-2"><i class="fas fa-phone mr-2 text-blue-400"></i><span>082319712420</span></p>
-                    <p class="flex items-start space-x-2"><i class="fas fa-map-marker-alt mt-1 text-blue-400"></i><span>Jl. Huzaini, Benculuk, Cluring, Banyuwangi, Jawa Timur</span></p>
+                <!-- Kolom 3: Kontak -->
+                <div class="lg:col-span-2">
+                    <h4 class="quicksand font-bold text-lg text-white mb-4">Kontak</h4>
+                    <p class="flex items-center space-x-2 mb-2"><i class="fas fa-phone text-blue-400"></i><span>082319712420</span></p>
+                    <p class="flex items-start space-x-2"><i class="fas fa-map-marker-alt text-blue-400 mt-1"></i><span>Jl. Huzaini, Benculuk, Cluring, Banyuwangi, Jawa Timur</span></p>
+                    
+                    <h4 class="quicksand font-bold text-lg text-white mb-4 mt-6">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/sman1cluring" target="_blank" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 text-white flex items-center justify-center rounded-full transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sman1_cluring/" target="_blank" class="w-10 h-10 bg-gray-700 hover:bg-pink-600 text-white flex items-center justify-center rounded-full transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtu.be/5ZgkVKZuFiM" target="_blank" class="w-10 h-10 bg-gray-700 hover:bg-red-600 text-white flex items-center justify-center rounded-full transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -419,6 +357,13 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal untuk menampilkan gambar penuh -->
+    <div id="galleryModal" class="modal">
+        <span class="close text-white text-3xl" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption" class="text-center text-white mt-2"></div>
+    </div>
 
     <script>
         // Tab navigation functionality for Sosiologi/Ekonomi
@@ -466,6 +411,31 @@
                 });
             });
         });
+
+        // Fungsi untuk Modal Galeri
+        function openModal(imageSrc) {
+            const modal = document.getElementById('galleryModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('caption');
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+            
+            // Dapatkan teks alt dari gambar yang diklik
+            const clickedImage = event.target;
+            captionText.innerHTML = clickedImage.alt;
+        }
+
+        function closeModal() {
+            document.getElementById('galleryModal').style.display = "none";
+        }
+
+        // Tutup modal jika pengguna mengklik di luar gambar
+        window.onclick = function(event) {
+            const modal = document.getElementById('galleryModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
