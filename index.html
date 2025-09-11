@@ -400,6 +400,50 @@
             margin-right: 12px;
         }
         
+        /* Visitor Counter Styles */
+        .visitor-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .visitor-counter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .counter-label {
+            color: white;
+            margin-right: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .counter-label i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        .counter-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .counter-image:hover {
+            transform: scale(1.05);
+        }
+        
         /* Footer Styles */
         footer {
             background: var(--gradient-primary);
@@ -415,7 +459,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2VTbW9vdGg9InRydWUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNNDYuNSA1MGM0LjE0MyAwIDcuNS0zLjM1OCA3LjUtNy41IDAtNC4xNDMtMy4zNTctNy41LTcuNS03LjUtNC4xNDIgMC03LjUgMy4zNTctNy41IDcuNSAwIDQuMTQyIDMuMzU4IDcuNSA3LjUgNy41eiIvPjxwYXRoIGQ9Ik0xMy41IDEwQzE3LjY0MiAxMCAyMSA2LjY0MiAyMSAyLjUgMjEgLTEuNjQyIDE3LjY0MiAtNSAxMy41IC01IDkuMzU4IC01IDYgLTEuNjQyIDYgMi41IDYgNi42NDIgOS4zNTggMTAgMTMuNSAxMHoiLz48L2c+PC9zdmc+');
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2VTbW9vdGg9InRydWUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNNDYuNSA1MGM0LjE0MyAwIDcuNS0zLjM1OCA3LjUtNy41IDAtNC4xNDMtMy4zNTctNy41LTcuNS03LjUtNC4xNDIgMC03LjUgMy4zNTctNy41IDcuNSAwIDQuMTQyIDMuMzU4IDcuNSA3LjUgNy41eiIvPjxwYXRoIGQ9Ik0xNS41IDEwQzE3LjY0MiAxMCAyMSA2LjY0MiAyMSAyLjUgMjEgLTEuNjQyIDE3LjY0MiAtNSAxMy41IC01IDkuMzU4IC01IDYgLTEuNjQyIDYgMi41IDYgNi42NDIgOS4zNTggMTAgMTMuNSAxMHoiLz48L2c+PC9zdmc+');
             opacity: 0.1;
         }
         
@@ -561,6 +605,16 @@
             
             .subject-title {
                 font-size: 1.5rem;
+            }
+            
+            .visitor-counter {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .counter-label {
+                margin-right: 0;
+                margin-bottom: 10px;
             }
             
             .footer-content {
@@ -780,6 +834,18 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Jl. Huzaini, Benculuk, Cluring, Banyuwangi, Jawa Timur</span>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Visitor Counter -->
+            <div class="visitor-counter">
+                <div class="counter-label">
+                    <i class="fas fa-eye"></i> Pengunjung:
+                </div>
+                <div class="counter-image">
+                    <a href="https://www.freecounterstat.com" title="hit counter">
+                        <img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=6t58bt32lt6haptsfbk5mef64lr163ue" border="0" title="hit counter" alt="hit counter">
+                    </a>
                 </div>
             </div>
             
