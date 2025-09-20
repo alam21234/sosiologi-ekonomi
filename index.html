@@ -157,7 +157,6 @@
             gap: 12px;
         }
 
-        /* ✅ PERBAIKAN MOBILE — JUDUL TIDAK RENGANG */
         @media (max-width: 768px) {
             .card h2 {
                 font-size: 1.5rem;
@@ -225,6 +224,13 @@
             gap: 8px;
         }
 
+        /* ✅ GAYA BARU UNTUK SUBJUDUL MATERI KHUSUS */
+        .materials h3.special {
+            color: #e74c3c;
+            font-size: 1.15rem;
+            margin-top: 25px;
+        }
+
         .materials ul {
             list-style: none;
         }
@@ -239,6 +245,12 @@
         .materials li:hover {
             border-left-color: var(--primary);
             padding-left: 15px;
+        }
+
+        /* ✅ GAYA KHUSUS UNTUK MATERI AKTUAL */
+        .materials li.special a::before {
+            content: "📌 ";
+            font-weight: bold;
         }
 
         .materials a {
@@ -520,8 +532,12 @@
                 <ul>
                     <li><a href="bab-1-Fungsi-Sosiologi-dalam-Menganalisis-Masyarakat.html" target="_blank">Bab 1: Fungsi Sosiologi dalam Menganalisis Masyarakat</a></li>
                     <li><a href="bab-2-Individu-Kelompok-dan-Hubungan-Sosial.html" target="_blank">Bab 2: Individu, Kelompok, dan Hubungan Sosial</a></li>
-                    <!-- ✅ FILE BARU DITAMBAHKAN -->
-                    <li><a href="Dampak-Rp200T-Sosiologi-Ekonomi.html.html" target="_blank">Dampak Rp200T: Analisis Sosiologi & Ekonomi</a></li>
+                </ul>
+
+                <!-- ✅ SUBBAGIAN MATERI AKTUAL -->
+                <h3 class="special"><span class="icon-materi"></span> Materi Aktual & Analisis Kebijakan</h3>
+                <ul>
+                    <li class="special"><a href="Dampak-Rp200T-Sosiologi-Ekonomi.html" target="_blank">Dampak Rp200T: Analisis Sosiologi & Ekonomi</a></li>
                 </ul>
             </div>
         </div>
@@ -547,8 +563,12 @@
                     <li><a href="ketenagakerjaan.html" target="_blank">Ketenagakerjaan</a></li>
                     <li><a href="inflasi.html" target="_blank">Inflasi</a></li>
                     <li><a href="Fiskal-Moneter.html" target="_blank">Kebijakan Fiskal & Moneter</a></li>
-                    <!-- ✅ FILE BARU DITAMBAHKAN -->
-                    <li><a href="Strategi-Menkeu-Purbaya.html.html" target="_blank">Strategi Menkeu Purbaya: Kebijakan Ekonomi Terkini</a></li>
+                </ul>
+
+                <!-- ✅ SUBBAGIAN STUDI KEBIJAKAN TERKINI -->
+                <h3 class="special"><span class="icon-materi"></span> Studi Kebijakan Terkini</h3>
+                <ul>
+                    <li class="special"><a href="Strategi-Menkeu-Purbaya.html" target="_blank">Strategi Menkeu Purbaya</a></li>
                 </ul>
             </div>
         </div>
