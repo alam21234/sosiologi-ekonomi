@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sosiologi X & Ekonomi XI — SMAN 1 Cluring</title>
-    <link rel="stylesheet" href=" https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #4361ee;
@@ -19,6 +20,7 @@
             --border-radius: 12px;
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
             --transition: all 0.3s ease;
+            --header-height: 70px;
         }
 
         /* Dark Mode Variables */
@@ -35,6 +37,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
@@ -49,11 +55,11 @@
             color: var(--dark);
         }
 
-        /* NAVBAR BARU — STICKY TOP */
+        /* NAVBAR - Improved for Mobile */
         .navbar {
             background: linear-gradient(120deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1rem;
+            padding: 0.8rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -61,7 +67,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            height: var(--header-height);
         }
 
         .navbar-brand {
@@ -79,11 +85,18 @@
             height: 40px;
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -98,6 +111,9 @@
             border-radius: 50px;
             transition: var(--transition);
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .nav-links a:hover {
@@ -118,11 +134,11 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             border-radius: 8px;
             top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             z-index: 1001;
             flex-direction: column;
             padding: 10px 0;
+            backdrop-filter: blur(10px);
         }
 
         .dropdown-content a {
@@ -133,12 +149,14 @@
             text-align: left;
             border-radius: 8px;
             margin: 0 5px;
+            transition: var(--transition);
         }
 
         .dropdown-content a:hover {
             background: var(--primary);
             color: white;
             transform: none;
+            padding-left: 20px;
         }
 
         .dropdown:hover .dropdown-content {
@@ -152,6 +170,7 @@
             border: none;
             color: white;
             font-size: 1.5rem;
+            z-index: 1001;
         }
 
         .theme-toggle {
@@ -160,49 +179,30 @@
             color: white;
             font-size: 1.2rem;
             cursor: pointer;
-            margin-left: 15px;
             transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
         }
 
         .theme-toggle:hover {
             transform: rotate(15deg);
+            background: rgba(255,255,255,0.1);
         }
 
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 10px;
-                margin-top: 15px;
-                padding: 10px;
-                background: rgba(0,0,0,0.1);
-                border-radius: var(--border-radius);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .dropdown-content {
-                left: 0;
-                transform: translateX(0);
-            }
-        }
-
+        /* Header Styles */
         header {
             background: linear-gradient(120deg, var(--primary), var(--secondary));
             color: white;
-            padding: 4rem 1rem 2rem;
+            padding: 5rem 1rem 2.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow);
-            margin-top: 70px;
+            margin-top: var(--header-height);
         }
 
         header::before {
@@ -224,7 +224,7 @@
 
         .logo {
             width: 100px;
-            height: auto;
+            height: 100px;
             border-radius: 50%;
             border: 3px solid rgba(255,255,255,0.3);
             background: white;
@@ -233,6 +233,7 @@
             z-index: 2;
             position: relative;
             transition: var(--transition);
+            object-fit: contain;
         }
 
         .logo:hover {
@@ -254,23 +255,17 @@
             opacity: 0.9;
             z-index: 2;
             position: relative;
+            font-size: 1.1rem;
         }
 
+        /* Main Content */
         .container {
             max-width: 1200px;
             margin: -40px auto 40px;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            padding: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
         }
 
         .card {
@@ -282,6 +277,8 @@
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         body.dark-mode .card {
@@ -322,26 +319,11 @@
             align-items: center;
             gap: 12px;
             color: var(--dark);
+            flex-wrap: wrap;
         }
 
         body.dark-mode .card h2 {
             color: #f8f9fa;
-        }
-
-        @media (max-width: 768px) {
-            .card h2 {
-                font-size: 1.5rem;
-                gap: 6px;
-                flex-wrap: wrap;
-                justify-content: center;
-                text-align: center;
-            }
-            .card h2 small {
-                display: block;
-                font-size: 0.9rem;
-                margin-top: 5px;
-                opacity: 0.8;
-            }
         }
 
         .btn-group {
@@ -352,7 +334,7 @@
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -363,7 +345,10 @@
             justify-content: center;
             gap: 8px;
             flex: 1;
-            min-width: 180px;
+            min-width: 140px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
@@ -434,6 +419,7 @@
             font-weight: 500;
             transition: var(--transition);
             display: inline-block;
+            padding: 5px 0;
         }
 
         body.dark-mode .materials a {
@@ -449,6 +435,7 @@
             text-align: center;
             margin: 60px auto 40px;
             max-width: 600px;
+            padding: 0 20px;
         }
 
         .gallery-cta h2 {
@@ -593,6 +580,71 @@
             right: 0;
         }
 
+        /* Exam Section */
+        .exam-section {
+            max-width: 1200px;
+            margin: -20px auto 40px;
+            padding: 0 20px;
+        }
+
+        .exam-card {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(37, 117, 252, 0.3);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(37, 117, 252, 0.4);
+        }
+
+        .exam-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .exam-card p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .exam-card .btn {
+            background: white;
+            color: #2575fc;
+            font-weight: 600;
+            padding: 14px 32px;
+            min-width: 240px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .exam-card .btn:hover {
+            background: #f0f7ff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .exam-card .note {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
         /* Footer Modern */
         footer {
             background: linear-gradient(135deg, #1e293b, #334155);
@@ -692,12 +744,6 @@
             margin-top: 20px;
         }
 
-        @media (max-width: 768px) {
-            .copyright {
-                grid-column: span 1;
-            }
-        }
-
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
@@ -732,105 +778,344 @@
             transition: width 0.2s ease;
         }
 
-        /* Icon placeholder */
-        .icon-absen::before { content: "✅"; }
-        .icon-tugas::before { content: "📤"; }
-        .icon-materi::before { content: "📚"; }
-        .icon-gallery::before { content: "🖼️"; }
-
-        /* CUSTOM SECTION: UJIAN & ASESMEN */
-        .exam-section {
-            max-width: 1200px;
-            margin: -20px auto 40px;
-            padding: 0 20px;
-        }
-
-        .exam-card {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            text-align: center;
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(37, 117, 252, 0.3);
-            transition: var(--transition);
-            border: none;
-        }
-
-        .exam-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(37, 117, 252, 0.4);
-        }
-
-        .exam-card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
         }
 
-        .exam-card p {
-            margin-bottom: 25px;
-            opacity: 0.9;
-            font-weight: 500;
-            font-size: 1.05rem;
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .exam-card .btn {
-            background: white;
-            color: #2575fc;
-            font-weight: 600;
-            padding: 14px 32px;
-            min-width: 240px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: none;
-            font-size: 1rem;
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--secondary);
         }
 
-        .exam-card .btn:hover {
-            background: #f0f7ff;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        /* Loading Animation */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
         }
 
-        .exam-card .note {
-            margin-top: 20px;
-            font-size: 0.85rem;
-            opacity: 0.8;
-            font-style: italic;
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .card h2 {
+                font-size: 1.6rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background: linear-gradient(120deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 12px 20px;
+                border-radius: 0;
+                width: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .dropdown-content {
+                position: static;
+                background: rgba(0,0,0,0.1);
+                box-shadow: none;
+                width: 100%;
+                display: none;
+                padding: 0;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+                color: white;
+            }
+
+            .dropdown-content a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            header {
+                padding: 4rem 1rem 2rem;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                margin-top: -30px;
+                padding: 15px;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .exam-card {
+                padding: 30px 20px;
+            }
+
+            .exam-card .btn {
+                min-width: 200px;
+            }
+
+            .testimonials-section {
+                margin: 60px auto;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .copyright {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            
+            .navbar-brand img {
+                width: 35px;
+                height: 35px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card h2 {
+                font-size: 1.4rem;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .card h2 small {
+                display: block;
+                width: 100%;
+                margin-top: 5px;
+                font-size: 0.9rem;
+            }
+            
+            .exam-card h2 {
+                font-size: 1.5rem;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .exam-card .btn {
+                min-width: 100%;
+            }
+            
+            .testimonials-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-cta h2 {
+                font-size: 1.6rem;
+            }
+            
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .navbar {
+                padding: 0.8rem 0.5rem;
+            }
+            
+            .theme-toggle {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .hamburger {
+                font-size: 1.3rem;
+            }
+            
+            header {
+                padding: 3rem 0.5rem 1.5rem;
+            }
+            
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Loading Animation -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
 
     <!-- Scroll Progress Indicator -->
     <div class="scroll-indicator">
         <span id="scrollProgress"></span>
     </div>
 
-    <!-- NAVBAR BARU — STICKY TOP -->
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- NAVBAR -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">
             <img src="https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png" alt="Logo">
-            SMAN 1 Cluring
+            <span>SMAN 1 Cluring</span>
         </a>
-        <div style="display: flex; align-items: center;">
+        <div class="nav-container">
             <button class="theme-toggle" id="themeToggle">🌙</button>
-            <button class="hamburger" onclick="toggleNav()">☰</button>
+            <button class="hamburger" id="hamburger">☰</button>
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">🏠 Beranda</a></li>
-            <li><a href="#materi">📚 Materi</a></li>
-            <li><a href="#tugas">✅ Tugas</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
+            <li><a href="#tugas"><i class="fas fa-tasks"></i> Tugas</a></li>
             <li class="dropdown">
-                <a href="galery.html">🖼️ Galeri ▼</a>
+                <a href="galery.html"><i class="fas fa-images"></i> Galeri <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="galery.html">📸 Foto Kegiatan</a>
-                    <a href="video.html">🎥 Video Pembelajaran</a>
-                    <a href="prestasi.html">🏆 Prestasi Siswa</a>
+                    <a href="galery.html"><i class="fas fa-camera"></i> Foto Kegiatan</a>
+                    <a href="video.html"><i class="fas fa-video"></i> Video Pembelajaran</a>
+                    <a href="prestasi.html"><i class="fas fa-trophy"></i> Prestasi Siswa</a>
                 </div>
             </li>
         </ul>
@@ -843,13 +1128,13 @@
         <p class="subtitle">Sosiologi X & Ekonomi XI — SMAN 1 Cluring</p>
     </header>
 
-    <!-- ✅ SECTION ULANGAN & ASESMEN — BARU DITAMBAHKAN -->
+    <!-- SECTION ULANGAN & ASESMEN -->
     <section class="exam-section">
         <div class="exam-card">
-            <h2>📝 Ulangan & Hasil Asesmen</h2>
+            <h2><i class="fas fa-edit"></i> Ulangan & Hasil Asesmen</h2>
             <p>Akses halaman khusus untuk mengerjakan ulangan dan melihat hasil asesmen pembelajaranmu.</p>
             <a href="ulangan-dan-hasil-asesmen-login.html.html" class="btn">
-                🔓 Masuk ke Halaman Asesmen
+                <i class="fas fa-unlock"></i> Masuk ke Halaman Asesmen
             </a>
             <div class="note">*Gunakan akun yang telah diberikan oleh guru</div>
         </div>
@@ -860,25 +1145,25 @@
 
         <!-- SOSIOLOGI KELAS X -->
         <div class="card socio" id="materi">
-            <h2><span>👥 Sosiologi</span> <small>Kelas X</small></h2>
+            <h2><i class="fas fa-users"></i> Sosiologi <small>Kelas X</small></h2>
             <div class="btn-group">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSczrcOJqafKnViwOXw3GBGMYvWgWwZGFutuDNGskH_iGhSUVQ/viewform" class="btn btn-primary" target="_blank">
-                    <span class="icon-absen"></span> Absen Sekarang
+                    <i class="fas fa-check-circle"></i> Absen Sekarang
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnQ4JxYeGt_zsDz8YvILNZTaufvRi3m_69vdwN5Lc4N1j5jg/viewform" class="btn btn-secondary" target="_blank">
-                    <span class="icon-tugas"></span> Kirim Tugas
+                    <i class="fas fa-paper-plane"></i> Kirim Tugas
                 </a>
             </div>
 
             <div class="materials">
-                <h3><span class="icon-materi"></span> Materi Pembelajaran</h3>
+                <h3><i class="fas fa-book"></i> Materi Pembelajaran</h3>
                 <ul>
                     <li><a href="bab-1-Fungsi-Sosiologi-dalam-Menganalisis-Masyarakat.html" target="_blank">Bab 1: Fungsi Sosiologi dalam Menganalisis Masyarakat</a></li>
                     <li><a href="bab-2-Individu-Kelompok-dan-Hubungan-Sosial.html" target="_blank">Bab 2: Individu, Kelompok, dan Hubungan Sosial</a></li>
                 </ul>
 
-                <!-- ✅ SUBBAGIAN MATERI AKTUAL -->
-                <h3 class="special"><span class="icon-materi"></span> Materi Aktual & Analisis Kebijakan</h3>
+                <!-- SUBBAGIAN MATERI AKTUAL -->
+                <h3 class="special"><i class="fas fa-star"></i> Materi Aktual & Analisis Kebijakan</h3>
                 <ul>
                     <li class="special"><a href="Dampak-Rp200T-Sosiologi-Ekonomi.html" target="_blank">Dampak Rp200T: Analisis Sosiologi & Ekonomi</a></li>
                 </ul>
@@ -887,24 +1172,24 @@
 
         <!-- EKONOMI KELAS XI -->
         <div class="card ekonomi" id="tugas">
-            <h2><span>💰 Ekonomi</span> <small>Kelas XI</small></h2>
+            <h2><i class="fas fa-chart-line"></i> Ekonomi <small>Kelas XI</small></h2>
             <div class="btn-group">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform" class="btn btn-primary" target="_blank">
-                    <span class="icon-absen"></span> Absen Sekarang
+                    <i class="fas fa-check-circle"></i> Absen Sekarang
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSclUWSbatHzbavWqSEhZ63_Y2rVok5M1q5rr_sY4QOWOV9knw/viewform" class="btn btn-secondary" target="_blank">
-                    <span class="icon-tugas"></span> Kirim Tugas
+                    <i class="fas fa-paper-plane"></i> Kirim Tugas
                 </a>
-                <!-- ✅ TOMBOL BARU: SIMULATOR EKONOMI -->
+                <!-- TOMBOL BARU: SIMULATOR EKONOMI -->
                 <a href="simulator-ekonomi.html" class="btn btn-secondary" target="_blank">
                     <i class="fas fa-calculator"></i> Buka Simulator Ekonomi
                 </a>
             </div>
 
             <div class="materials">
-                <h3><span class="icon-materi"></span> Materi Pembelajaran</h3>
+                <h3><i class="fas fa-book"></i> Materi Pembelajaran</h3>
                 <ul>
-                    <li><a href="https://drive.google.com/file/d/1e0ajPBwIed-ORadvmuX-PVnUFgXyoig1/view" target="_blank">📘 Modul Umum Ekonomi</a></li>
+                    <li><a href="https://drive.google.com/file/d/1e0ajPBwIed-ORadvmuX-PVnUFgXyoig1/view" target="_blank"><i class="fas fa-book-open"></i> Modul Umum Ekonomi</a></li>
                     <li><a href="badan-usaha.html" target="_blank">Badan Usaha</a></li>
                     <li><a href="pendapatan-nasional.html" target="_blank">Pendapatan Nasional</a></li>
                     <li><a href="ketenagakerjaan.html" target="_blank">Ketenagakerjaan</a></li>
@@ -912,8 +1197,8 @@
                     <li><a href="Fiskal-Moneter.html" target="_blank">Kebijakan Fiskal & Moneter</a></li>
                 </ul>
 
-                <!-- ✅ SUBBAGIAN STUDI KEBIJAKAN TERKINI -->
-                <h3 class="special"><span class="icon-materi"></span> Studi Kebijakan Terkini</h3>
+                <!-- SUBBAGIAN STUDI KEBIJAKAN TERKINI -->
+                <h3 class="special"><i class="fas fa-star"></i> Studi Kebijakan Terkini</h3>
                 <ul>
                     <li class="special"><a href="Strategi-Menkeu-Purbaya.html" target="_blank">Strategi Menkeu Purbaya</a></li>
                 </ul>
@@ -924,9 +1209,9 @@
 
     <!-- GALLERY CTA -->
     <div class="gallery-cta">
-        <h2>📸 <span class="highlight">Galeri Kegiatan Belajar</span></h2>
-        <a href="galery.html" class="btn btn-primary" style="background: linear-gradient(120deg, #ff6b6b, #ffa500); min-width: 220px;">
-            <span class="icon-gallery"></span> Lihat Koleksi Foto & Video
+        <h2><i class="fas fa-images"></i> <span class="highlight">Galeri Kegiatan Belajar</span></h2>
+        <a href="galery.html" class="btn btn-primary" style="background: linear-gradient(120deg, #ff6b6b, #ffa500);">
+            <i class="fas fa-images"></i> Lihat Koleksi Foto & Video
         </a>
     </div>
 
@@ -1002,33 +1287,33 @@
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>🧭 Menu Navigasi</h3>
+                <h3><i class="fas fa-compass"></i> Menu Navigasi</h3>
                 <ul>
-                    <li><a href="index.html">🏠 Beranda</a></li>
-                    <li><a href="#materi">📚 Materi</a></li>
-                    <li><a href="#tugas">✅ Tugas</a></li>
-                    <li><a href="galery.html">🖼️ Galeri</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
+                    <li><a href="#tugas"><i class="fas fa-tasks"></i> Tugas</a></li>
+                    <li><a href="galery.html"><i class="fas fa-images"></i> Galeri</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3>🔗 Link Penting</h3>
+                <h3><i class="fas fa-link"></i> Link Penting</h3>
                 <ul>
-                    <li><a href="https://data.aseanstats.org/" target="_blank">📊 ASEAN Statistics</a></li>
-                    <li><a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ID" target="_blank">🌍 World Bank - GDP Indonesia</a></li>
-                    <li><a href="https://www.bps.go.id/id" target="_blank">📈 BPS Indonesia</a></li>
-                    <li><a href="https://quran.nu.or.id/" target="_blank">📖 Al-Qur'an NU Online</a></li>
+                    <li><a href="https://data.aseanstats.org/" target="_blank"><i class="fas fa-chart-bar"></i> ASEAN Statistics</a></li>
+                    <li><a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ID" target="_blank"><i class="fas fa-globe"></i> World Bank - GDP Indonesia</a></li>
+                    <li><a href="https://www.bps.go.id/id" target="_blank"><i class="fas fa-database"></i> BPS Indonesia</a></li>
+                    <li><a href="https://quran.nu.or.id/" target="_blank"><i class="fas fa-book-open"></i> Al-Qur'an NU Online</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3>📞 Hubungi Kami</h3>
-                <p><strong>📱 Telepon:</strong><br>0822-2385-7426</p>
-                <p><strong>📍 Alamat:</strong><br>Jl. Huzaini, Benculuk,<br>Cluring, Banyuwangi,<br>Jawa Timur</p>
+                <h3><i class="fas fa-phone"></i> Hubungi Kami</h3>
+                <p><strong><i class="fas fa-phone-alt"></i> Telepon:</strong><br>0822-2385-7426</p>
+                <p><strong><i class="fas fa-map-marker-alt"></i> Alamat:</strong><br>Jl. Huzaini, Benculuk,<br>Cluring, Banyuwangi,<br>Jawa Timur</p>
             </div>
 
             <div class="footer-section">
-                <h3>👁️‍🗨️ Statistik Kunjungan</h3>
+                <h3><i class="fas fa-eye"></i> Statistik Kunjungan</h3>
                 <div class="visitor-counter">
                     <a href="https://www.freecounterstat.com" title="page counter" target="_blank">
                         <img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=s91lf4yugk1a948dm9uz1ej5hzz7xj9q" 
@@ -1048,16 +1333,41 @@
         </div>
 
         <div class="footer-bottom">
-            <p>Dibuat dengan ❤️ untuk pendidikan Indonesia</p>
+            <p>Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i> untuk pendidikan Indonesia</p>
         </div>
     </footer>
 
     <script>
         // Toggle Mobile Nav
-        function toggleNav() {
-            const navLinks = document.getElementById('navLinks');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-        }
+            hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Handle dropdowns on mobile
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active') && 
+                !e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
+                navLinks.classList.remove('active');
+                hamburger.textContent = '☰';
+            }
+        });
 
         // Dark Mode Toggle
         const themeToggle = document.getElementById('themeToggle');
@@ -1086,7 +1396,23 @@
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById("scrollProgress").style.width = scrolled + "%";
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (winScroll > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         };
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
         // Smooth Scroll untuk anchor link
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1098,16 +1424,40 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // offset for navbar height
+                        top: targetElement.offsetTop - 100, // offset for navbar height
                         behavior: 'smooth'
                     });
 
                     // Tutup mobile menu jika aktif
-                    const navLinks = document.getElementById('navLinks');
-                    navLinks.classList.remove('active');
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.textContent = '☰';
+                    }
                 }
             });
         });
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Prevent loader from staying visible if page loads quickly
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            if (loader.style.display !== 'none') {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }
+        }, 3000);
     </script>
 
 </body>
