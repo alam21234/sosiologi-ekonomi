@@ -2,10 +2,18 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+  <meta name="theme-color" content="#667eea" />
   <title>Login - Ulangan & Hasil Asesmen</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --card-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      --hover-shadow: 0 12px 32px rgba(0,0,0,0.18);
+      --transition: all 0.3s ease;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,7 +22,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--primary-gradient);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -27,33 +35,34 @@
     /* Login Page */
     .login-container {
       background: white;
-      padding: 32px 24px;
+      padding: clamp(24px, 5vw, 40px);
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: var(--card-shadow);
       text-align: center;
       width: 100%;
-      max-width: 400px;
+      max-width: min(400px, 90vw);
       animation: fadeIn 0.8s ease-out;
     }
 
     .login-container h2 {
       color: #555;
-      margin-bottom: 24px;
-      font-size: 1.6rem;
+      margin-bottom: clamp(20px, 4vw, 24px);
+      font-size: clamp(1.4rem, 4vw, 1.6rem);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .login-container input {
       width: 100%;
-      padding: 14px;
-      margin: 12px 0;
+      padding: clamp(12px, 3vw, 14px);
+      margin: 10px 0;
       border: 2px solid #e1e1e1;
       border-radius: 12px;
       font-size: 1rem;
-      transition: border 0.3s, box-shadow 0.3s;
+      transition: var(--transition);
     }
 
     .login-container input:focus {
@@ -64,16 +73,16 @@
 
     .login-container button {
       width: 100%;
-      padding: 14px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      padding: clamp(12px, 3vw, 14px);
+      background: var(--primary-gradient);
       color: white;
       border: none;
       border-radius: 12px;
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
       font-weight: 600;
       margin-top: 20px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: var(--transition);
     }
 
     .login-container button:hover {
@@ -90,6 +99,7 @@
       margin-top: 16px;
       font-weight: 500;
       min-height: 24px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
     }
 
     /* Main App (Hidden by default) */
@@ -102,46 +112,69 @@
 
     .header {
       text-align: center;
-      padding: 24px 16px;
+      padding: clamp(16px, 4vw, 24px);
       background: rgba(255,255,255,0.98);
       border-radius: 16px;
       margin-bottom: 24px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      position: relative;
     }
 
     .header h1 {
-      font-size: 2rem;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
       color: #333;
       margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     .header p {
       color: #666;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(102, 126, 234, 0.1);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .logout-btn:hover {
+      background: rgba(102, 126, 234, 0.2);
     }
 
     .tabs {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 8px;
       margin-bottom: 24px;
       flex-wrap: wrap;
     }
 
     .tab-btn {
-      padding: 12px 24px;
+      padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 24px);
       background: #f8f9fa;
       border: 2px solid #e9ecef;
       border-radius: 50px;
       cursor: pointer;
       font-weight: 600;
       color: #495057;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       white-space: nowrap;
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
     }
 
     .tab-btn:hover {
@@ -149,7 +182,7 @@
     }
 
     .tab-btn.active {
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: var(--primary-gradient);
       color: white;
       border-color: transparent;
     }
@@ -173,67 +206,101 @@
     .subject-card {
       background: white;
       border-radius: 16px;
-      padding: 24px;
+      padding: clamp(20px, 4vw, 32px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: var(--transition);
       position: relative;
       overflow: hidden;
     }
 
     .subject-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      box-shadow: var(--hover-shadow);
     }
 
     .subject-card h2 {
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 4vw, 1.4rem);
       margin-bottom: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       color: #333;
+      flex-wrap: wrap;
     }
 
-    iframe {
+    .iframe-container {
+      position: relative;
       width: 100%;
-      border: none;
+      overflow: hidden;
       border-radius: 12px;
       margin-top: 16px;
       background: #f8f9fa;
-      min-height: 400px;
       box-shadow: inset 0 0 6px rgba(0,0,0,0.03);
-      aspect-ratio: 16 / 9;
-      height: auto;
+    }
+
+    .iframe-container::after {
+      content: "";
+      display: block;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     footer {
       margin-top: 32px;
       padding: 16px;
       color: rgba(255,255,255,0.85);
-      font-size: 0.85rem;
+      font-size: clamp(0.8rem, 2vw, 0.85rem);
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.2);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Loading overlay */
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      z-index: 10;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     /* Tablet */
     @media (min-width: 768px) {
-      .login-container {
-        padding: 40px;
-      }
-      .header h1 {
-        font-size: 2.2rem;
-      }
       .card-container {
         grid-template-columns: 1fr 1fr;
-      }
-      iframe {
-        min-height: 500px;
       }
     }
 
@@ -242,37 +309,22 @@
       body {
         padding: 32px;
       }
-      .header h1 {
-        font-size: 2.5rem;
-      }
-      .subject-card {
-        padding: 32px;
-      }
-      iframe {
-        min-height: 600px;
-      }
     }
 
     /* Mobile kecil */
     @media (max-width: 480px) {
-      .login-container h2 {
-        font-size: 1.4rem;
+      .tabs {
+        gap: 6px;
       }
+      
       .tab-btn {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-      }
-      .header h1 {
-        font-size: 1.8rem;
-      }
-      .subject-card h2 {
-        font-size: 1.3rem;
+        padding: 8px 14px;
       }
     }
 
     /* Loading State */
     .loading {
-      opacity: 0.6;
+      opacity: 0.7;
       pointer-events: none;
     }
 
@@ -298,6 +350,9 @@
     <div class="header">
       <h1><i class="fas fa-graduation-cap"></i> Ulangan & Hasil Asesmen</h1>
       <p>Kelas XI Ekonomi & X Sosiologi</p>
+      <button class="logout-btn" onclick="logout()" aria-label="Logout">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
     </div>
 
     <div class="tabs">
@@ -310,26 +365,38 @@
       <div class="card-container">
         <div class="subject-card">
           <h2><i class="fas fa-chart-line"></i> Kelas XI - Ekonomi</h2>
-          <iframe 
-            src="https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?embedded=true" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0"
-            title="Ulangan Ekonomi">
-            Memuat…
-          </iframe>
+          <div class="iframe-container">
+            <div class="loading-overlay" id="loading-ekonomi">
+              <div class="spinner"></div>
+            </div>
+            <iframe 
+              src="https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?embedded=true" 
+              frameborder="0" 
+              marginheight="0" 
+              marginwidth="0"
+              title="Ulangan Ekonomi"
+              onload="hideLoading('loading-ekonomi')">
+              Memuat…
+            </iframe>
+          </div>
         </div>
 
         <div class="subject-card">
           <h2><i class="fas fa-users"></i> Kelas X - Sosiologi</h2>
-          <iframe 
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdIwdp852Y3xrU-eHE94yDOThZk3IJ0qtvltrt0QxjRTdGySg/viewform?embedded=true" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0"
-            title="Ulangan Sosiologi">
-            Memuat…
-          </iframe>
+          <div class="iframe-container">
+            <div class="loading-overlay" id="loading-sosiologi">
+              <div class="spinner"></div>
+            </div>
+            <iframe 
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdIwdp852Y3xrU-eHE94yDOThZk3IJ0qtvltrt0QxjRTdGySg/viewform?embedded=true" 
+              frameborder="0" 
+              marginheight="0" 
+              marginwidth="0"
+              title="Ulangan Sosiologi"
+              onload="hideLoading('loading-sosiologi')">
+              Memuat…
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -339,22 +406,34 @@
       <div class="card-container">
         <div class="subject-card">
           <h2><i class="fas fa-chart-bar"></i> Hasil Asesmen - Ekonomi</h2>
-          <iframe 
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true" 
-            frameborder="0"
-            title="Hasil Ekonomi">
-            Memuat…
-          </iframe>
+          <div class="iframe-container">
+            <div class="loading-overlay" id="loading-hasil-ekonomi">
+              <div class="spinner"></div>
+            </div>
+            <iframe 
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true" 
+              frameborder="0"
+              title="Hasil Ekonomi"
+              onload="hideLoading('loading-hasil-ekonomi')">
+              Memuat…
+            </iframe>
+          </div>
         </div>
 
         <div class="subject-card">
           <h2><i class="fas fa-chart-pie"></i> Hasil Asesmen - Sosiologi</h2>
-          <iframe 
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true" 
-            frameborder="0"
-            title="Hasil Sosiologi">
-            Memuat…
-          </iframe>
+          <div class="iframe-container">
+            <div class="loading-overlay" id="loading-hasil-sosiologi">
+              <div class="spinner"></div>
+            </div>
+            <iframe 
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true" 
+              frameborder="0"
+              title="Hasil Sosiologi"
+              onload="hideLoading('loading-hasil-sosiologi')">
+              Memuat…
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -397,6 +476,15 @@
       }, 800);
     }
 
+    // Logout function
+    function logout() {
+      sessionStorage.removeItem('isLoggedIn');
+      document.getElementById('login-page').style.display = 'flex';
+      document.getElementById('main-app').style.display = 'none';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+
     // Check if already logged in
     window.addEventListener('DOMContentLoaded', () => {
       if (sessionStorage.getItem('isLoggedIn') === 'true') {
@@ -427,6 +515,25 @@
       if (e.key === 'Enter') {
         login();
       }
+    });
+
+    // Hide loading spinner when iframe is loaded
+    function hideLoading(elementId) {
+      const loadingElement = document.getElementById(elementId);
+      if (loadingElement) {
+        loadingElement.style.display = 'none';
+      }
+    }
+
+    // Handle iframe errors
+    document.querySelectorAll('iframe').forEach(iframe => {
+      iframe.addEventListener('error', function() {
+        const container = this.closest('.iframe-container');
+        const loadingElement = container.querySelector('.loading-overlay');
+        if (loadingElement) {
+          loadingElement.innerHTML = '<p>Gagal memuat konten. Silakan coba lagi.</p>';
+        }
+      });
     });
   </script>
 
