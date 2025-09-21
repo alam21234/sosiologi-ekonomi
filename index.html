@@ -737,6 +737,71 @@
         .icon-tugas::before { content: "📤"; }
         .icon-materi::before { content: "📚"; }
         .icon-gallery::before { content: "🖼️"; }
+
+        /* CUSTOM SECTION: UJIAN & ASESMEN */
+        .exam-section {
+            max-width: 1200px;
+            margin: -20px auto 40px;
+            padding: 0 20px;
+        }
+
+        .exam-card {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(37, 117, 252, 0.3);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(37, 117, 252, 0.4);
+        }
+
+        .exam-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .exam-card p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .exam-card .btn {
+            background: white;
+            color: #2575fc;
+            font-weight: 600;
+            padding: 14px 32px;
+            min-width: 240px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .exam-card .btn:hover {
+            background: #f0f7ff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .exam-card .note {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -749,7 +814,7 @@
     <!-- NAVBAR BARU — STICKY TOP -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">
-            <img src="  https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png  " alt="Logo">
+            <img src="https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png" alt="Logo">
             SMAN 1 Cluring
         </a>
         <div style="display: flex; align-items: center;">
@@ -773,10 +838,22 @@
 
     <!-- HEADER -->
     <header>
-        <img src="https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png  " alt="SMAN 1 Cluring" class="logo">
+        <img src="https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png" alt="SMAN 1 Cluring" class="logo">
         <h1>Kelas Digital</h1>
         <p class="subtitle">Sosiologi X & Ekonomi XI — SMAN 1 Cluring</p>
     </header>
+
+    <!-- ✅ SECTION ULANGAN & ASESMEN — BARU DITAMBAHKAN -->
+    <section class="exam-section">
+        <div class="exam-card">
+            <h2>📝 Ulangan & Hasil Asesmen</h2>
+            <p>Akses halaman khusus untuk mengerjakan ulangan dan melihat hasil asesmen pembelajaranmu.</p>
+            <a href="ulangan-dan-hasil-asesmen-login.html.html" class="btn">
+                🔓 Masuk ke Halaman Asesmen
+            </a>
+            <div class="note">*Gunakan akun yang telah diberikan oleh guru</div>
+        </div>
+    </section>
 
     <!-- MAIN CONTENT -->
     <div class="container">
@@ -785,10 +862,10 @@
         <div class="card socio" id="materi">
             <h2><span>👥 Sosiologi</span> <small>Kelas X</small></h2>
             <div class="btn-group">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSczrcOJqafKnViwOXw3GBGMYvWgWwZGFutuDNGskH_iGhSUVQ/viewform  " class="btn btn-primary" target="_blank">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSczrcOJqafKnViwOXw3GBGMYvWgWwZGFutuDNGskH_iGhSUVQ/viewform" class="btn btn-primary" target="_blank">
                     <span class="icon-absen"></span> Absen Sekarang
                 </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnQ4JxYeGt_zsDz8YvILNZTaufvRi3m_69vdwN5Lc4N1j5jg/viewform  " class="btn btn-secondary" target="_blank">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnQ4JxYeGt_zsDz8YvILNZTaufvRi3m_69vdwN5Lc4N1j5jg/viewform" class="btn btn-secondary" target="_blank">
                     <span class="icon-tugas"></span> Kirim Tugas
                 </a>
             </div>
@@ -812,10 +889,10 @@
         <div class="card ekonomi" id="tugas">
             <h2><span>💰 Ekonomi</span> <small>Kelas XI</small></h2>
             <div class="btn-group">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform  " class="btn btn-primary" target="_blank">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform" class="btn btn-primary" target="_blank">
                     <span class="icon-absen"></span> Absen Sekarang
                 </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSclUWSbatHzbavWqSEhZ63_Y2rVok5M1q5rr_sY4QOWOV9knw/viewform  " class="btn btn-secondary" target="_blank">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSclUWSbatHzbavWqSEhZ63_Y2rVok5M1q5rr_sY4QOWOV9knw/viewform" class="btn btn-secondary" target="_blank">
                     <span class="icon-tugas"></span> Kirim Tugas
                 </a>
                 <!-- ✅ TOMBOL BARU: SIMULATOR EKONOMI -->
@@ -827,7 +904,7 @@
             <div class="materials">
                 <h3><span class="icon-materi"></span> Materi Pembelajaran</h3>
                 <ul>
-                    <li><a href="https://drive.google.com/file/d/1e0ajPBwIed-ORadvmuX-PVnUFgXyoig1/view  " target="_blank">📘 Modul Umum Ekonomi</a></li>
+                    <li><a href="https://drive.google.com/file/d/1e0ajPBwIed-ORadvmuX-PVnUFgXyoig1/view" target="_blank">📘 Modul Umum Ekonomi</a></li>
                     <li><a href="badan-usaha.html" target="_blank">Badan Usaha</a></li>
                     <li><a href="pendapatan-nasional.html" target="_blank">Pendapatan Nasional</a></li>
                     <li><a href="ketenagakerjaan.html" target="_blank">Ketenagakerjaan</a></li>
@@ -860,7 +937,7 @@
 
             <!-- Testimoni 1 -->
             <div class="testimonial-card">
-                <img src="https://i.ibb.co.com/BVkWBdjJ/X-6-Fanecha.jpg  " alt="Fanecha" class="testimonial-img">
+                <img src="https://i.ibb.co.com/BVkWBdjJ/X-6-Fanecha.jpg" alt="Fanecha" class="testimonial-img">
                 <div class="testimonial-name">Fanecha</div>
                 <div class="testimonial-class">Kelas X.6</div>
                 <p class="testimonial-quote">
@@ -870,7 +947,7 @@
 
             <!-- Testimoni 2 -->
             <div class="testimonial-card">
-                <img src="https://i.ibb.co.com/Vp08frL9/X-9-Gifari.jpg  " alt="Gifari" class="testimonial-img">
+                <img src="https://i.ibb.co.com/Vp08frL9/X-9-Gifari.jpg" alt="Gifari" class="testimonial-img">
                 <div class="testimonial-name">Gifari</div>
                 <div class="testimonial-class">Kelas X.9</div>
                 <p class="testimonial-quote">
@@ -880,7 +957,7 @@
 
             <!-- Testimoni 3 -->
             <div class="testimonial-card">
-                <img src="https://i.ibb.co.com/SXzh9rk1/XI-5-Tahta.jpg  " alt="Tahta" class="testimonial-img">
+                <img src="https://i.ibb.co.com/SXzh9rk1/XI-5-Tahta.jpg" alt="Tahta" class="testimonial-img">
                 <div class="testimonial-name">Tahta</div>
                 <div class="testimonial-class">Kelas XI.5</div>
                 <p class="testimonial-quote">
@@ -890,7 +967,7 @@
 
             <!-- Testimoni 4 -->
             <div class="testimonial-card">
-                <img src="https://i.ibb.co.com/kVSz3JyD/XI-5-Ali-Akbar.jpg  " alt="Ali Akbar" class="testimonial-img">
+                <img src="https://i.ibb.co.com/kVSz3JyD/XI-5-Ali-Akbar.jpg" alt="Ali Akbar" class="testimonial-img">
                 <div class="testimonial-name">Ali Akbar</div>
                 <div class="testimonial-class">Kelas XI.5</div>
                 <p class="testimonial-quote">
@@ -900,7 +977,7 @@
 
             <!-- Testimoni 5 - Abella -->
             <div class="testimonial-card">
-                <img src="https://i.ibb.co.com/KxwDB2YH/XI-7-Abella-256x256.webp  " alt="Abella" class="testimonial-img">
+                <img src="https://i.ibb.co.com/KxwDB2YH/XI-7-Abella-256x256.webp" alt="Abella" class="testimonial-img">
                 <div class="testimonial-name">Abella</div>
                 <div class="testimonial-class">Kelas XI.7</div>
                 <p class="testimonial-quote">
@@ -910,7 +987,7 @@
 
             <!-- Testimoni 6 - Vrisca -->
             <div class="testimonial-card">
-                <img src="https://i.ibb.co.com/HLYM07st/XI-7-Vrisca-256x256.webp  " alt="Vrisca" class="testimonial-img">
+                <img src="https://i.ibb.co.com/HLYM07st/XI-7-Vrisca-256x256.webp" alt="Vrisca" class="testimonial-img">
                 <div class="testimonial-name">Vrisca</div>
                 <div class="testimonial-class">Kelas XI.7</div>
                 <p class="testimonial-quote">
@@ -937,10 +1014,10 @@
             <div class="footer-section">
                 <h3>🔗 Link Penting</h3>
                 <ul>
-                    <li><a href="https://data.aseanstats.org/  " target="_blank">📊 ASEAN Statistics</a></li>
+                    <li><a href="https://data.aseanstats.org/" target="_blank">📊 ASEAN Statistics</a></li>
                     <li><a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ID" target="_blank">🌍 World Bank - GDP Indonesia</a></li>
-                    <li><a href="  https://www.bps.go.id/id  " target="_blank">📈 BPS Indonesia</a></li>
-                    <li><a href="https://quran.nu.or.id/  " target="_blank">📖 Al-Qur'an NU Online</a></li>
+                    <li><a href="https://www.bps.go.id/id" target="_blank">📈 BPS Indonesia</a></li>
+                    <li><a href="https://quran.nu.or.id/" target="_blank">📖 Al-Qur'an NU Online</a></li>
                 </ul>
             </div>
 
@@ -953,7 +1030,7 @@
             <div class="footer-section">
                 <h3>👁️‍🗨️ Statistik Kunjungan</h3>
                 <div class="visitor-counter">
-                    <a href="https://www.freecounterstat.com  " title="page counter" target="_blank">
+                    <a href="https://www.freecounterstat.com" title="page counter" target="_blank">
                         <img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=s91lf4yugk1a948dm9uz1ej5hzz7xj9q" 
                              border="0" 
                              title="page counter" 
@@ -1035,4 +1112,3 @@
 
 </body>
 </html>
-  
