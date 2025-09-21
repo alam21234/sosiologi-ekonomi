@@ -21,6 +21,14 @@
             --transition: all 0.3s ease;
         }
 
+        /* Dark Mode Variables */
+        .dark-mode {
+            --light: #1a1a1a;
+            --dark: #f8f9fa;
+            --gray: #a0aec0;
+            --shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -33,6 +41,12 @@
             color: var(--dark);
             line-height: 1.6;
             padding-bottom: 80px;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+            color: var(--dark);
         }
 
         /* NAVBAR BARU — STICKY TOP */
@@ -73,6 +87,7 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         .nav-links a {
@@ -82,11 +97,52 @@
             padding: 8px 12px;
             border-radius: 50px;
             transition: var(--transition);
+            position: relative;
         }
 
         .nav-links a:hover {
             background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001;
+            flex-direction: column;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            color: var(--dark);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            border-radius: 8px;
+            margin: 0 5px;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--primary);
+            color: white;
+            transform: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
         }
 
         .hamburger {
@@ -96,6 +152,20 @@
             border: none;
             color: white;
             font-size: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
         }
 
         @media (max-width: 768px) {
@@ -117,6 +187,11 @@
             .nav-links.active {
                 display: flex;
             }
+
+            .dropdown-content {
+                left: 0;
+                transform: translateX(0);
+            }
         }
 
         header {
@@ -127,7 +202,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow);
-            margin-top: 70px; /* Memberi ruang untuk navbar */
+            margin-top: 70px;
         }
 
         header::before {
@@ -209,6 +284,12 @@
             border: 1px solid rgba(0,0,0,0.05);
         }
 
+        body.dark-mode .card {
+            background: #2d2d2d;
+            border-color: #444;
+            color: #f8f9fa;
+        }
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.12);
@@ -240,6 +321,11 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            color: var(--dark);
+        }
+
+        body.dark-mode .card h2 {
+            color: #f8f9fa;
         }
 
         @media (max-width: 768px) {
@@ -289,6 +375,12 @@
             background: var(--light);
             color: var(--dark);
             border: 1px solid #ddd;
+        }
+
+        body.dark-mode .btn-secondary {
+            background: #3a3a3a;
+            border-color: #555;
+            color: #f8f9fa;
         }
 
         .btn:hover {
@@ -344,6 +436,10 @@
             display: inline-block;
         }
 
+        body.dark-mode .materials a {
+            color: #e2e8f0;
+        }
+
         .materials a:hover {
             color: var(--primary);
             transform: translateX(5px);
@@ -359,6 +455,10 @@
             font-size: 2rem;
             margin-bottom: 20px;
             color: var(--dark);
+        }
+
+        body.dark-mode .gallery-cta h2 {
+            color: #f8f9fa;
         }
 
         .highlight {
@@ -382,6 +482,10 @@
             color: var(--dark);
             position: relative;
             display: inline-block;
+        }
+
+        body.dark-mode .testimonials-section h2 {
+            color: #f8f9fa;
         }
 
         .testimonials-section h2::after {
@@ -412,6 +516,11 @@
             text-align: center;
         }
 
+        body.dark-mode .testimonial-card {
+            background: #2d2d2d;
+            color: #f8f9fa;
+        }
+
         .testimonial-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -427,6 +536,10 @@
             transition: var(--transition);
         }
 
+        body.dark-mode .testimonial-img {
+            border-color: #444;
+        }
+
         .testimonial-card:hover .testimonial-img {
             transform: scale(1.05);
             border-color: var(--primary);
@@ -437,6 +550,10 @@
             font-size: 1.1rem;
             color: var(--dark);
             margin-bottom: 5px;
+        }
+
+        body.dark-mode .testimonial-name {
+            color: #f8f9fa;
         }
 
         .testimonial-class {
@@ -451,6 +568,10 @@
             line-height: 1.6;
             position: relative;
             padding: 0 20px;
+        }
+
+        body.dark-mode .testimonial-quote {
+            color: #e2e8f0;
         }
 
         .testimonial-quote::before,
@@ -479,6 +600,11 @@
             padding: 60px 20px 30px;
             margin-top: 60px;
             font-family: 'Poppins', sans-serif;
+            transition: background 0.4s;
+        }
+
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
         }
 
         .footer-container {
@@ -533,6 +659,7 @@
         .footer-section p {
             line-height: 1.6;
             margin: 8px 0;
+            color: #e2e8f0;
         }
 
         /* Visitor Counter Section */
@@ -554,6 +681,7 @@
             margin-top: 10px;
             font-size: 0.85rem;
             opacity: 0.8;
+            color: #e2e8f0;
         }
 
         .copyright {
@@ -579,6 +707,31 @@
             color: #94a3b8;
         }
 
+        body.dark-mode .footer-bottom {
+            border-color: rgba(255,255,255,0.03);
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0,0,0,0.1);
+            z-index: 9999;
+        }
+
+        .scroll-indicator span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+
         /* Icon placeholder */
         .icon-absen::before { content: "✅"; }
         .icon-tugas::before { content: "📤"; }
@@ -588,18 +741,33 @@
 </head>
 <body>
 
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <span id="scrollProgress"></span>
+    </div>
+
     <!-- NAVBAR BARU — STICKY TOP -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">
             <img src="https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png" alt="Logo">
             SMAN 1 Cluring
         </a>
-        <button class="hamburger" onclick="toggleNav()">☰</button>
+        <div style="display: flex; align-items: center;">
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <button class="hamburger" onclick="toggleNav()">☰</button>
+        </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">🏠 Beranda</a></li>
             <li><a href="#materi">📚 Materi</a></li>
             <li><a href="#tugas">✅ Tugas</a></li>
-            <li><a href="galery.html">🖼️ Galeri</a></li>
+            <li class="dropdown">
+                <a href="galery.html">🖼️ Galeri ▼</a>
+                <div class="dropdown-content">
+                    <a href="galery.html">📸 Foto Kegiatan</a>
+                    <a href="video.html">🎥 Video Pembelajaran</a>
+                    <a href="prestasi.html">🏆 Prestasi Siswa</a>
+                </div>
+            </li>
         </ul>
     </nav>
 
@@ -808,10 +976,61 @@
     </footer>
 
     <script>
+        // Toggle Mobile Nav
         function toggleNav() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Cek preferensi pengguna
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Scroll Progress Indicator
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+        };
+
+        // Smooth Scroll untuk anchor link
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // offset for navbar height
+                        behavior: 'smooth'
+                    });
+
+                    // Tutup mobile menu jika aktif
+                    const navLinks = document.getElementById('navLinks');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
     </script>
 
 </body>
