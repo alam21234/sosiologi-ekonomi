@@ -35,14 +35,99 @@
             padding-bottom: 80px;
         }
 
+        /* NAVBAR BARU — STICKY TOP */
+        .navbar {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+                padding: 10px;
+                background: rgba(0,0,0,0.1);
+                border-radius: var(--border-radius);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
         header {
             background: linear-gradient(120deg, var(--primary), var(--secondary));
             color: white;
-            padding: 2rem 1rem;
+            padding: 4rem 1rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow);
+            margin-top: 70px; /* Memberi ruang untuk navbar */
         }
 
         header::before {
@@ -503,6 +588,21 @@
 </head>
 <body>
 
+    <!-- NAVBAR BARU — STICKY TOP -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <img src="https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png" alt="Logo">
+            SMAN 1 Cluring
+        </a>
+        <button class="hamburger" onclick="toggleNav()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">🏠 Beranda</a></li>
+            <li><a href="#materi">📚 Materi</a></li>
+            <li><a href="#tugas">✅ Tugas</a></li>
+            <li><a href="galery.html">🖼️ Galeri</a></li>
+        </ul>
+    </nav>
+
     <!-- HEADER -->
     <header>
         <img src="https://i.ibb.co.com/xKfZBy7w/SMAN1-Cluring-emblem.png" alt="SMAN 1 Cluring" class="logo">
@@ -706,6 +806,13 @@
             <p>Dibuat dengan ❤️ untuk pendidikan Indonesia</p>
         </div>
     </footer>
+
+    <script>
+        function toggleNav() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
