@@ -285,6 +285,7 @@
       border-top: 4px solid var(--sosiologi-color);
     }
 
+    /* Tombol Akses Form */
     .access-button {
       display: inline-block;
       padding: 16px 32px;
@@ -318,6 +319,75 @@
       background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
     }
 
+    /* IFrame Container untuk Hasil */
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      min-height: 300px;
+      border-radius: 12px;
+      margin-top: 16px;
+      background: #f8f9fa;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.03);
+    }
+
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      z-index: 10;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+
+    .loading-text {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .iframe-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      text-align: center;
+      background: #fff;
+      border-radius: 12px;
+      height: 100%;
+    }
+
+    .iframe-fallback a {
+      margin-top: 16px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     footer {
       margin-top: 32px;
       padding: 16px;
@@ -332,13 +402,14 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Mobile optimization */
+    /* Tablet */
     @media (min-width: 768px) {
       .card-container {
         grid-template-columns: 1fr 1fr;
       }
     }
 
+    /* Mobile kecil */
     @media (max-width: 480px) {
       .subject-card {
         padding: 24px 20px;
@@ -347,17 +418,10 @@
         padding: 14px 24px;
         font-size: 1.05rem;
       }
-    }
-
-    /* Loading State */
-    .loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .loading::after {
-      content: " Memuat...";
-      font-style: italic;
+      .iframe-container {
+        height: 70vh;
+        min-height: 350px;
+      }
     }
   </style>
 </head>
@@ -400,7 +464,7 @@
       <button class="tab-btn" onclick="openTab('hasil', this)">📊 Hasil Asesmen</button>
     </div>
 
-    <!-- ULANGAN SECTION -->
+    <!-- ULANGAN SECTION (HANYA LINK) -->
     <div id="ulangan" class="tab-content active">
       <div class="card-container">
         <div class="subject-card ekonomi">
@@ -419,23 +483,39 @@
       </div>
     </div>
 
-    <!-- HASIL SECTION -->
+    <!-- HASIL SECTION (IFRAME DIPERTAHANKAN) -->
     <div id="hasil" class="tab-content">
       <div class="card-container">
         <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-bar"></i> Hasil Asesmen - Ekonomi</h2>
-          <p>Hasil akan ditampilkan setelah ulangan selesai.</p>
-          <a href="https://forms.gle/3FbVonqv2fBzeF7e8" target="_blank" class="access-button ekonomi" style="margin-top: 20px;">
-            <i class="fas fa-external-link-alt"></i> Kembali ke Formulir
-          </a>
+          <div class="iframe-container">
+            <div class="loading-overlay" id="loading-hasil-ekonomi">
+              <div class="spinner"></div>
+              <div class="loading-text">Memuat hasil...</div>
+            </div>
+            <iframe 
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true" 
+              title="Hasil Ekonomi"
+              onload="hideLoading('loading-hasil-ekonomi')"
+              onerror="showFallback(this, 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true')">
+            </iframe>
+          </div>
         </div>
 
         <div id="sosiologi-hasil-card" class="subject-card sosiologi">
           <h2><i class="fas fa-chart-pie"></i> Hasil Asesmen - Sosiologi</h2>
-          <p>Hasil akan ditampilkan setelah ulangan selesai.</p>
-          <a href="https://forms.gle/aSjCxfbh42bZWggL6" target="_blank" class="access-button sosiologi" style="margin-top: 20px;">
-            <i class="fas fa-external-link-alt"></i> Kembali ke Formulir
-          </a>
+          <div class="iframe-container">
+            <div class="loading-overlay" id="loading-hasil-sosiologi">
+              <div class="spinner"></div>
+              <div class="loading-text">Memuat hasil...</div>
+            </div>
+            <iframe 
+              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true" 
+              title="Hasil Sosiologi"
+              onload="hideLoading('loading-hasil-sosiologi')"
+              onerror="showFallback(this, 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true')">
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -552,6 +632,25 @@
       });
       document.getElementById(tabName).classList.add('active');
       btn.classList.add('active');
+    }
+
+    function hideLoading(elementId) {
+      const el = document.getElementById(elementId);
+      if (el) el.style.display = 'none';
+    }
+
+    function showFallback(iframeElement, fallbackUrl) {
+      const container = iframeElement.parentElement;
+      container.innerHTML = `
+        <div class="iframe-fallback">
+          <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color: #e74c3c; margin-bottom: 16px;"></i>
+          <h3>Gagal Memuat Hasil</h3>
+          <p>Silakan buka di browser Anda.</p>
+          <a href="${fallbackUrl}" target="_blank" class="access-button" style="padding: 12px 24px; font-size: 1rem;">
+            <i class="fas fa-external-link-alt"></i> Lihat Hasil
+          </a>
+        </div>
+      `;
     }
 
     document.addEventListener('keypress', function(e) {
