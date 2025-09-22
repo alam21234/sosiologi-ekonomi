@@ -12,6 +12,8 @@
       --card-shadow: 0 10px 30px rgba(0,0,0,0.15);
       --hover-shadow: 0 12px 32px rgba(0,0,0,0.18);
       --transition: all 0.3s ease;
+      --ekonomi-color: #3498db;
+      --sosiologi-color: #9b59b6;
     }
 
     * {
@@ -53,6 +55,32 @@
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
+    }
+
+    .login-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .login-option {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #e1e1e1;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .login-option.active {
+      border-color: var(--ekonomi-color);
+      background-color: rgba(52, 152, 219, 0.1);
+    }
+
+    .login-option.sosiologi.active {
+      border-color: var(--sosiologi-color);
+      background-color: rgba(155, 89, 182, 0.1);
     }
 
     .login-container input {
@@ -118,6 +146,25 @@
       margin-bottom: 24px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
       position: relative;
+    }
+
+    .user-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(52, 152, 219, 0.1);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--ekonomi-color);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .user-badge.sosiologi {
+      background: rgba(155, 89, 182, 0.1);
+      color: var(--sosiologi-color);
     }
 
     .header h1 {
@@ -227,6 +274,14 @@
       gap: 10px;
       color: #333;
       flex-wrap: wrap;
+    }
+
+    .subject-card.ekonomi {
+      border-top: 4px solid var(--ekonomi-color);
+    }
+
+    .subject-card.sosiologi {
+      border-top: 4px solid var(--sosiologi-color);
     }
 
     .iframe-container {
@@ -339,6 +394,16 @@
   <!-- LOGIN PAGE -->
   <div id="login-page" class="login-container">
     <h2><i class="fas fa-user-lock"></i> Login Siswa</h2>
+    
+    <div class="login-options">
+      <div class="login-option active" onclick="selectLoginOption('ekonomi')">
+        <i class="fas fa-chart-line"></i> Ekonomi
+      </div>
+      <div class="login-option sosiologi" onclick="selectLoginOption('sosiologi')">
+        <i class="fas fa-users"></i> Sosiologi
+      </div>
+    </div>
+    
     <input type="text" id="username" placeholder="Username" autocomplete="username" autofocus>
     <input type="password" id="password" placeholder="Password" autocomplete="current-password">
     <button id="login-btn" onclick="login()">Login</button>
@@ -348,8 +413,11 @@
   <!-- MAIN APP (Hidden until login) -->
   <div id="main-app">
     <div class="header">
+      <div id="user-badge" class="user-badge">
+        <i class="fas fa-user"></i> <span id="user-type">Ekonomi</span>
+      </div>
       <h1><i class="fas fa-graduation-cap"></i> Ulangan & Hasil Asesmen</h1>
-      <p>Kelas XI Ekonomi & X Sosiologi</p>
+      <p id="class-description">Kelas XI Ekonomi</p>
       <button class="logout-btn" onclick="logout()" aria-label="Logout">
         <i class="fas fa-sign-out-alt"></i>
       </button>
@@ -363,7 +431,7 @@
     <!-- ULANGAN SECTION -->
     <div id="ulangan" class="tab-content active">
       <div class="card-container">
-        <div class="subject-card">
+        <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-line"></i> Kelas XI - Ekonomi</h2>
           <div class="iframe-container">
             <div class="loading-overlay" id="loading-ekonomi">
@@ -381,7 +449,7 @@
           </div>
         </div>
 
-        <div class="subject-card">
+        <div id="sosiologi-ulangan-card" class="subject-card sosiologi">
           <h2><i class="fas fa-users"></i> Kelas X - Sosiologi</h2>
           <div class="iframe-container">
             <div class="loading-overlay" id="loading-sosiologi">
@@ -404,7 +472,7 @@
     <!-- HASIL SECTION -->
     <div id="hasil" class="tab-content">
       <div class="card-container">
-        <div class="subject-card">
+        <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-bar"></i> Hasil Asesmen - Ekonomi</h2>
           <div class="iframe-container">
             <div class="loading-overlay" id="loading-hasil-ekonomi">
@@ -420,7 +488,7 @@
           </div>
         </div>
 
-        <div class="subject-card">
+        <div id="sosiologi-hasil-card" class="subject-card sosiologi">
           <h2><i class="fas fa-chart-pie"></i> Hasil Asesmen - Sosiologi</h2>
           <div class="iframe-container">
             <div class="loading-overlay" id="loading-hasil-sosiologi">
@@ -444,6 +512,22 @@
   </div>
 
   <script>
+    let selectedUserType = 'ekonomi';
+    const userCredentials = {
+      'ekonomi': { username: 'ekonomi', password: '456' },
+      'sosiologi': { username: 'sosiologi', password: '789' },
+      'admin': { username: 'smaring', password: '123' } // Admin dapat akses semua
+    };
+
+    // Pilih jenis login (Ekonomi/Sosiologi)
+    function selectLoginOption(type) {
+      selectedUserType = type;
+      document.querySelectorAll('.login-option').forEach(opt => {
+        opt.classList.remove('active');
+      });
+      document.querySelector(`.login-option${type === 'sosiologi' ? '.sosiologi' : ''}`).classList.add('active');
+    }
+
     // Enhanced Login Function
     function login() {
       const username = document.getElementById('username').value.trim();
@@ -461,10 +545,24 @@
 
       // Simulate API delay
       setTimeout(() => {
-        if (username === 'smaring' && password === '123') {
+        let isValid = false;
+        let userType = '';
+        
+        // Check credentials
+        for (const [type, creds] of Object.entries(userCredentials)) {
+          if (username === creds.username && password === creds.password) {
+            isValid = true;
+            userType = type;
+            break;
+          }
+        }
+
+        if (isValid) {
           document.getElementById('login-page').style.display = 'none';
           document.getElementById('main-app').style.display = 'block';
           sessionStorage.setItem('isLoggedIn', 'true');
+          sessionStorage.setItem('userType', userType);
+          adjustUIForUserType(userType);
         } else {
           errorMsg.textContent = 'Username atau password salah!';
           loginBtn.classList.remove('loading');
@@ -476,9 +574,47 @@
       }, 800);
     }
 
+    // Sesuaikan UI berdasarkan tipe pengguna
+    function adjustUIForUserType(userType) {
+      const userBadge = document.getElementById('user-badge');
+      const userTypeSpan = document.getElementById('user-type');
+      const classDescription = document.getElementById('class-description');
+      
+      if (userType === 'ekonomi') {
+        userTypeSpan.textContent = 'Ekonomi';
+        userBadge.className = 'user-badge';
+        classDescription.textContent = 'Kelas XI Ekonomi';
+        
+        // Sembunyikan konten Sosiologi
+        document.getElementById('sosiologi-ulangan-card').style.display = 'none';
+        document.getElementById('sosiologi-hasil-card').style.display = 'none';
+      } 
+      else if (userType === 'sosiologi') {
+        userTypeSpan.textContent = 'Sosiologi';
+        userBadge.className = 'user-badge sosiologi';
+        classDescription.textContent = 'Kelas X Sosiologi';
+        
+        // Sembunyikan konten Ekonomi (opsional, jika perlu)
+        document.querySelectorAll('.ekonomi').forEach(card => {
+          card.style.display = 'none';
+        });
+      }
+      else if (userType === 'admin') {
+        userTypeSpan.textContent = 'Administrator';
+        userBadge.className = 'user-badge';
+        classDescription.textContent = 'Kelas XI Ekonomi & X Sosiologi';
+        
+        // Tampilkan semua konten
+        document.querySelectorAll('.subject-card').forEach(card => {
+          card.style.display = 'block';
+        });
+      }
+    }
+
     // Logout function
     function logout() {
       sessionStorage.removeItem('isLoggedIn');
+      sessionStorage.removeItem('userType');
       document.getElementById('login-page').style.display = 'flex';
       document.getElementById('main-app').style.display = 'none';
       document.getElementById('username').value = '';
@@ -488,8 +624,10 @@
     // Check if already logged in
     window.addEventListener('DOMContentLoaded', () => {
       if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        const userType = sessionStorage.getItem('userType') || 'ekonomi';
         document.getElementById('login-page').style.display = 'none';
         document.getElementById('main-app').style.display = 'block';
+        adjustUIForUserType(userType);
       }
     });
 
