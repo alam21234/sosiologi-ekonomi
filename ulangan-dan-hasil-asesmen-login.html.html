@@ -130,7 +130,7 @@
       font-size: clamp(0.9rem, 2.5vw, 1rem);
     }
 
-    /* Main App (Hidden by default) */
+    /* Main App */
     #main-app {
       display: none;
       width: 100%;
@@ -253,11 +253,12 @@
     .subject-card {
       background: white;
       border-radius: 16px;
-      padding: clamp(20px, 4vw, 32px);
+      padding: clamp(30px, 5vw, 40px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
     .subject-card:hover {
@@ -267,7 +268,7 @@
 
     .subject-card h2 {
       font-size: clamp(1.2rem, 4vw, 1.4rem);
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -284,94 +285,37 @@
       border-top: 4px solid var(--sosiologi-color);
     }
 
-    /* Mobile-Friendly IFrame Handling */
-    .iframe-container {
-      position: relative;
-      width: 100%;
-      border-radius: 12px;
-      margin-top: 16px;
-      background: #f8f9fa;
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.03);
-      min-height: 200px;
-    }
-
-    .iframe-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 30px 20px;
-      text-align: center;
-      background: #fff;
-      border-radius: 12px;
-    }
-
-    .iframe-placeholder i {
-      font-size: 2.5rem;
-      color: #667eea;
-      margin-bottom: 16px;
-    }
-
-    .mobile-cta-button {
+    .access-button {
       display: inline-block;
-      padding: 14px 24px;
+      padding: 16px 32px;
       background: var(--primary-gradient);
       color: white;
       text-decoration: none;
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: clamp(1.1rem, 3vw, 1.2rem);
       margin-top: 16px;
       transition: var(--transition);
       border: none;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .mobile-cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    .access-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
+    .access-button:active {
+      transform: translateY(-1px);
     }
 
-    .loading-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.9);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      z-index: 10;
+    .access-button.ekonomi {
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
     }
 
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #667eea;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: 10px;
-    }
-
-    .loading-text {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .access-button.sosiologi {
+      background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
     }
 
     footer {
@@ -388,17 +332,20 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Tablet */
+    /* Mobile optimization */
     @media (min-width: 768px) {
       .card-container {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    /* Desktop */
-    @media (min-width: 1024px) {
-      body {
-        padding: 32px;
+    @media (max-width: 480px) {
+      .subject-card {
+        padding: 24px 20px;
+      }
+      .access-button {
+        padding: 14px 24px;
+        font-size: 1.05rem;
       }
     }
 
@@ -435,7 +382,7 @@
     <p id="error-msg" class="error"></p>
   </div>
 
-  <!-- MAIN APP (Hidden until login) -->
+  <!-- MAIN APP -->
   <div id="main-app">
     <div class="header">
       <div id="user-badge" class="user-badge">
@@ -458,34 +405,16 @@
       <div class="card-container">
         <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-line"></i> Kelas XI - Ekonomi</h2>
-          <div class="iframe-container" id="container-ekonomi">
-            <div class="loading-overlay" id="loading-ekonomi">
-              <div class="spinner"></div>
-              <div class="loading-text">Memuat formulir...</div>
-            </div>
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?embedded=true" 
-              title="Ulangan Ekonomi"
-              onload="onIframeLoad('loading-ekonomi')"
-              onerror="onIframeError('container-ekonomi', 'https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?usp=sharing&ouid=100449982356438710978')">
-            </iframe>
-          </div>
+          <a href="https://forms.gle/3FbVonqv2fBzeF7e8" target="_blank" class="access-button ekonomi">
+            <i class="fas fa-external-link-alt"></i> Buka Formulir Ulangan Ekonomi
+          </a>
         </div>
 
         <div id="sosiologi-ulangan-card" class="subject-card sosiologi">
           <h2><i class="fas fa-users"></i> Kelas X - Sosiologi</h2>
-          <div class="iframe-container" id="container-sosiologi">
-            <div class="loading-overlay" id="loading-sosiologi">
-              <div class="spinner"></div>
-              <div class="loading-text">Memuat formulir...</div>
-            </div>
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSdIwdp852Y3xrU-eHE94yDOThZk3IJ0qtvltrt0QxjRTdGySg/viewform?embedded=true" 
-              title="Ulangan Sosiologi"
-              onload="onIframeLoad('loading-sosiologi')"
-              onerror="onIframeError('container-sosiologi', 'https://forms.gle/XD32jHx6DCusNdns9')">
-            </iframe>
-          </div>
+          <a href="https://forms.gle/aSjCxfbh42bZWggL6" target="_blank" class="access-button sosiologi">
+            <i class="fas fa-external-link-alt"></i> Buka Formulir Ulangan Sosiologi
+          </a>
         </div>
       </div>
     </div>
@@ -495,34 +424,18 @@
       <div class="card-container">
         <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-bar"></i> Hasil Asesmen - Ekonomi</h2>
-          <div class="iframe-container" id="container-hasil-ekonomi">
-            <div class="loading-overlay" id="loading-hasil-ekonomi">
-              <div class="spinner"></div>
-              <div class="loading-text">Memuat hasil...</div>
-            </div>
-            <iframe 
-              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true" 
-              title="Hasil Ekonomi"
-              onload="onIframeLoad('loading-hasil-ekonomi')"
-              onerror="onIframeError('container-hasil-ekonomi', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true')">
-            </iframe>
-          </div>
+          <p>Hasil akan ditampilkan setelah ulangan selesai.</p>
+          <a href="https://forms.gle/3FbVonqv2fBzeF7e8" target="_blank" class="access-button ekonomi" style="margin-top: 20px;">
+            <i class="fas fa-external-link-alt"></i> Kembali ke Formulir
+          </a>
         </div>
 
         <div id="sosiologi-hasil-card" class="subject-card sosiologi">
           <h2><i class="fas fa-chart-pie"></i> Hasil Asesmen - Sosiologi</h2>
-          <div class="iframe-container" id="container-hasil-sosiologi">
-            <div class="loading-overlay" id="loading-hasil-sosiologi">
-              <div class="spinner"></div>
-              <div class="loading-text">Memuat hasil...</div>
-            </div>
-            <iframe 
-              src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true" 
-              title="Hasil Sosiologi"
-              onload="onIframeLoad('loading-hasil-sosiologi')"
-              onerror="onIframeError('container-hasil-sosiologi', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true')">
-            </iframe>
-          </div>
+          <p>Hasil akan ditampilkan setelah ulangan selesai.</p>
+          <a href="https://forms.gle/aSjCxfbh42bZWggL6" target="_blank" class="access-button sosiologi" style="margin-top: 20px;">
+            <i class="fas fa-external-link-alt"></i> Kembali ke Formulir
+          </a>
         </div>
       </div>
     </div>
@@ -540,12 +453,6 @@
       'admin': { username: 'smaring', password: '123' }
     };
 
-    // Cek apakah perangkat mobile
-    function isMobileDevice() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-
-    // Pilih jenis login
     function selectLoginOption(type) {
       selectedUserType = type;
       document.querySelectorAll('.login-option').forEach(opt => {
@@ -554,7 +461,6 @@
       document.querySelector(`.login-option${type === 'sosiologi' ? '.sosiologi' : ''}`).classList.add('active');
     }
 
-    // Login
     function login() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value;
@@ -587,11 +493,6 @@
           sessionStorage.setItem('isLoggedIn', 'true');
           sessionStorage.setItem('userType', userType);
           adjustUIForUserType(userType);
-          
-          // Jika mobile, ganti semua iframe dengan tombol CTA
-          if (isMobileDevice()) {
-            replaceAllIframesWithButtons();
-          }
         } else {
           errorMsg.textContent = 'Username atau password salah!';
           loginBtn.classList.remove('loading');
@@ -603,7 +504,6 @@
       }, 800);
     }
 
-    // Sesuaikan UI berdasarkan user
     function adjustUIForUserType(userType) {
       const userBadge = document.getElementById('user-badge');
       const userTypeSpan = document.getElementById('user-type');
@@ -634,78 +534,6 @@
       }
     }
 
-    // Ganti iframe dengan tombol jika di mobile
-    function replaceAllIframesWithButtons() {
-      const replacements = [
-        {
-          containerId: 'container-ekonomi',
-          link: 'https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?usp=sharing&ouid=100449982356438710978',
-          title: 'Buka Formulir Ekonomi'
-        },
-        {
-          containerId: 'container-sosiologi',
-          link: 'https://forms.gle/XD32jHx6DCusNdns9',
-          title: 'Buka Formulir Sosiologi'
-        },
-        {
-          containerId: 'container-hasil-ekonomi',
-          link: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true',
-          title: 'Lihat Hasil Ekonomi'
-        },
-        {
-          containerId: 'container-hasil-sosiologi',
-          link: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true',
-          title: 'Lihat Hasil Sosiologi'
-        }
-      ];
-
-      replacements.forEach(item => {
-        const container = document.getElementById(item.containerId);
-        if (container) {
-          const loading = container.querySelector('.loading-overlay');
-          if (loading) loading.style.display = 'none';
-          
-          container.innerHTML = `
-            <div class="iframe-placeholder">
-              <i class="fas fa-mobile-alt"></i>
-              <h3>Gunakan Browser untuk Akses Penuh</h3>
-              <p>Klik tombol di bawah untuk membuka di tab baru.</p>
-              <a href="${item.link}" target="_blank" class="mobile-cta-button">
-                ${item.title}
-              </a>
-            </div>
-          `;
-        }
-      });
-    }
-
-    // Sembunyikan loading jika iframe sukses load
-    function onIframeLoad(loadingElementId) {
-      const el = document.getElementById(loadingElementId);
-      if (el) el.style.display = 'none';
-    }
-
-    // Jika iframe error, ganti dengan tombol
-    function onIframeError(containerId, fallbackUrl) {
-      const container = document.getElementById(containerId);
-      if (container) {
-        const loading = container.querySelector('.loading-overlay');
-        if (loading) loading.style.display = 'none';
-
-        container.innerHTML = `
-          <div class="iframe-placeholder">
-            <i class="fas fa-exclamation-triangle"></i>
-            <h3>Gagal Memuat Konten</h3>
-            <p>Silakan buka di browser.</p>
-            <a href="${fallbackUrl}" target="_blank" class="mobile-cta-button">
-              Buka Sekarang
-            </a>
-          </div>
-        `;
-      }
-    }
-
-    // Logout
     function logout() {
       sessionStorage.removeItem('isLoggedIn');
       sessionStorage.removeItem('userType');
@@ -715,7 +543,6 @@
       document.getElementById('password').value = '';
     }
 
-    // Tab switching
     function openTab(tabName, btn) {
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
@@ -727,24 +554,18 @@
       btn.classList.add('active');
     }
 
-    // Enter key
     document.addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
         login();
       }
     });
 
-    // Auto-check login & mobile on load
     window.addEventListener('DOMContentLoaded', () => {
       if (sessionStorage.getItem('isLoggedIn') === 'true') {
         const userType = sessionStorage.getItem('userType') || 'ekonomi';
         document.getElementById('login-page').style.display = 'none';
         document.getElementById('main-app').style.display = 'block';
         adjustUIForUserType(userType);
-        
-        if (isMobileDevice()) {
-          replaceAllIframesWithButtons();
-        }
       }
     });
   </script>
