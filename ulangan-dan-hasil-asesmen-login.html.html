@@ -284,29 +284,94 @@
       border-top: 4px solid var(--sosiologi-color);
     }
 
+    /* Mobile-Friendly IFrame Handling */
     .iframe-container {
       position: relative;
       width: 100%;
-      overflow: hidden;
       border-radius: 12px;
       margin-top: 16px;
       background: #f8f9fa;
       box-shadow: inset 0 0 6px rgba(0,0,0,0.03);
+      min-height: 200px;
     }
 
-    .iframe-container::after {
-      content: "";
-      display: block;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    .iframe-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      text-align: center;
+      background: #fff;
+      border-radius: 12px;
+    }
+
+    .iframe-placeholder i {
+      font-size: 2.5rem;
+      color: #667eea;
+      margin-bottom: 16px;
+    }
+
+    .mobile-cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background: var(--primary-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 16px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .mobile-cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
 
     iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       border: none;
+      display: block;
+    }
+
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      z-index: 10;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+
+    .loading-text {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     footer {
@@ -323,63 +388,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Loading overlay */
-    .loading-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      z-index: 10;
-    }
-
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #667eea;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Mobile-specific styles */
-    .mobile-alert {
-      display: none;
-      background: #fff8e1;
-      border-left: 4px solid #ffc107;
-      padding: 12px;
-      margin: 16px 0;
-      border-radius: 8px;
-      font-size: 0.9rem;
-    }
-    
-    .mobile-link-button {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 16px;
-      background: var(--primary-gradient);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-    
-    .mobile-link-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
     /* Tablet */
     @media (min-width: 768px) {
       .card-container {
@@ -391,69 +399,6 @@
     @media (min-width: 1024px) {
       body {
         padding: 32px;
-      }
-    }
-
-    /* Mobile kecil */
-    @media (max-width: 480px) {
-      .tabs {
-        gap: 6px;
-      }
-      
-      .tab-btn {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-      }
-      
-      .header h1 {
-        font-size: 1.4rem;
-        margin-top: 30px;
-      }
-      
-      .user-badge, .logout-btn {
-        position: relative;
-        top: unset;
-        left: unset;
-        right: unset;
-        margin: 10px auto;
-        width: auto;
-        display: inline-block;
-        border-radius: 20px;
-      }
-      
-      .header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .mobile-alert {
-        display: block;
-      }
-      
-      /* Improve iframe experience on mobile */
-      .iframe-container::after {
-        padding-bottom: 120%; /* More height for forms on mobile */
-      }
-      
-      .subject-card {
-        padding: 20px 16px;
-      }
-    }
-    
-    /* Very small mobile devices */
-    @media (max-width: 350px) {
-      .login-options {
-        flex-direction: column;
-      }
-      
-      .header h1 {
-        font-size: 1.2rem;
-      }
-      
-      .tab-btn {
-        padding: 6px 10px;
-        font-size: 0.75rem;
       }
     }
 
@@ -503,10 +448,6 @@
       </button>
     </div>
 
-    <div class="mobile-alert">
-      <p><i class="fas fa-mobile-alt"></i> Jika mengalami masalah dengan tampilan, gunakan tombol alternatif di bawah:</p>
-    </div>
-
     <div class="tabs">
       <button class="tab-btn active" onclick="openTab('ulangan', this)">📝 Ulangan Harian</button>
       <button class="tab-btn" onclick="openTab('hasil', this)">📊 Hasil Asesmen</button>
@@ -517,50 +458,32 @@
       <div class="card-container">
         <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-line"></i> Kelas XI - Ekonomi</h2>
-          <div class="mobile-alert">
-            <p>Jika formulir tidak tampil dengan baik, gunakan tombol berikut:</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?usp=sharing&ouid=100449982356438710978" 
-               target="_blank" class="mobile-link-button">
-              Buka Formulir Ekonomi
-            </a>
-          </div>
-          <div class="iframe-container">
+          <div class="iframe-container" id="container-ekonomi">
             <div class="loading-overlay" id="loading-ekonomi">
               <div class="spinner"></div>
+              <div class="loading-text">Memuat formulir...</div>
             </div>
             <iframe 
               src="https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?embedded=true" 
-              frameborder="0" 
-              marginheight="0" 
-              marginwidth="0"
               title="Ulangan Ekonomi"
-              onload="hideLoading('loading-ekonomi')">
-              Memuat…
+              onload="onIframeLoad('loading-ekonomi')"
+              onerror="onIframeError('container-ekonomi', 'https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?usp=sharing&ouid=100449982356438710978')">
             </iframe>
           </div>
         </div>
 
         <div id="sosiologi-ulangan-card" class="subject-card sosiologi">
           <h2><i class="fas fa-users"></i> Kelas X - Sosiologi</h2>
-          <div class="mobile-alert">
-            <p>Jika formulir tidak tampil dengan baik, gunakan tombol berikut:</p>
-            <a href="https://forms.gle/XD32jHx6DCusNdns9" 
-               target="_blank" class="mobile-link-button">
-              Buka Formulir Sosiologi
-            </a>
-          </div>
-          <div class="iframe-container">
+          <div class="iframe-container" id="container-sosiologi">
             <div class="loading-overlay" id="loading-sosiologi">
               <div class="spinner"></div>
+              <div class="loading-text">Memuat formulir...</div>
             </div>
             <iframe 
               src="https://docs.google.com/forms/d/e/1FAIpQLSdIwdp852Y3xrU-eHE94yDOThZk3IJ0qtvltrt0QxjRTdGySg/viewform?embedded=true" 
-              frameborder="0" 
-              marginheight="0" 
-              marginwidth="0"
               title="Ulangan Sosiologi"
-              onload="hideLoading('loading-sosiologi')">
-              Memuat…
+              onload="onIframeLoad('loading-sosiologi')"
+              onerror="onIframeError('container-sosiologi', 'https://forms.gle/XD32jHx6DCusNdns9')">
             </iframe>
           </div>
         </div>
@@ -572,32 +495,32 @@
       <div class="card-container">
         <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-bar"></i> Hasil Asesmen - Ekonomi</h2>
-          <div class="iframe-container">
+          <div class="iframe-container" id="container-hasil-ekonomi">
             <div class="loading-overlay" id="loading-hasil-ekonomi">
               <div class="spinner"></div>
+              <div class="loading-text">Memuat hasil...</div>
             </div>
             <iframe 
               src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true" 
-              frameborder="0"
               title="Hasil Ekonomi"
-              onload="hideLoading('loading-hasil-ekonomi')">
-              Memuat…
+              onload="onIframeLoad('loading-hasil-ekonomi')"
+              onerror="onIframeError('container-hasil-ekonomi', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true')">
             </iframe>
           </div>
         </div>
 
         <div id="sosiologi-hasil-card" class="subject-card sosiologi">
           <h2><i class="fas fa-chart-pie"></i> Hasil Asesmen - Sosiologi</h2>
-          <div class="iframe-container">
+          <div class="iframe-container" id="container-hasil-sosiologi">
             <div class="loading-overlay" id="loading-hasil-sosiologi">
               <div class="spinner"></div>
+              <div class="loading-text">Memuat hasil...</div>
             </div>
             <iframe 
               src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true" 
-              frameborder="0"
               title="Hasil Sosiologi"
-              onload="hideLoading('loading-hasil-sosiologi')">
-              Memuat…
+              onload="onIframeLoad('loading-hasil-sosiologi')"
+              onerror="onIframeError('container-hasil-sosiologi', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true')">
             </iframe>
           </div>
         </div>
@@ -614,10 +537,15 @@
     const userCredentials = {
       'ekonomi': { username: 'ekonomi', password: '456' },
       'sosiologi': { username: 'sosiologi', password: '789' },
-      'admin': { username: 'smaring', password: '123' } // Admin dapat akses semua
+      'admin': { username: 'smaring', password: '123' }
     };
 
-    // Pilih jenis login (Ekonomi/Sosiologi)
+    // Cek apakah perangkat mobile
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Pilih jenis login
     function selectLoginOption(type) {
       selectedUserType = type;
       document.querySelectorAll('.login-option').forEach(opt => {
@@ -626,7 +554,7 @@
       document.querySelector(`.login-option${type === 'sosiologi' ? '.sosiologi' : ''}`).classList.add('active');
     }
 
-    // Enhanced Login Function
+    // Login
     function login() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value;
@@ -641,12 +569,10 @@
       loginBtn.classList.add('loading');
       loginBtn.disabled = true;
 
-      // Simulate API delay
       setTimeout(() => {
         let isValid = false;
         let userType = '';
         
-        // Check credentials
         for (const [type, creds] of Object.entries(userCredentials)) {
           if (username === creds.username && password === creds.password) {
             isValid = true;
@@ -661,6 +587,11 @@
           sessionStorage.setItem('isLoggedIn', 'true');
           sessionStorage.setItem('userType', userType);
           adjustUIForUserType(userType);
+          
+          // Jika mobile, ganti semua iframe dengan tombol CTA
+          if (isMobileDevice()) {
+            replaceAllIframesWithButtons();
+          }
         } else {
           errorMsg.textContent = 'Username atau password salah!';
           loginBtn.classList.remove('loading');
@@ -672,7 +603,7 @@
       }, 800);
     }
 
-    // Sesuaikan UI berdasarkan tipe pengguna
+    // Sesuaikan UI berdasarkan user
     function adjustUIForUserType(userType) {
       const userBadge = document.getElementById('user-badge');
       const userTypeSpan = document.getElementById('user-type');
@@ -682,8 +613,6 @@
         userTypeSpan.textContent = 'Ekonomi';
         userBadge.className = 'user-badge';
         classDescription.textContent = 'Kelas XI Ekonomi';
-        
-        // Sembunyikan konten Sosiologi
         document.getElementById('sosiologi-ulangan-card').style.display = 'none';
         document.getElementById('sosiologi-hasil-card').style.display = 'none';
       } 
@@ -691,8 +620,6 @@
         userTypeSpan.textContent = 'Sosiologi';
         userBadge.className = 'user-badge sosiologi';
         classDescription.textContent = 'Kelas X Sosiologi';
-        
-        // Sembunyikan konten Ekonomi
         document.querySelectorAll('.ekonomi').forEach(card => {
           card.style.display = 'none';
         });
@@ -701,15 +628,84 @@
         userTypeSpan.textContent = 'Administrator';
         userBadge.className = 'user-badge';
         classDescription.textContent = 'Kelas XI Ekonomi & X Sosiologi';
-        
-        // Tampilkan semua konten
         document.querySelectorAll('.subject-card').forEach(card => {
           card.style.display = 'block';
         });
       }
     }
 
-    // Logout function
+    // Ganti iframe dengan tombol jika di mobile
+    function replaceAllIframesWithButtons() {
+      const replacements = [
+        {
+          containerId: 'container-ekonomi',
+          link: 'https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?usp=sharing&ouid=100449982356438710978',
+          title: 'Buka Formulir Ekonomi'
+        },
+        {
+          containerId: 'container-sosiologi',
+          link: 'https://forms.gle/XD32jHx6DCusNdns9',
+          title: 'Buka Formulir Sosiologi'
+        },
+        {
+          containerId: 'container-hasil-ekonomi',
+          link: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=574153378&single=true',
+          title: 'Lihat Hasil Ekonomi'
+        },
+        {
+          containerId: 'container-hasil-sosiologi',
+          link: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4EPWuQLfg0LsiiE6wD_Bhu8fYurtP6LY1uSIs92JtCUBtDnqbRzQK-wMbMlb9CpxuF_Kqmx6tOrMO/pubhtml?gid=1220360708&single=true',
+          title: 'Lihat Hasil Sosiologi'
+        }
+      ];
+
+      replacements.forEach(item => {
+        const container = document.getElementById(item.containerId);
+        if (container) {
+          const loading = container.querySelector('.loading-overlay');
+          if (loading) loading.style.display = 'none';
+          
+          container.innerHTML = `
+            <div class="iframe-placeholder">
+              <i class="fas fa-mobile-alt"></i>
+              <h3>Gunakan Browser untuk Akses Penuh</h3>
+              <p>Klik tombol di bawah untuk membuka di tab baru.</p>
+              <a href="${item.link}" target="_blank" class="mobile-cta-button">
+                ${item.title}
+              </a>
+            </div>
+          `;
+        }
+      });
+    }
+
+    // Sembunyikan loading jika iframe sukses load
+    function onIframeLoad(loadingElementId) {
+      const el = document.getElementById(loadingElementId);
+      if (el) el.style.display = 'none';
+    }
+
+    // Jika iframe error, ganti dengan tombol
+    function onIframeError(containerId, fallbackUrl) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        const loading = container.querySelector('.loading-overlay');
+        if (loading) loading.style.display = 'none';
+
+        container.innerHTML = `
+          <div class="iframe-placeholder">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Gagal Memuat Konten</h3>
+            <p>Silakan buka di browser.</p>
+            <a href="${fallbackUrl}" target="_blank" class="mobile-cta-button">
+              Buka Sekarang
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    // Logout
     function logout() {
       sessionStorage.removeItem('isLoggedIn');
       sessionStorage.removeItem('userType');
@@ -719,72 +715,36 @@
       document.getElementById('password').value = '';
     }
 
-    // Check if already logged in
-    window.addEventListener('DOMContentLoaded', () => {
-      if (sessionStorage.getItem('isLoggedIn') === 'true') {
-        const userType = sessionStorage.getItem('userType') || 'ekonomi';
-        document.getElementById('login-page').style.display = 'none';
-        document.getElementById('main-app').style.display = 'block';
-        adjustUIForUserType(userType);
-      }
-    });
-
-    // Tab Switching with button reference
+    // Tab switching
     function openTab(tabName, btn) {
-      // Hide all tab content
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
       });
-
-      // Deactivate all buttons
       document.querySelectorAll('.tab-btn').forEach(button => {
         button.classList.remove('active');
       });
-
-      // Show selected tab and activate button
       document.getElementById(tabName).classList.add('active');
       btn.classList.add('active');
     }
 
-    // Handle Enter key in login form
+    // Enter key
     document.addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
         login();
       }
     });
 
-    // Hide loading spinner when iframe is loaded
-    function hideLoading(elementId) {
-      const loadingElement = document.getElementById(elementId);
-      if (loadingElement) {
-        loadingElement.style.display = 'none';
-      }
-    }
-
-    // Handle iframe errors
-    document.querySelectorAll('iframe').forEach(iframe => {
-      iframe.addEventListener('error', function() {
-        const container = this.closest('.iframe-container');
-        const loadingElement = container.querySelector('.loading-overlay');
-        if (loadingElement) {
-          loadingElement.innerHTML = '<p>Gagal memuat konten. Silakan gunakan tombol alternatif.</p>';
+    // Auto-check login & mobile on load
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        const userType = sessionStorage.getItem('userType') || 'ekonomi';
+        document.getElementById('login-page').style.display = 'none';
+        document.getElementById('main-app').style.display = 'block';
+        adjustUIForUserType(userType);
+        
+        if (isMobileDevice()) {
+          replaceAllIframesWithButtons();
         }
-      });
-    });
-    
-    // Check if mobile device
-    function isMobileDevice() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-    
-    // Adjust UI for mobile devices on load
-    window.addEventListener('load', function() {
-      if (isMobileDevice()) {
-        document.body.classList.add('mobile-device');
-        // Adjust iframe container aspect ratio for better mobile experience
-        document.querySelectorAll('.iframe-container').forEach(container => {
-          container.style.paddingBottom = '120%';
-        });
       }
     });
   </script>
