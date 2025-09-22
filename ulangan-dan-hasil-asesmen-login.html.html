@@ -352,6 +352,34 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Mobile-specific styles */
+    .mobile-alert {
+      display: none;
+      background: #fff8e1;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      margin: 16px 0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .mobile-link-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 16px;
+      background: var(--primary-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .mobile-link-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
     /* Tablet */
     @media (min-width: 768px) {
       .card-container {
@@ -374,6 +402,58 @@
       
       .tab-btn {
         padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+      
+      .header h1 {
+        font-size: 1.4rem;
+        margin-top: 30px;
+      }
+      
+      .user-badge, .logout-btn {
+        position: relative;
+        top: unset;
+        left: unset;
+        right: unset;
+        margin: 10px auto;
+        width: auto;
+        display: inline-block;
+        border-radius: 20px;
+      }
+      
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .mobile-alert {
+        display: block;
+      }
+      
+      /* Improve iframe experience on mobile */
+      .iframe-container::after {
+        padding-bottom: 120%; /* More height for forms on mobile */
+      }
+      
+      .subject-card {
+        padding: 20px 16px;
+      }
+    }
+    
+    /* Very small mobile devices */
+    @media (max-width: 350px) {
+      .login-options {
+        flex-direction: column;
+      }
+      
+      .header h1 {
+        font-size: 1.2rem;
+      }
+      
+      .tab-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
       }
     }
 
@@ -423,6 +503,10 @@
       </button>
     </div>
 
+    <div class="mobile-alert">
+      <p><i class="fas fa-mobile-alt"></i> Jika mengalami masalah dengan tampilan, gunakan tombol alternatif di bawah:</p>
+    </div>
+
     <div class="tabs">
       <button class="tab-btn active" onclick="openTab('ulangan', this)">📝 Ulangan Harian</button>
       <button class="tab-btn" onclick="openTab('hasil', this)">📊 Hasil Asesmen</button>
@@ -433,6 +517,13 @@
       <div class="card-container">
         <div class="subject-card ekonomi">
           <h2><i class="fas fa-chart-line"></i> Kelas XI - Ekonomi</h2>
+          <div class="mobile-alert">
+            <p>Jika formulir tidak tampil dengan baik, gunakan tombol berikut:</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9qsLgocrdcZLwh5Er-XOSy34lNUXHgsLruRgAy5N0cyuKUg/viewform?usp=sharing&ouid=100449982356438710978" 
+               target="_blank" class="mobile-link-button">
+              Buka Formulir Ekonomi
+            </a>
+          </div>
           <div class="iframe-container">
             <div class="loading-overlay" id="loading-ekonomi">
               <div class="spinner"></div>
@@ -451,6 +542,13 @@
 
         <div id="sosiologi-ulangan-card" class="subject-card sosiologi">
           <h2><i class="fas fa-users"></i> Kelas X - Sosiologi</h2>
+          <div class="mobile-alert">
+            <p>Jika formulir tidak tampil dengan baik, gunakan tombol berikut:</p>
+            <a href="https://forms.gle/XD32jHx6DCusNdns9" 
+               target="_blank" class="mobile-link-button">
+              Buka Formulir Sosiologi
+            </a>
+          </div>
           <div class="iframe-container">
             <div class="loading-overlay" id="loading-sosiologi">
               <div class="spinner"></div>
@@ -594,7 +692,7 @@
         userBadge.className = 'user-badge sosiologi';
         classDescription.textContent = 'Kelas X Sosiologi';
         
-        // Sembunyikan konten Ekonomi (opsional, jika perlu)
+        // Sembunyikan konten Ekonomi
         document.querySelectorAll('.ekonomi').forEach(card => {
           card.style.display = 'none';
         });
@@ -669,9 +767,25 @@
         const container = this.closest('.iframe-container');
         const loadingElement = container.querySelector('.loading-overlay');
         if (loadingElement) {
-          loadingElement.innerHTML = '<p>Gagal memuat konten. Silakan coba lagi.</p>';
+          loadingElement.innerHTML = '<p>Gagal memuat konten. Silakan gunakan tombol alternatif.</p>';
         }
       });
+    });
+    
+    // Check if mobile device
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+    
+    // Adjust UI for mobile devices on load
+    window.addEventListener('load', function() {
+      if (isMobileDevice()) {
+        document.body.classList.add('mobile-device');
+        // Adjust iframe container aspect ratio for better mobile experience
+        document.querySelectorAll('.iframe-container').forEach(container => {
+          container.style.paddingBottom = '120%';
+        });
+      }
     });
   </script>
 
