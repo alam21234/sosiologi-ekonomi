@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EKONOMI Kelas XI | SMA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #1a3a6c;
+      --secondary: #d4af37;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), #2c5282);
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .btn-home {
+      background-color: var(--secondary);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-home:hover {
+      background-color: #c19a2a;
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-size: 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    .materials-grid, .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+      color: var(--dark);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #0d2a55;
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: #b89425;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 2.5rem 1.5rem 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--secondary);
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-section ul li a {
+      color: #adb5bd;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .contact-info i {
+      margin-right: 0.75rem;
+      color: var(--secondary);
+      min-width: 20px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 1.5rem;
+      margin-top: 2rem;
+      border-top: 1px solid #444;
+      color: #adb5bd;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .materials-grid, .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <h1>Mata Pelajaran <span>EKONOMI</span><br><small>Kelas XI</small></h1>
+      </div>
+      <a href="index.html" class="btn-home">
+        <i class="fas fa-home"></i> Kembali ke Beranda
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2 class="section-title">Materi Pembelajaran</h2>
+    <div class="materials-grid">
+      <a href="badan-usaha.html" class="card">
+        <i class="fas fa-building"></i>
+        <h3>Badan Usaha</h3>
+        <p>Pelajari bentuk dan jenis badan usaha di Indonesia.</p>
+      </a>
+      <a href="pendapatan-nasional.html" class="card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Pendapatan Nasional</h3>
+        <p>Konsep, perhitungan, dan peran dalam perekonomian.</p>
+      </a>
+      <a href="ketenagakerjaan.html" class="card">
+        <i class="fas fa-users"></i>
+        <h3>Ketenagakerjaan</h3>
+        <p>Struktur angkatan kerja, pengangguran, dan kebijakan ketenagakerjaan.</p>
+      </a>
+      <a href="inflasi.html" class="card">
+        <i class="fas fa-percentage"></i>
+        <h3>Inflasi</h3>
+        <p>Jenis, penyebab, dan dampak inflasi terhadap perekonomian.</p>
+      </a>
+      <a href="Fiskal-Moneter.html" class="card">
+        <i class="fas fa-coins"></i>
+        <h3>Kebijakan Fiskal & Moneter</h3>
+        <p>Peran APBN, APBD, dan kebijakan moneter dalam stabilitas ekonomi.</p>
+      </a>
+    </div>
+
+    <h2 class="section-title">Akses Cepat</h2>
+    <div class="tools-grid">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform" target="_blank" class="card">
+        <i class="fas fa-clipboard-check"></i>
+        <h3>Absensi Harian</h3>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform" class="btn btn-secondary" target="_blank">Isi Absensi</a>
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSclUWSbatHzbavWqSEhZ63_Y2rVok5M1q5rr_sY4QOWOV9knw/viewform" target="_blank" class="card">
+        <i class="fas fa-file-upload"></i>
+        <h3>Kirim Tugas</h3>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSclUWSbatHzbavWqSEhZ63_Y2rVok5M1q5rr_sY4QOWOV9knw/viewform" class="btn btn-secondary" target="_blank">Kirim Sekarang</a>
+      </a>
+      <a href="simulator-ekonomi.html" class="card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Simulator Ekonomi</h3>
+        <p>Latihan interaktif konsep ekonomi makro & mikro.</p>
+        <a href="simulator-ekonomi.html" class="btn">Mulai Simulasi</a>
+      </a>
+      <a href="ulangan-dan-hasil-asesmen-login.html" class="card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Ulangan & Hasil Asesmen</h3>
+        <p>Akses soal ulangan dan lihat hasil penilaian Anda.</p>
+        <a href="ulangan-dan-hasil-asesmen-login.html" class="btn">Masuk</a>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Menu Navigasi</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="#">Materi</a></li>
+          <li><a href="#">Tugas</a></li>
+          <li><a href="#">Galeri</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Link Penting</h3>
+        <ul>
+          <li><a href="https://www.aseanstats.org/" target="_blank">ASEAN Statistics</a></li>
+          <li><a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=ID" target="_blank">World Bank - GDP Indonesia</a></li>
+          <li><a href="https://www.bps.go.id/" target="_blank">BPS Indonesia</a></li>
+          <li><a href="https://quran.nu.or.id/" target="_blank">Al-Qur'an NU Online</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact-info">
+        <h3>Hubungi Kami</h3>
+        <p><i class="fas fa-phone"></i> 0822-2385-7426</p>
+        <p><i class="fas fa-map-marker-alt"></i> Jl. Huzaini, Benculuk,<br>Cluring, Banyuwangi,<br>Jawa Timur</p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Mata Pelajaran Ekonomi Kelas XI. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
