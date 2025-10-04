@@ -19,6 +19,7 @@
       --neon-blue: #00f0ff;
       --neon-pink: #ff00c8;
       --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      --breaking-news: #e74c3c;
     }
 
     * {
@@ -180,6 +181,98 @@
       flex-grow: 1;
     }
 
+    /* Gaya Portal Berita */
+    .news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .news-image {
+      height: 180px;
+      width: 100%;
+      background: linear-gradient(120deg, var(--secondary), var(--neon-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .news-content {
+      padding: 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-tag {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+      align-self: flex-start;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+
+    .news-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-top: auto;
+    }
+
+    .breaking-news {
+      background: var(--breaking-news);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+    }
+
+    .breaking-news i {
+      font-size: 1.2rem;
+    }
+
     /* Footer modern */
     footer {
       background: var(--primary);
@@ -269,7 +362,7 @@
       }
     }
 
-    .card, .section-title {
+    .card, .section-title, .news-card {
       animation: fadeInUp 0.8s ease forwards;
       opacity: 0;
     }
@@ -279,6 +372,15 @@
     .card:nth-child(3) { animation-delay: 0.3s; }
     .card:nth-child(4) { animation-delay: 0.4s; }
     .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+
+    .news-card:nth-child(1) { animation-delay: 0.1s; }
+    .news-card:nth-child(2) { animation-delay: 0.2s; }
+    .news-card:nth-child(3) { animation-delay: 0.3s; }
+    .news-card:nth-child(4) { animation-delay: 0.4s; }
+    .news-card:nth-child(5) { animation-delay: 0.5s; }
+    .news-card:nth-child(6) { animation-delay: 0.6s; }
 
     /* Responsif */
     @media (max-width: 600px) {
@@ -297,6 +399,9 @@
       }
       .card {
         padding: 1.4rem;
+      }
+      .news-container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -322,6 +427,114 @@
       <a href="bab-2-Individu-Kelompok-dan-Hubungan-Sosial.html" class="card">
         <h3><i class="fas fa-users"></i> Bab 2: Individu, Kelompok, dan Hubungan Sosial</h3>
         <p>Menjelajahi interaksi antar individu dan kelompok dalam konteks struktur sosial.</p>
+      </a>
+      <a href="bab-3-Nilai-Norma-Sosialisasi-dan-Ragam-Gejala-Sosial.html" class="card">
+        <h3><i class="fas fa-balance-scale"></i> Bab 3: Nilai, Norma, Sosialisasi, dan Ragam Gejala Sosial</h3>
+        <p>Mempelajari nilai-nilai sosial, norma, proses sosialisasi, dan berbagai gejala sosial dalam masyarakat.</p>
+      </a>
+      <a href="bab-4-Metode-Penelitian-Sosial.html" class="card">
+        <h3><i class="fas fa-search"></i> Bab 4: Metode Penelitian Sosial</h3>
+        <p>Memahami berbagai metode dan teknik penelitian yang digunakan dalam studi sosial.</p>
+      </a>
+    </div>
+
+    <!-- Materi Pertemuan -->
+    <h2 class="section-title">📰 Materi Pertemuan</h2>
+    
+    <div class="breaking-news">
+      <i class="fas fa-bullhorn"></i>
+      <span><strong>UPDATE TERBARU:</strong> Materi Sosiologi Kelas X telah diperbarui dengan format portal berita!</span>
+    </div>
+    
+    <div class="news-container">
+      <a href="materi_sosiologi_1-4.html.html" class="news-card">
+        <div class="news-image">
+          <i class="fas fa-university"></i>
+        </div>
+        <div class="news-content">
+          <span class="news-tag">Pertemuan 1-4</span>
+          <h3 class="news-title">Dasar-Dasar Sosiologi: Mengenal Ilmu Masyarakat</h3>
+          <p>Pengantar lengkap tentang konsep dasar sosiologi dan peranannya dalam memahami dinamika sosial.</p>
+          <div class="news-meta">
+            <span><i class="far fa-clock"></i> 4 Pertemuan</span>
+            <span><i class="far fa-file"></i> 15 Halaman</span>
+          </div>
+        </div>
+      </a>
+      
+      <a href="materi_sosiologi_5-8.html.html" class="news-card">
+        <div class="news-image">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <div class="news-content">
+          <span class="news-tag">Pertemuan 5-8</span>
+          <h3 class="news-title">Interaksi Sosial dan Struktur Masyarakat</h3>
+          <p>Eksplorasi mendalam tentang pola interaksi sosial dan struktur yang membentuk masyarakat.</p>
+          <div class="news-meta">
+            <span><i class="far fa-clock"></i> 4 Pertemuan</span>
+            <span><i class="far fa-file"></i> 18 Halaman</span>
+          </div>
+        </div>
+      </a>
+      
+      <a href="materi_sosiologi_9-12.html.html" class="news-card">
+        <div class="news-image">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <div class="news-content">
+          <span class="news-tag">Pertemuan 9-12</span>
+          <h3 class="news-title">Nilai, Norma, dan Pengendalian Sosial</h3>
+          <p>Analisis tentang sistem nilai, norma sosial, dan mekanisme pengendalian dalam masyarakat.</p>
+          <div class="news-meta">
+            <span><i class="far fa-clock"></i> 4 Pertemuan</span>
+            <span><i class="far fa-file"></i> 22 Halaman</span>
+          </div>
+        </div>
+      </a>
+      
+      <a href="materi_sosiologi_13-14.html.html" class="news-card">
+        <div class="news-image">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="news-content">
+          <span class="news-tag">Pertemuan 13-14</span>
+          <h3 class="news-title">Kelompok Sosial dan Masyarakat Multikultural</h3>
+          <p>Memahami berbagai bentuk kelompok sosial dan dinamika masyarakat multikultural.</p>
+          <div class="news-meta">
+            <span><i class="far fa-clock"></i> 2 Pertemuan</span>
+            <span><i class="far fa-file"></i> 12 Halaman</span>
+          </div>
+        </div>
+      </a>
+      
+      <a href="materi_sosiologi_15-16.html.html" class="news-card">
+        <div class="news-image">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="news-content">
+          <span class="news-tag">Pertemuan 15-16</span>
+          <h3 class="news-title">Perubahan Sosial dan Globalisasi</h3>
+          <p>Mengkaji faktor-faktor perubahan sosial dan dampak globalisasi terhadap masyarakat.</p>
+          <div class="news-meta">
+            <span><i class="far fa-clock"></i> 2 Pertemuan</span>
+            <span><i class="far fa-file"></i> 14 Halaman</span>
+          </div>
+        </div>
+      </a>
+      
+      <a href="materi_sosiologi_17-19.html.html" class="news-card">
+        <div class="news-image">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="news-content">
+          <span class="news-tag">Pertemuan 17-19</span>
+          <h3 class="news-title">Sosiologi Terapan dan Penelitian Sosial</h3>
+          <p>Penerapan ilmu sosiologi dalam memecahkan masalah sosial dan teknik penelitian sosial.</p>
+          <div class="news-meta">
+            <span><i class="far fa-clock"></i> 3 Pertemuan</span>
+            <span><i class="far fa-file"></i> 20 Halaman</span>
+          </div>
+        </div>
       </a>
     </div>
 
