@@ -165,6 +165,14 @@
       font-size: 0.95rem;
     }
 
+    .card-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
     .btn {
       display: inline-block;
       background: var(--gradient);
@@ -281,6 +289,7 @@
     .card:nth-child(3) { animation-delay: 0.3s; }
     .card:nth-child(4) { animation-delay: 0.4s; }
     .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
 
     /* Responsif */
     @media (max-width: 768px) {
@@ -334,28 +343,33 @@
     <p class="tagline">Level up your ekonomi knowledge! 📚✨</p>
     
     <div class="materials-grid">
+      <a href="https://drive.google.com/file/d/1e0ajPBwIed-ORadvmuX-PVnUFgXyoig1/view" class="card" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+        <h3>Materi Ekonomi Lengkap</h3>
+        <p>Download materi ekonomi kelas XI lengkap dalam format PDF. All-in-one resource! 📄</p>
+      </a>
       <a href="badan-usaha.html" class="card">
-        <i class="fas fa-building"></i>
+        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Badan Usaha" class="card-image">
         <h3>Badan Usaha</h3>
         <p>Pelajari bentuk dan jenis badan usaha di Indonesia. Let's start your business journey! 🚀</p>
       </a>
       <a href="pendapatan-nasional.html" class="card">
-        <i class="fas fa-chart-line"></i>
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pendapatan Nasional" class="card-image">
         <h3>Pendapatan Nasional</h3>
         <p>Konsep, perhitungan, dan peran dalam perekonomian. GDP goals! 📈</p>
       </a>
       <a href="ketenagakerjaan.html" class="card">
-        <i class="fas fa-users"></i>
+        <img src="https://images.unsplash.com/photo-1551834326-a2fc3e5d1a2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Ketenagakerjaan" class="card-image">
         <h3>Ketenagakerjaan</h3>
         <p>Struktur angkatan kerja, pengangguran, dan kebijakan ketenagakerjaan. Future career unlocked! 💼</p>
       </a>
       <a href="inflasi.html" class="card">
-        <i class="fas fa-percentage"></i>
+        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Inflasi" class="card-image">
         <h3>Inflasi</h3>
         <p>Jenis, penyebab, dan dampak inflasi terhadap perekonomian. Money value matters! 💰</p>
       </a>
       <a href="Fiskal-Moneter.html" class="card">
-        <i class="fas fa-coins"></i>
+        <img src="https://images.unsplash.com/photo-1554224155-672ab633b965?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Kebijakan Fiskal & Moneter" class="card-image">
         <h3>Kebijakan Fiskal & Moneter</h3>
         <p>Peran APBN, APBD, dan kebijakan moneter dalam stabilitas ekonomi. Government finance vibes! 🏛️</p>
       </a>
@@ -388,6 +402,12 @@
         <h3>Ulangan & Hasil Asesmen</h3>
         <p>Akses soal ulangan dan lihat hasil penilaian Anda. Check your scores! 📊</p>
         <a href="ulangan-dan-hasil-asesmen-login.html" class="btn">Masuk</a>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Simulasi Kebijakan Fiskal" class="card-image">
+        <h3>Simulasi Kebijakan Fiskal</h3>
+        <p>Analisis dampak kebijakan fiskal dengan simulasi interaktif. Let's simulate! 📈</p>
+        <a href="Simulasi-Analisis-dampak-kebijakan-fiskal.html" class="btn">Jalankan Simulasi</a>
       </div>
     </div>
   </main>
