@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sosiologi Kelas X | SMA Negeri Banyuwangi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
@@ -16,6 +16,9 @@
       --gray: #95a5a6;
       --success: #2ecc71;
       --warning: #f39c12;
+      --neon-blue: #00f0ff;
+      --neon-pink: #ff00c8;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
     }
 
     * {
@@ -26,97 +29,150 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f9fbfd;
+      background: var(--bg-gradient);
       color: var(--dark);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(120deg, var(--primary), var(--secondary), var(--neon-blue));
+      background-size: 300% 300%;
+      animation: gradientBG 8s ease infinite;
       color: white;
-      padding: 1.5rem 2rem;
+      padding: 2rem 2rem;
       text-align: center;
       position: relative;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header h1 {
-      font-weight: 700;
-      font-size: 2.2rem;
+      font-weight: 800;
+      font-size: 2.4rem;
       margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     header p {
-      font-weight: 300;
-      opacity: 0.9;
+      font-weight: 400;
+      opacity: 0.95;
+      font-size: 1.1rem;
     }
 
     .back-home {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: rgba(255, 255, 255, 0.2);
+      top: 1.2rem;
+      left: 1.2rem;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: background 0.3s;
+      gap: 0.6rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .back-home:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
     }
 
     main {
       max-width: 1200px;
-      margin: 2rem auto;
+      margin: 2.5rem auto;
       padding: 0 1.5rem;
     }
 
     .section-title {
-      font-size: 1.8rem;
-      margin: 2.5rem 0 1.5rem;
+      font-size: 1.9rem;
+      margin: 2.8rem 0 1.6rem;
       color: var(--primary);
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--neon-pink);
+      border-radius: 2px;
     }
 
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
 
     .card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 1.5rem;
-      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      padding: 1.8rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.03);
     }
 
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--secondary);
+    }
+
+    .card.absensi-card::before { background: var(--secondary); }
+    .card.tugas-card::before { background: var(--success); }
+    .card.ulangan-card::before { background: var(--warning); }
+
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      transform: translateY(-10px) rotate(0.5deg);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
     }
 
     .card h3 {
-      color: var(--secondary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
       font-size: 1.25rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.8rem;
+      color: var(--primary);
     }
+
+    .card h3 i {
+      font-size: 1.3rem;
+      color: var(--secondary);
+    }
+
+    .card.absensi-card h3 i { color: var(--secondary); }
+    .card.tugas-card h3 i { color: var(--success); }
+    .card.ulangan-card h3 i { color: var(--warning); }
 
     .card p {
       color: var(--gray);
@@ -124,26 +180,13 @@
       flex-grow: 1;
     }
 
-    .absensi-card {
-      background: linear-gradient(to right, #e3f2fd, #bbdefb);
-      border-left: 4px solid var(--secondary);
-    }
-
-    .tugas-card {
-      background: linear-gradient(to right, #f1f8e9, #dcedc8);
-      border-left: 4px solid var(--success);
-    }
-
-    .ulangan-card {
-      background: linear-gradient(to right, #fff8e1, #ffecb3);
-      border-left: 4px solid var(--warning);
-    }
-
+    /* Footer modern */
     footer {
       background: var(--primary);
       color: white;
-      padding: 2.5rem 1.5rem 1.5rem;
-      margin-top: 3rem;
+      padding: 3rem 1.5rem 2rem;
+      margin-top: 4rem;
+      border-radius: 30px 30px 0 0;
     }
 
     .footer-grid {
@@ -155,9 +198,21 @@
     }
 
     .footer-section h3 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
+      font-size: 1.25rem;
+      margin-bottom: 1.2rem;
+      color: var(--neon-blue);
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: var(--neon-pink);
     }
 
     .footer-section ul {
@@ -165,51 +220,83 @@
     }
 
     .footer-section ul li {
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
 
     .footer-section a {
-      color: #ecf0f1;
+      color: #d6eaf8;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .footer-section a:hover {
-      color: var(--accent);
+      color: var(--neon-blue);
+      transform: translateX(4px);
     }
 
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.8rem;
     }
 
     .contact-info i {
-      margin-right: 0.5rem;
-      color: var(--accent);
+      color: var(--neon-blue);
+      min-width: 20px;
     }
 
     .copyright {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--gray);
       font-size: 0.9rem;
     }
 
+    /* Animasi masuk saat scroll (sederhana) */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card, .section-title {
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+
+    /* Responsif */
     @media (max-width: 600px) {
       header h1 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
       }
-
+      header p {
+        font-size: 1rem;
+      }
       .section-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
-
       .back-home {
-        padding: 0.4rem 0.8rem;
+        padding: 0.5rem 1rem;
         font-size: 0.9rem;
+      }
+      .card {
+        padding: 1.4rem;
       }
     }
   </style>
@@ -220,8 +307,8 @@
     <a href="index.html" class="back-home">
       <i class="fas fa-arrow-left"></i> Kembali ke Beranda
     </a>
-    <h1>Mata Pelajaran Sosiologi</h1>
-    <p>Kelas X | SMA Negeri Banyuwangi</p>
+    <h1>📚 Sosiologi Kelas X</h1>
+    <p>SMA Negeri 1 Cluring • Belajar Sambil Nge-Vibe!</p>
   </header>
 
   <main>
@@ -239,7 +326,7 @@
     </div>
 
     <!-- Materi Aktual & Analisis Kebijakan -->
-    <h2 class="section-title">Materi Aktual & Analisis Kebijakan</h2>
+    <h2 class="section-title">🔥 Materi Aktual & Analisis Kebijakan</h2>
     <div class="card-grid">
       <a href="Dampak-Rp200T-Sosiologi-Ekonomi.html" class="card">
         <h3><i class="fas fa-chart-line"></i> Dampak Rp200T: Perspektif Sosiologi-Ekonomi</h3>
@@ -248,29 +335,29 @@
     </div>
 
     <!-- Absensi -->
-    <h2 class="section-title">Absensi Harian</h2>
+    <h2 class="section-title">✅ Absensi Harian</h2>
     <div class="card-grid">
       <a href="https://docs.google.com/forms/d/1wSz-DFGxiKSckvVEAJx6WOVn8LTiuCXkldNX5gibag4/edit" target="_blank" class="card absensi-card">
         <h3><i class="fas fa-clipboard-list"></i> Isi Absensi Hari Ini</h3>
-        <p>Klik untuk mengisi kehadiran melalui Google Formulir.</p>
+        <p>Klik untuk mengisi kehadiran melalui Google Formulir. Jangan sampai ketinggalan!</p>
       </a>
     </div>
 
     <!-- Pengumpulan Tugas -->
-    <h2 class="section-title">Pengumpulan Tugas</h2>
+    <h2 class="section-title">📤 Pengumpulan Tugas</h2>
     <div class="card-grid">
       <a href="https://docs.google.com/forms/d/1M4eOIBMi04LdpW73Etee8aifP0vAHuo4l7F8SDU0PcA/edit" target="_blank" class="card tugas-card">
         <h3><i class="fas fa-file-upload"></i> Kirim Tugas Anda</h3>
-        <p>Gunakan formulir ini untuk mengumpulkan tugas sesuai instruksi guru.</p>
+        <p>Gunakan formulir ini untuk mengumpulkan tugas sesuai instruksi guru. Deadline jangan di-ghosting!</p>
       </a>
     </div>
 
     <!-- Ulangan & Hasil Asesmen -->
-    <h2 class="section-title">Ulangan & Hasil Asesmen</h2>
+    <h2 class="section-title">🎓 Ulangan & Hasil Asesmen</h2>
     <div class="card-grid">
       <a href="ulangan-dan-hasil-asesmen-login.html" class="card ulangan-card">
         <h3><i class="fas fa-graduation-cap"></i> Akses Ulangan & Nilai</h3>
-        <p>Login untuk mengikuti ulangan atau melihat hasil asesmen Anda.</p>
+        <p>Login untuk mengikuti ulangan atau melihat hasil asesmen Anda. Siap-siap glow up nilai!</p>
       </a>
     </div>
   </main>
@@ -280,23 +367,23 @@
       <div class="footer-section">
         <h3>Menu Navigasi</h3>
         <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="#">Materi</a></li>
-          <li><a href="#">Tugas</a></li>
-          <li><a href="#">Galeri</a></li>
+          <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="#"><i class="fas fa-book"></i> Materi</a></li>
+          <li><a href="#"><i class="fas fa-tasks"></i> Tugas</a></li>
+          <li><a href="#"><i class="fas fa-images"></i> Galeri</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Link Penting</h3>
+        <h3>🔗 Link Penting</h3>
         <ul>
-          <li><a href="https://data.aseanstats.org/" target="_blank">ASEAN Statistics</a></li>
-          <li><a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=ID" target="_blank">World Bank - GDP Indonesia</a></li>
-          <li><a href="https://www.bps.go.id/" target="_blank">BPS Indonesia</a></li>
-          <li><a href="https://islam.nu.or.id/" target="_blank">Al-Qur'an NU Online</a></li>
+          <li><a href="https://data.aseanstats.org/" target="_blank"><i class="fas fa-chart-bar"></i> ASEAN Statistics</a></li>
+          <li><a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=ID" target="_blank"><i class="fas fa-globe"></i> World Bank - GDP Indonesia</a></li>
+          <li><a href="https://www.bps.go.id/" target="_blank"><i class="fas fa-database"></i> BPS Indonesia</a></li>
+          <li><a href="https://islam.nu.or.id/" target="_blank"><i class="fas fa-quran"></i> Al-Qur'an NU Online</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Hubungi Kami</h3>
+        <h3>📱 Hubungi Kami</h3>
         <div class="contact-info">
           <p><i class="fas fa-phone"></i> 0822-2385-7426</p>
           <p><i class="fas fa-map-marker-alt"></i> Jl. Huzaini, Benculuk,<br>Cluring, Banyuwangi,<br>Jawa Timur</p>
@@ -304,7 +391,7 @@
       </div>
     </div>
     <div class="copyright">
-      &copy; 2025 SMA Negeri Banyuwangi | Mata Pelajaran Sosiologi Kelas X
+      &copy; 2025 SMA Negeri Banyuwangi | Sosiologi Kelas X • Stay Curious, Stay Critical!
     </div>
   </footer>
 
