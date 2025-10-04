@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sosiologi Kelas X | SMA Negeri Banyuwangi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #1abc9c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --gray: #95a5a6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fbfd;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .back-home {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.3s;
+    }
+
+    .back-home:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 2rem 0 1.5rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .card h3 {
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .absensi-card {
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      border-left: 4px solid var(--secondary);
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 2.5rem 1.5rem 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-section a {
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .contact-info i {
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.7rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .back-home {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="back-home">
+      <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+    </a>
+    <h1>Mata Pelajaran Sosiologi</h1>
+    <p>Kelas X | SMA Negeri Banyuwangi</p>
+  </header>
+
+  <main>
+    <!-- Materi Pokok -->
+    <h2 class="section-title">Materi Pokok</h2>
+    <div class="card-grid">
+      <a href="bab-1-Fungsi-Sosiologi-dalam-Menganalisis-Masyarakat.html" class="card">
+        <h3><i class="fas fa-book-open"></i> Bab 1: Fungsi Sosiologi dalam Menganalisis Masyarakat</h3>
+        <p>Memahami peran sosiologi sebagai ilmu yang membantu mengurai dinamika sosial di masyarakat.</p>
+      </a>
+      <a href="bab-2-Individu-Kelompok-dan-Hubungan-Sosial.html" class="card">
+        <h3><i class="fas fa-users"></i> Bab 2: Individu, Kelompok, dan Hubungan Sosial</h3>
+        <p>Menjelajahi interaksi antar individu dan kelompok dalam konteks struktur sosial.</p>
+      </a>
+    </div>
+
+    <!-- Materi Aktual & Analisis Kebijakan -->
+    <h2 class="section-title">Materi Aktual & Analisis Kebijakan</h2>
+    <div class="card-grid">
+      <a href="Dampak-Rp200T-Sosiologi-Ekonomi.html" class="card">
+        <h3><i class="fas fa-chart-line"></i> Dampak Rp200T: Perspektif Sosiologi-Ekonomi</h3>
+        <p>Analisis kritis terhadap kebijakan ekonomi besar dan dampaknya terhadap struktur sosial masyarakat.</p>
+      </a>
+    </div>
+
+    <!-- Absensi -->
+    <h2 class="section-title">Absensi Harian</h2>
+    <div class="card-grid">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnQ4JxYeGt_zsDz8YvILNZTaufvRi3m_69vdwN5Lc4N1j5jg/viewform" target="_blank" class="card absensi-card">
+        <h3><i class="fas fa-clipboard-list"></i> Isi Absensi Hari Ini</h3>
+        <p>Klik untuk mengisi kehadiran melalui Google Formulir.</p>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Menu Navigasi</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="#">Materi</a></li>
+          <li><a href="#">Tugas</a></li>
+          <li><a href="#">Galeri</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Link Penting</h3>
+        <ul>
+          <li><a href="https://data.aseanstats.org/" target="_blank">ASEAN Statistics</a></li>
+          <li><a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=ID" target="_blank">World Bank - GDP Indonesia</a></li>
+          <li><a href="https://www.bps.go.id/" target="_blank">BPS Indonesia</a></li>
+          <li><a href="https://islam.nu.or.id/" target="_blank">Al-Qur'an NU Online</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Hubungi Kami</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> 0822-2385-7426</p>
+          <p><i class="fas fa-map-marker-alt"></i> Jl. Huzaini, Benculuk,<br>Cluring, Banyuwangi,<br>Jawa Timur</p>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 SMA Negeri Banyuwangi | Mata Pelajaran Sosiologi Kelas X
+    </div>
+  </footer>
+
+</body>
+</html>
