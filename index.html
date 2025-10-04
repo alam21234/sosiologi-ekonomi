@@ -23,7 +23,6 @@
             --header-height: 70px;
         }
 
-        /* Dark Mode Variables */
         .dark-mode {
             --light: #1a1a1a;
             --dark: #f8f9fa;
@@ -55,7 +54,7 @@
             color: var(--dark);
         }
 
-        /* NAVBAR - Improved for Mobile */
+        /* NAVBAR */
         .navbar {
             background: linear-gradient(120deg, var(--primary), var(--secondary));
             color: white;
@@ -121,7 +120,7 @@
             transform: translateY(-2px);
         }
 
-        /* Dropdown Styling */
+        /* Dropdown */
         .dropdown {
             position: relative;
         }
@@ -193,7 +192,7 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* Header Styles */
+        /* HEADER */
         header {
             background: linear-gradient(120deg, var(--primary), var(--secondary));
             color: white;
@@ -258,7 +257,7 @@
             font-size: 1.1rem;
         }
 
-        /* Main Content */
+        /* MAIN CONTENT */
         .container {
             max-width: 1200px;
             margin: -40px auto 40px;
@@ -271,7 +270,7 @@
         .card {
             background: white;
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 40px 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -279,6 +278,8 @@
             border: 1px solid rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         body.dark-mode .card {
@@ -292,31 +293,12 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .card.socio::before { background: #ff6b6b; }
-        .card.ekonomi::before { background: #4ecdc4; }
-
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
         .card h2 {
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
             color: var(--dark);
             flex-wrap: wrap;
@@ -326,111 +308,104 @@
             color: #f8f9fa;
         }
 
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 25px 0;
+        .card p {
+            margin-bottom: 25px;
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .btn {
-            padding: 12px 20px;
+            padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            flex: 1;
-            min-width: 140px;
+            min-width: 200px;
             text-align: center;
             border: none;
             cursor: pointer;
-        }
-
-        .btn-primary {
             background: var(--primary);
             color: white;
-        }
-
-        .btn-secondary {
-            background: var(--light);
-            color: var(--dark);
-            border: 1px solid #ddd;
-        }
-
-        body.dark-mode .btn-secondary {
-            background: #3a3a3a;
-            border-color: #555;
-            color: #f8f9fa;
         }
 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--secondary);
         }
 
-        .materials {
-            margin-top: 30px;
+        /* EXAM SECTION */
+        .exam-section {
+            max-width: 1200px;
+            margin: -20px auto 40px;
+            padding: 0 20px;
         }
 
-        .materials h3 {
-            font-size: 1.2rem;
-            color: var(--gray);
+        .exam-card {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(37, 117, 252, 0.3);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(37, 117, 252, 0.4);
+        }
+
+        .exam-card h2 {
+            font-size: 1.8rem;
             margin-bottom: 15px;
+            color: white;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 700;
         }
 
-        .materials h3.special {
-            color: #e74c3c;
-            font-size: 1.15rem;
-            margin-top: 25px;
-        }
-
-        .materials ul {
-            list-style: none;
-        }
-
-        .materials li {
-            margin: 10px 0;
-            padding-left: 10px;
-            border-left: 2px solid var(--accent);
-            transition: var(--transition);
-        }
-
-        .materials li:hover {
-            border-left-color: var(--primary);
-            padding-left: 15px;
-        }
-
-        .materials li.special a::before {
-            content: "📌 ";
-            font-weight: bold;
-        }
-
-        .materials a {
-            color: var(--dark);
-            text-decoration: none;
+        .exam-card p {
+            margin-bottom: 25px;
+            opacity: 0.9;
             font-weight: 500;
-            transition: var(--transition);
-            display: inline-block;
-            padding: 5px 0;
+            font-size: 1.05rem;
         }
 
-        body.dark-mode .materials a {
-            color: #e2e8f0;
+        .exam-card .btn {
+            background: white;
+            color: #2575fc;
+            font-weight: 600;
+            padding: 14px 32px;
+            min-width: 240px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: none;
+            font-size: 1rem;
         }
 
-        .materials a:hover {
-            color: var(--primary);
-            transform: translateX(5px);
+        .exam-card .btn:hover {
+            background: #f0f7ff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
+        .exam-card .note {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* GALLERY CTA */
         .gallery-cta {
             text-align: center;
             margin: 60px auto 40px;
@@ -455,7 +430,7 @@
             font-weight: 700;
         }
 
-        /* Testimoni Section */
+        /* TESTIMONIALS */
         .testimonials-section {
             max-width: 1200px;
             margin: 80px auto;
@@ -580,72 +555,7 @@
             right: 0;
         }
 
-        /* Exam Section */
-        .exam-section {
-            max-width: 1200px;
-            margin: -20px auto 40px;
-            padding: 0 20px;
-        }
-
-        .exam-card {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            text-align: center;
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(37, 117, 252, 0.3);
-            transition: var(--transition);
-            border: none;
-        }
-
-        .exam-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(37, 117, 252, 0.4);
-        }
-
-        .exam-card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-weight: 700;
-        }
-
-        .exam-card p {
-            margin-bottom: 25px;
-            opacity: 0.9;
-            font-weight: 500;
-            font-size: 1.05rem;
-        }
-
-        .exam-card .btn {
-            background: white;
-            color: #2575fc;
-            font-weight: 600;
-            padding: 14px 32px;
-            min-width: 240px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: none;
-            font-size: 1rem;
-        }
-
-        .exam-card .btn:hover {
-            background: #f0f7ff;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .exam-card .note {
-            margin-top: 20px;
-            font-size: 0.85rem;
-            opacity: 0.8;
-            font-style: italic;
-        }
-
-        /* Footer Modern */
+        /* FOOTER */
         footer {
             background: linear-gradient(135deg, #1e293b, #334155);
             color: white;
@@ -714,7 +624,6 @@
             color: #e2e8f0;
         }
 
-        /* Visitor Counter Section */
         .visitor-counter {
             text-align: center;
             padding: 15px;
@@ -757,7 +666,7 @@
             border-color: rgba(255,255,255,0.03);
         }
 
-        /* Scroll Progress Indicator */
+        /* UI UTILITIES */
         .scroll-indicator {
             position: fixed;
             top: 0;
@@ -778,7 +687,6 @@
             transition: width 0.2s ease;
         }
 
-        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 25px;
@@ -810,7 +718,6 @@
             background: var(--secondary);
         }
 
-        /* Loading Animation */
         .loader-wrapper {
             position: fixed;
             top: 0;
@@ -838,7 +745,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Responsive Design */
+        /* RESPONSIVE */
         @media (max-width: 1200px) {
             .container {
                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -847,32 +754,15 @@
         }
 
         @media (max-width: 992px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .card h2 {
-                font-size: 1.6rem;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .card h2 { font-size: 1.6rem; }
+            .testimonials-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0.8rem 1rem;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-
+            .navbar { padding: 0.8rem 1rem; }
+            .hamburger { display: block; }
             .nav-links {
                 display: none;
                 position: fixed;
@@ -886,21 +776,15 @@
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
                 z-index: 1000;
             }
-
             .nav-links.active {
                 display: flex;
                 animation: slideDown 0.3s ease;
             }
-
             @keyframes slideDown {
                 from { opacity: 0; transform: translateY(-10px); }
                 to { opacity: 1; transform: translateY(0); }
             }
-
-            .nav-links li {
-                width: 100%;
-            }
-
+            .nav-links li { width: 100%; }
             .nav-links a {
                 padding: 12px 20px;
                 border-radius: 0;
@@ -908,7 +792,6 @@
                 display: flex;
                 align-items: center;
             }
-
             .dropdown-content {
                 position: static;
                 background: rgba(0,0,0,0.1);
@@ -917,121 +800,58 @@
                 display: none;
                 padding: 0;
             }
-
             .dropdown.active .dropdown-content {
                 display: flex;
                 flex-direction: column;
             }
-
             .dropdown-content a {
                 padding-left: 40px;
                 color: white;
             }
-
             .dropdown-content a:hover {
                 background: rgba(255,255,255,0.1);
             }
-
-            header {
-                padding: 4rem 1rem 2rem;
-            }
-
-            .logo {
-                width: 80px;
-                height: 80px;
-            }
-
+            header { padding: 4rem 1rem 2rem; }
+            .logo { width: 80px; height: 80px; }
             .container {
                 grid-template-columns: 1fr;
                 margin-top: -30px;
                 padding: 15px;
                 gap: 20px;
             }
-
-            .card {
-                padding: 20px;
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .exam-card {
-                padding: 30px 20px;
-            }
-
-            .exam-card .btn {
-                min-width: 200px;
-            }
-
-            .testimonials-section {
-                margin: 60px auto;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .copyright {
-                grid-column: span 1;
-            }
+            .card { padding: 30px 20px; }
+            .btn { width: 100%; min-width: auto; }
+            .exam-card { padding: 30px 20px; }
+            .exam-card .btn { min-width: 200px; }
+            .testimonials-section { margin: 60px auto; }
+            .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+            .copyright { grid-column: span 1; }
         }
 
         @media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 1rem;
-            }
-            
-            .navbar-brand img {
-                width: 35px;
-                height: 35px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
+            .navbar-brand { font-size: 1rem; }
+            .navbar-brand img { width: 35px; height: 35px; }
+            h1 { font-size: 1.8rem; }
             .card h2 {
                 font-size: 1.4rem;
                 justify-content: center;
                 text-align: center;
             }
-            
             .card h2 small {
                 display: block;
                 width: 100%;
                 margin-top: 5px;
                 font-size: 0.9rem;
             }
-            
             .exam-card h2 {
                 font-size: 1.5rem;
                 flex-direction: column;
                 gap: 8px;
             }
-            
-            .exam-card .btn {
-                min-width: 100%;
-            }
-            
-            .testimonials-section h2 {
-                font-size: 1.8rem;
-            }
-            
-            .gallery-cta h2 {
-                font-size: 1.6rem;
-            }
-            
+            .exam-card .btn { min-width: 100%; }
+            .testimonials-section h2 { font-size: 1.8rem; }
+            .gallery-cta h2 { font-size: 1.6rem; }
             .back-to-top {
                 bottom: 15px;
                 right: 15px;
@@ -1041,46 +861,25 @@
         }
 
         @media (max-width: 400px) {
-            .navbar {
-                padding: 0.8rem 0.5rem;
-            }
-            
+            .navbar { padding: 0.8rem 0.5rem; }
             .theme-toggle {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
             }
-            
-            .hamburger {
-                font-size: 1.3rem;
-            }
-            
-            header {
-                padding: 3rem 0.5rem 1.5rem;
-            }
-            
-            .logo {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .container {
-                padding: 10px;
-            }
-            
-            .card {
-                padding: 15px;
-            }
-            
+            .hamburger { font-size: 1.3rem; }
+            header { padding: 3rem 0.5rem 1.5rem; }
+            .logo { width: 70px; height: 70px; }
+            .container { padding: 10px; }
+            .card { padding: 25px 15px; }
             .btn {
                 padding: 10px 15px;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-
     <!-- Loading Animation -->
     <div class="loader-wrapper" id="loader">
         <div class="loader"></div>
@@ -1108,8 +907,8 @@
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
-            <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
-            <li><a href="#tugas"><i class="fas fa-tasks"></i> Tugas</a></li>
+            <li><a href="sosiologi-kelas-x.html"><i class="fas fa-book"></i> Sosiologi X</a></li>
+            <li><a href="ekonomi-kelas-xi.html"><i class="fas fa-chart-line"></i> Ekonomi XI</a></li>
             <li class="dropdown">
                 <a href="galery.html"><i class="fas fa-images"></i> Galeri <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
@@ -1128,7 +927,7 @@
         <p class="subtitle">Sosiologi X & Ekonomi XI — SMAN 1 Cluring</p>
     </header>
 
-    <!-- SECTION ULANGAN & ASESMEN -->
+    <!-- EXAM SECTION -->
     <section class="exam-section">
         <div class="exam-card">
             <h2><i class="fas fa-edit"></i> Ulangan & Hasil Asesmen</h2>
@@ -1140,77 +939,28 @@
         </div>
     </section>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT: Akses Mapel -->
     <div class="container">
-
-        <!-- SOSIOLOGI KELAS X -->
-        <div class="card socio" id="materi">
+        <div class="card">
             <h2><i class="fas fa-users"></i> Sosiologi <small>Kelas X</small></h2>
-            <div class="btn-group">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSczrcOJqafKnViwOXw3GBGMYvWgWwZGFutuDNGskH_iGhSUVQ/viewform" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-check-circle"></i> Absen Sekarang
-                </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnQ4JxYeGt_zsDz8YvILNZTaufvRi3m_69vdwN5Lc4N1j5jg/viewform" class="btn btn-secondary" target="_blank">
-                    <i class="fas fa-paper-plane"></i> Kirim Tugas
-                </a>
-            </div>
-
-            <div class="materials">
-                <h3><i class="fas fa-book"></i> Materi Pembelajaran</h3>
-                <ul>
-                    <li><a href="bab-1-Fungsi-Sosiologi-dalam-Menganalisis-Masyarakat.html" target="_blank">Bab 1: Fungsi Sosiologi dalam Menganalisis Masyarakat</a></li>
-                    <li><a href="bab-2-Individu-Kelompok-dan-Hubungan-Sosial.html" target="_blank">Bab 2: Individu, Kelompok, dan Hubungan Sosial</a></li>
-                </ul>
-
-                <!-- SUBBAGIAN MATERI AKTUAL -->
-                <h3 class="special"><i class="fas fa-star"></i> Materi Aktual & Analisis Kebijakan</h3>
-                <ul>
-                    <li class="special"><a href="Dampak-Rp200T-Sosiologi-Ekonomi.html" target="_blank">Dampak Rp200T: Analisis Sosiologi & Ekonomi</a></li>
-                </ul>
-            </div>
+            <p>Materi, absensi, tugas, dan analisis kebijakan sosial.</p>
+            <a href="sosiologi-kelas-x.html" class="btn">
+                <i class="fas fa-arrow-right"></i> Buka Halaman Sosiologi
+            </a>
         </div>
-
-        <!-- EKONOMI KELAS XI -->
-        <div class="card ekonomi" id="tugas">
+        <div class="card">
             <h2><i class="fas fa-chart-line"></i> Ekonomi <small>Kelas XI</small></h2>
-            <div class="btn-group">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhINoihWRi60jw0ivUe5_N1pJYT4b3wgDejaMnNi5uWnFzuw/viewform" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-check-circle"></i> Absen Sekarang
-                </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSclUWSbatHzbavWqSEhZ63_Y2rVok5M1q5rr_sY4QOWOV9knw/viewform" class="btn btn-secondary" target="_blank">
-                    <i class="fas fa-paper-plane"></i> Kirim Tugas
-                </a>
-                <!-- TOMBOL BARU: SIMULATOR EKONOMI -->
-                <a href="simulator-ekonomi.html" class="btn btn-secondary" target="_blank">
-                    <i class="fas fa-calculator"></i> Buka Simulator Ekonomi
-                </a>
-            </div>
-
-            <div class="materials">
-                <h3><i class="fas fa-book"></i> Materi Pembelajaran</h3>
-                <ul>
-                    <li><a href="https://drive.google.com/file/d/1e0ajPBwIed-ORadvmuX-PVnUFgXyoig1/view" target="_blank"><i class="fas fa-book-open"></i> Modul Umum Ekonomi</a></li>
-                    <li><a href="badan-usaha.html" target="_blank">Badan Usaha</a></li>
-                    <li><a href="pendapatan-nasional.html" target="_blank">Pendapatan Nasional</a></li>
-                    <li><a href="ketenagakerjaan.html" target="_blank">Ketenagakerjaan</a></li>
-                    <li><a href="inflasi.html" target="_blank">Inflasi</a></li>
-                    <li><a href="Fiskal-Moneter.html" target="_blank">Kebijakan Fiskal & Moneter</a></li>
-                </ul>
-
-                <!-- SUBBAGIAN STUDI KEBIJAKAN TERKINI -->
-                <h3 class="special"><i class="fas fa-star"></i> Studi Kebijakan Terkini</h3>
-                <ul>
-                    <li class="special"><a href="Strategi-Menkeu-Purbaya.html" target="_blank">Strategi Menkeu Purbaya</a></li>
-                </ul>
-            </div>
+            <p>Materi lengkap, simulator ekonomi, dan studi kebijakan terkini.</p>
+            <a href="ekonomi-kelas-xi.html" class="btn">
+                <i class="fas fa-arrow-right"></i> Buka Halaman Ekonomi
+            </a>
         </div>
-
     </div>
 
     <!-- GALLERY CTA -->
     <div class="gallery-cta">
         <h2><i class="fas fa-images"></i> <span class="highlight">Galeri Kegiatan Belajar</span></h2>
-        <a href="galery.html" class="btn btn-primary" style="background: linear-gradient(120deg, #ff6b6b, #ffa500);">
+        <a href="galery.html" class="btn" style="background: linear-gradient(120deg, #ff6b6b, #ffa500);">
             <i class="fas fa-images"></i> Lihat Koleksi Foto & Video
         </a>
     </div>
@@ -1219,67 +969,42 @@
     <section class="testimonials-section">
         <h2>Apa Kata Mereka?</h2>
         <div class="testimonials-grid">
-
-            <!-- Testimoni 1 -->
             <div class="testimonial-card">
                 <img src="https://i.ibb.co.com/BVkWBdjJ/X-6-Fanecha.jpg" alt="Fanecha" class="testimonial-img">
                 <div class="testimonial-name">Fanecha</div>
                 <div class="testimonial-class">Kelas X.6</div>
-                <p class="testimonial-quote">
-                    Belajar sosiologi jadi lebih mudah dan menyenangkan. Materinya jelas, tugasnya terstruktur, dan gurunya selalu responsif!
-                </p>
+                <p class="testimonial-quote">Belajar sosiologi jadi lebih mudah dan menyenangkan. Materinya jelas, tugasnya terstruktur, dan gurunya selalu responsif!</p>
             </div>
-
-            <!-- Testimoni 2 -->
             <div class="testimonial-card">
                 <img src="https://i.ibb.co.com/Vp08frL9/X-9-Gifari.jpg" alt="Gifari" class="testimonial-img">
                 <div class="testimonial-name">Gifari</div>
                 <div class="testimonial-class">Kelas X.9</div>
-                <p class="testimonial-quote">
-                    Platform ini membantu banget buat ngejar ketertinggalan materi. Bisa belajar kapan aja, di mana aja. Terima kasih, Pak!
-                </p>
+                <p class="testimonial-quote">Platform ini membantu banget buat ngejar ketertinggalan materi. Bisa belajar kapan aja, di mana aja. Terima kasih, Pak!</p>
             </div>
-
-            <!-- Testimoni 3 -->
             <div class="testimonial-card">
                 <img src="https://i.ibb.co.com/SXzh9rk1/XI-5-Tahta.jpg" alt="Tahta" class="testimonial-img">
                 <div class="testimonial-name">Tahta</div>
                 <div class="testimonial-class">Kelas XI.5</div>
-                <p class="testimonial-quote">
-                    Ekonomi dulu bikin pusing, tapi sekarang jadi paham berkat penyampaian materi yang aplikatif dan contoh soal yang relevan.
-                </p>
+                <p class="testimonial-quote">Ekonomi dulu bikin pusing, tapi sekarang jadi paham berkat penyampaian materi yang aplikatif dan contoh soal yang relevan.</p>
             </div>
-
-            <!-- Testimoni 4 -->
             <div class="testimonial-card">
                 <img src="https://i.ibb.co.com/kVSz3JyD/XI-5-Ali-Akbar.jpg" alt="Ali Akbar" class="testimonial-img">
                 <div class="testimonial-name">Ali Akbar</div>
                 <div class="testimonial-class">Kelas XI.5</div>
-                <p class="testimonial-quote">
-                    Sistem absen dan pengumpulan tugasnya simpel banget. Nggak ribet, nggak error. Pokoknya recomended buat temen-temen semua!
-                </p>
+                <p class="testimonial-quote">Sistem absen dan pengumpulan tugasnya simpel banget. Nggak ribet, nggak error. Pokoknya recomended buat temen-temen semua!</p>
             </div>
-
-            <!-- Testimoni 5 - Abell -->
             <div class="testimonial-card">
                 <img src="https://i.ibb.co.com/KxwDB2YH/XI-7-Abella-256x256.webp" alt="Abella" class="testimonial-img">
                 <div class="testimonial-name">Abella</div>
                 <div class="testimonial-class">Kelas XI.7</div>
-                <p class="testimonial-quote">
-                    Ekonomi jadi nggak bikin stres lagi sejak ada materi digital ini. Penjelasannya runtut, contoh soalnya real, dan bikin aku semangat buat UAS!
-                </p>
+                <p class="testimonial-quote">Ekonomi jadi nggak bikin stres lagi sejak ada materi digital ini. Penjelasannya runtut, contoh soalnya real, dan bikin aku semangat buat UAS!</p>
             </div>
-
-            <!-- Testimoni 6 - Vrisca -->
             <div class="testimonial-card">
                 <img src="https://i.ibb.co.com/HLYM07st/XI-7-Vrisca-256x256.webp" alt="Vrisca" class="testimonial-img">
                 <div class="testimonial-name">Vrisca</div>
                 <div class="testimonial-class">Kelas XI.7</div>
-                <p class="testimonial-quote">
-                    Aku suka banget cara penyampaian materi ekonominya — praktis, relevan sama kehidupan sehari-hari, dan bikin aku paham konsep tanpa hafalan!
-                </p>
+                <p class="testimonial-quote">Aku suka banget cara penyampaian materi ekonominya — praktis, relevan sama kehidupan sehari-hari, dan bikin aku paham konsep tanpa hafalan!</p>
             </div>
-
         </div>
     </section>
 
@@ -1290,12 +1015,11 @@
                 <h3><i class="fas fa-compass"></i> Menu Navigasi</h3>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-home"></i> Beranda</a></li>
-                    <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
-                    <li><a href="#tugas"><i class="fas fa-tasks"></i> Tugas</a></li>
+                    <li><a href="sosiologi-kelas-x.html"><i class="fas fa-book"></i> Sosiologi X</a></li>
+                    <li><a href="ekonomi-kelas-xi.html"><i class="fas fa-chart-line"></i> Ekonomi XI</a></li>
                     <li><a href="galery.html"><i class="fas fa-images"></i> Galeri</a></li>
                 </ul>
             </div>
-
             <div class="footer-section">
                 <h3><i class="fas fa-link"></i> Link Penting</h3>
                 <ul>
@@ -1305,33 +1029,26 @@
                     <li><a href="https://quran.nu.or.id/" target="_blank"><i class="fas fa-book-open"></i> Al-Qur'an NU Online</a></li>
                 </ul>
             </div>
-
             <div class="footer-section">
                 <h3><i class="fas fa-phone"></i> Hubungi Kami</h3>
                 <p><strong><i class="fas fa-phone-alt"></i> Telepon:</strong><br>0822-2385-7426</p>
                 <p><strong><i class="fas fa-map-marker-alt"></i> Alamat:</strong><br>Jl. Huzaini, Benculuk,<br>Cluring, Banyuwangi,<br>Jawa Timur</p>
             </div>
-
             <div class="footer-section">
                 <h3><i class="fas fa-eye"></i> Statistik Kunjungan</h3>
                 <div class="visitor-counter">
                     <a href="https://www.freecounterstat.com" title="page counter" target="_blank">
-                        <img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=s91lf4yugk1a948dm9uz1ej5hzz7xj9q" 
-                             border="0" 
-                             title="page counter" 
-                             alt="page counter">
+                        <img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=s91lf4yugk1a948dm9uz1ej5hzz7xj9q" border="0" title="page counter" alt="page counter">
                     </a>
                     <p>Jumlah pengunjung halaman ini</p>
                 </div>
             </div>
         </div>
-
         <div class="copyright">
             <p>© 2025 <strong>SMA Negeri 1 Cluring</strong></p>
             <p>Semua hak dilindungi undang-undang.</p>
             <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;">Platform pembelajaran digital untuk siswa dan guru.</p>
         </div>
-
         <div class="footer-bottom">
             <p>Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i> untuk pendidikan Indonesia</p>
         </div>
@@ -1348,10 +1065,8 @@
             hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Handle dropdowns on mobile
         dropdowns.forEach(dropdown => {
             const link = dropdown.querySelector('a');
-            
             link.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
@@ -1360,9 +1075,8 @@
             });
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && navLinks.classList.contains('active') && 
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active') &&
                 !e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
                 navLinks.classList.remove('active');
                 hamburger.textContent = '☰';
@@ -1373,7 +1087,6 @@
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
-        // Cek preferensi pengguna
         if (localStorage.getItem('darkMode') === 'enabled') {
             body.classList.add('dark-mode');
             themeToggle.textContent = '☀️';
@@ -1390,14 +1103,13 @@
             }
         });
 
-        // Scroll Progress Indicator
+        // Scroll Progress & Back to Top
         window.onscroll = function() {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById("scrollProgress").style.width = scrolled + "%";
-            
-            // Back to top button
+
             const backToTop = document.getElementById('backToTop');
             if (winScroll > 300) {
                 backToTop.classList.add('visible');
@@ -1406,38 +1118,11 @@
             }
         };
 
-        // Back to top functionality
         document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Smooth Scroll untuk anchor link
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100, // offset for navbar height
-                        behavior: 'smooth'
-                    });
-
-                    // Tutup mobile menu jika aktif
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        hamburger.textContent = '☰';
-                    }
-                }
-            });
-        });
-
-        // Loading animation
+        // Loading Animation
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
@@ -1448,7 +1133,6 @@
             }, 1000);
         });
 
-        // Prevent loader from staying visible if page loads quickly
         setTimeout(() => {
             const loader = document.getElementById('loader');
             if (loader.style.display !== 'none') {
@@ -1459,6 +1143,5 @@
             }
         }, 3000);
     </script>
-
 </body>
 </html>
