@@ -33,6 +33,7 @@
             color: white;
             padding: 30px;
             text-align: center;
+            position: relative;
         }
         
         h1 {
@@ -157,6 +158,80 @@
             font-size: 0.9rem;
         }
         
+        /* Tombol Sistem Pengupahan */
+        .system-wage-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .system-wage-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(135deg, #c0392b, #a93226);
+        }
+        
+        .system-wage-btn:active {
+            transform: translateY(1px);
+        }
+        
+        /* Panel Sistem Pengupahan */
+        .wage-system-panel {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .wage-system-panel h3 {
+            color: #e74c3c;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .wage-system-panel h3:before {
+            content: "💰";
+            font-size: 1.5rem;
+        }
+        
+        .wage-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .wage-feature {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .wage-feature:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
         footer {
             text-align: center;
             padding: 20px;
@@ -179,6 +254,10 @@
                 height: auto;
                 min-height: 250px;
             }
+            
+            .wage-features {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -187,6 +266,11 @@
         <header>
             <h1>Ketenagakerjaan dan Uang</h1>
             <p class="subtitle">Materi Pembelajaran Ekonomi - Konsep Ketenagakerjaan, Pengangguran, Fungsi & Jenis Uang</p>
+            
+            <!-- Tombol untuk membuka halaman Sistem Pengupahan -->
+            <a href="sistem-pengupahan.html" class="system-wage-btn">
+                📊 Pelajari Sistem Pengupahan
+            </a>
         </header>
         
         <div class="content">
@@ -230,6 +314,25 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Panel Sistem Pengupahan -->
+            <div class="wage-system-panel">
+                <h3>Sistem Pengupahan di Indonesia</h3>
+                <p>Pahami secara mendalam tentang sistem pengupahan yang berlaku di Indonesia berdasarkan PP RI No. 36 Tahun 2021 tentang Pengupahan. Materi ini mencakup:</p>
+                
+                <div class="wage-features">
+                    <div class="wage-feature">Kebijakan pengupahan dan upah minimum</div>
+                    <div class="wage-feature">Sistem upah berdasarkan waktu dan hasil</div>
+                    <div class="wage-feature">Perhitungan upah lembur dan tunjangan</div>
+                    <div class="wage-feature">Mekanisme penetapan UMP dan UMK</div>
+                    <div class="wage-feature">Studi kasus penerapan sistem upah</div>
+                    <div class="wage-feature">Hak dan kewajiban pekerja & pemberi kerja</div>
+                </div>
+                
+                <a href="sistem-pengupahan.html" class="system-wage-btn">
+                    📖 Buka Materi Sistem Pengupahan
+                </a>
             </div>
             
             <div class="section">
@@ -344,6 +447,13 @@
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/qXqaxd03Zfs?si=A8DqoYRLWh5QCnKF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <p class="video-caption">Video: Penjelasan tentang konsep uang dan perkembangannya dalam perekonomian</p>
                 </div>
+                
+                <!-- Tombol tambahan di bagian bawah halaman -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="sistem-pengupahan.html" class="system-wage-btn">
+                        📊 Pelajari Sistem Pengupahan Lengkap
+                    </a>
+                </div>
             </div>
         </div>
         
@@ -352,5 +462,45 @@
             <p>&copy; 2025 - Disusun untuk Tujuan Edukasi</p>
         </footer>
     </div>
+
+    <script>
+        // Tambahan JavaScript untuk interaktivitas
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efek scroll halus untuk semua link
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Animasi untuk tombol sistem pengupahan
+            const wageButtons = document.querySelectorAll('.system-wage-btn');
+            wageButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Menambahkan kelas animasi untuk kartu fitur sistem pengupahan
+            const wageFeatures = document.querySelectorAll('.wage-feature');
+            wageFeatures.forEach((feature, index) => {
+                feature.style.opacity = '0';
+                feature.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    feature.style.transition = 'all 0.5s ease';
+                    feature.style.opacity = '1';
+                    feature.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
 </body>
 </html>
